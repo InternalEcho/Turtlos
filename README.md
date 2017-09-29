@@ -1,2 +1,2 @@
 # GaijinScrubs
-Let's make David-senpai proud~ owo
+Let's make David-senpai proud~ owololoo
