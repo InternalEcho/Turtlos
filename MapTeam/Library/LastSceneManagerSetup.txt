@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/WaterLevelMap.unity
+- path: Assets/Scenes/MapPrototype.unity
   isLoaded: 1
   isActive: 1
