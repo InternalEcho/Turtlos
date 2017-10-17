@@ -5,10 +5,13 @@ using UnityEngine;
 public class player : MonoBehaviour {
 
     public float playerSpeed;
+    public float boostSpeed;
     public float bulletSpeed;
     public float fireRate;
     public float hp = 5.0f;
     private float fireRateCheck;
+    public float boostCooldown = 0f;
+  
     public GameObject bullet;
     public Transform bulletEmitter;
     public Rigidbody rb;
@@ -28,6 +31,7 @@ public class player : MonoBehaviour {
         move();
         turnToMouse();
         shoot();
+        boost();
         
 
         
@@ -47,7 +51,7 @@ public class player : MonoBehaviour {
 
     void shoot()
     {
-        if (Input.GetKey("space"))
+        if (Input.GetButton("Fire1"))
         {
             if (Time.time > fireRateCheck)
             {
@@ -74,4 +78,18 @@ public class player : MonoBehaviour {
         }
 
     }
+    void boost()
+    {
+        if (Input.GetKey("space"))
+        {
+            if (Time.time > boostCooldown)
+            {
+                rb.AddForce(transform.forward * Time.deltaTime * boostSpeed);
+                Debug.Log("boost activated");
+                boostCooldown = Time.time + 5f;
+            }
+        }
+    }
 }
+
+   

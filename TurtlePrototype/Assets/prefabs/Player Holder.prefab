@@ -251,10 +251,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 1
+  boostSpeed: 2
   bulletSpeed: 1000
   fireRate: 0.5
+  hp: 5
+  boostCooldown: 0
   bullet: {fileID: 1746278629456328, guid: 8193611630999374cb7bb2f4ba375470, type: 2}
   bulletEmitter: {fileID: 4211115138321942}
+  rb: {fileID: 0}
 --- !u!136 &136887399323096392
 CapsuleCollider:
   m_ObjectHideFlags: 1

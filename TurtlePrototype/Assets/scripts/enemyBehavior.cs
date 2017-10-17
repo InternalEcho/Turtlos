@@ -18,7 +18,10 @@ public class enemyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(player.transform.position);
+        //transform.LookAt(player.transform.position);
+        Vector3 relativePos = player.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        transform.rotation = rotation;
         shoot();
         if (hp <= 0)
         {

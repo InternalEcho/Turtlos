@@ -256,7 +256,7 @@ MonoBehaviour:
   bulletEmitter: {fileID: 4247634859293994}
   hp: 5
   fireRate: 0.5
-  bulletSpeed: 500
+  bulletSpeed: 1000
 --- !u!114 &114837697826312308
 MonoBehaviour:
   m_ObjectHideFlags: 1

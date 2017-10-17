@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f183ed12e33466446b6bdc0f49feceb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expiryTime: 10
+  expiryTime: 2
 --- !u!135 &135946725121626346
 SphereCollider:
   m_ObjectHideFlags: 1
