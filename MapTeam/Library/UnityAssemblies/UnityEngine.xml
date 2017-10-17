@@ -24070,19 +24070,9 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>iPad Pro 9.7", first generation.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.iOS.DeviceGeneration.iPadPro10Inch2Gen">
-      <summary>
-        <para>iPad Pro 10.5", second generation 10" iPad.</para>
-      </summary>
-    </member>
     <member name="F:UnityEngine.iOS.DeviceGeneration.iPadPro1Gen">
       <summary>
-        <para>iPad Pro 12.9", first generation.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEngine.iOS.DeviceGeneration.iPadPro2Gen">
-      <summary>
-        <para>iPad Pro 12.9", second generation.</para>
+        <para>iPad Pro, first generation.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.iOS.DeviceGeneration.iPadUnknown">
@@ -46698,11 +46688,6 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
         <para>Volume extent of a 3D render texture or number of slices of array texture.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.RenderTexture.vrUsage">
-      <summary>
-        <para>If this RenderTexture is a VR eye texture used in stereoscopic rendering, this property decides what special rendering occurs, if any.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.RenderTexture.width">
       <summary>
         <para>The width of the render texture in pixels.</para>
@@ -46813,7 +46798,6 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
       <param name="memorylessMode">Render texture memoryless mode.</param>
       <param name="desc">Use this RenderTextureDesc for the settings when creating the temporary RenderTexture.</param>
       <param name="antiAliasing"></param>
-      <param name="vrUsage"></param>
     </member>
     <member name="M:UnityEngine.RenderTexture.GetTemporary(System.Int32,System.Int32,System.Int32,UnityEngine.RenderTextureFormat,UnityEngine.RenderTextureReadWrite,System.Int32)">
       <summary>
@@ -46828,7 +46812,6 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
       <param name="memorylessMode">Render texture memoryless mode.</param>
       <param name="desc">Use this RenderTextureDesc for the settings when creating the temporary RenderTexture.</param>
       <param name="antiAliasing"></param>
-      <param name="vrUsage"></param>
     </member>
     <member name="M:UnityEngine.RenderTexture.IsCreated">
       <summary>

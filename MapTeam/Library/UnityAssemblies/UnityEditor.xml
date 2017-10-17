@@ -14989,36 +14989,6 @@ Note: Use HandleUtility.GetHandleSize where you might want to have constant scre
         <para>Highlights an entire editor control using its label text as identifier.</para>
       </summary>
     </member>
-    <member name="T:UnityEditor.IconKind">
-      <summary>
-        <para>Icon kind.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.IconKind.Any">
-      <summary>
-        <para>This icon can be used for any purpose in an application.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.IconKind.Application">
-      <summary>
-        <para>This icon is used for the main application icons.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.IconKind.Notification">
-      <summary>
-        <para>This icon is used for push notifications.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.IconKind.Settings">
-      <summary>
-        <para>This icon is used for settings.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.IconKind.Spotlight">
-      <summary>
-        <para>This icon is used for Spotlight searches. (iOS only).</para>
-      </summary>
-    </member>
     <member name="T:UnityEditor.IHVImageFormatImporter">
       <summary>
         <para>Use IHVImageFormatImporter to modify Texture2D import settings for Textures in IHV (Independent Hardware Vendor) formats such as .DDS and .PVR from Editor scripts.</para>

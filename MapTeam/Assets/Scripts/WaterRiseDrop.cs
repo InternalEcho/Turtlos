@@ -6,26 +6,38 @@ public class WaterRiseDrop : MonoBehaviour {
 
     public float dropSpeed = 1.0f;
     public float riseSpeed = 1.0f;
-    private bool bottomReached = false;
-    private bool topReached = false;
+    public float maxWaterLevel = 40.0f;
+    public float minWaterLevel = 0.0f;
     private bool direction; //rise == true, drop == false
+    private bool waterLevelMode; //true == "tides", false == "water level goes to the limit"
+
+    //Change the invisible Water box to 2 boxes (top and bottom) so that the player can have a box collider
+
+    public static void IgnoreLayerCollision(int layer1, int layer8, bool ignore = true)
+    {
+    }
 
     void Start()
     {
-        int randomizer = Random.Range(0, 2);
-        
-        //randomize here
+        direction = (Random.Range(0.0f, 1.0f) < 0.5); //randomizes the direction of the water level movement
+        Debug.Log(direction);
+        waterLevelMode = (Random.Range(0.0f, 1.0f) < 0.5);
     }
 
     void Update()
     {
-        waterDrop();
+        if (direction)
+            waterRise();
+        if (!direction)
+            waterDrop();
     }
 
     void waterRise()
     {
-        if (topReached == false)
+        if (this.transform.position.y < maxWaterLevel)
         {
+            Debug.Log(this.transform.position.y);
+            Debug.Log(maxWaterLevel);
             float translation = Time.deltaTime * dropSpeed;
             transform.Translate(0, translation, 0);
         }
@@ -33,22 +45,10 @@ public class WaterRiseDrop : MonoBehaviour {
 
     void waterDrop()
     {
-        if (bottomReached == false)
+        if (this.transform.position.y > minWaterLevel)
         {
             float translation = Time.deltaTime * dropSpeed;
             transform.Translate(0, -translation, 0);
-        }
-    }
-
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        if (collisionInfo.collider.name == "Seefloor")
-        {
-            Debug.Log("YeeWater");
-            if (direction)
-                topReached = true;
-            if (!direction)
-                bottomReached = true;
         }
     }
 }

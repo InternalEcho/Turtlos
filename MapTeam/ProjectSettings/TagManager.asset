@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Seefloor
+  - Fire
+  - SeaLevelLimit
+  - IgnoreCollision
   layers:
   - Default
   - TransparentFX
