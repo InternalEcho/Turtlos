@@ -47,6 +47,8 @@ public class WaterRiseDrop : MonoBehaviour {
     {
         if (this.transform.position.y > minWaterLevel)
         {
+            Debug.Log(this.transform.position.y);
+            Debug.Log(minWaterLevel);
             float translation = Time.deltaTime * dropSpeed;
             transform.Translate(0, -translation, 0);
         }
