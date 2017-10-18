@@ -9,8 +9,13 @@ public class player : MonoBehaviour {
     public float bulletSpeed;
     public float fireRate;
     public float hp = 5.0f;
-    private float fireRateCheck;
-    public float boostCooldown = 0f;
+
+    private float fireRateCheck = 0f;
+    private float boostCooldown = 0f;
+    private float fireHold = 3.0f;
+    private float timePress = 0f;
+    private float timeRelease = 0f;
+    private bool firePressed = false;
   
     public GameObject bullet;
     public Transform bulletEmitter;
@@ -51,17 +56,51 @@ public class player : MonoBehaviour {
 
     void shoot()
     {
-        if (Input.GetButton("Fire1"))
+        /**
+        if (Input.GetButtonDown("Fire1"))
         {
             if (Time.time > fireRateCheck)
             {
+                timePress = Time.time;             
+            }
+        }
+
+        if (Input.GetButtonUp("Fire1") || (Time.time - timePress > 3))
+        {
+            timeRelease = Time.time;
+            GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
+            go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed * (timeRelease - timePress + 1));
+
+            fireRateCheck = Time.time + fireRate;
+        }
+    **/
+
+        if (Time.time > fireRateCheck)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Debug.Log("fire down");
+                timePress = Time.time;
+                firePressed = true;
+            }
+            if (Input.GetButtonUp("Fire1") && firePressed)
+            {
+                firePressed = false;
+                timeRelease = Time.time;
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
-                go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
-      
+                go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed * (timeRelease - timePress));
+
                 fireRateCheck = Time.time + fireRate;
             }
+            if((Time.time - timePress) > 3 && firePressed)
+            {
+                firePressed = false;
+                timeRelease = Time.time;
+                GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
+                go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed * (timeRelease - timePress));
 
-
+                fireRateCheck = Time.time + fireRate;
+            }
         }
     }
 
@@ -86,7 +125,7 @@ public class player : MonoBehaviour {
             {
                 rb.AddForce(transform.forward * Time.deltaTime * boostSpeed);
                 Debug.Log("boost activated");
-                boostCooldown = Time.time + 5f;
+                boostCooldown = Time.time + 1f;
             }
         }
     }
