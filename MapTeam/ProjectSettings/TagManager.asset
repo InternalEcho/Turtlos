@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - SeaLevelLimit
   - IgnoreCollision
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - Environment
-  - 
+  - YuME_TileMap
   - 
   - 
   - 
