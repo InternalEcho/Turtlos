@@ -5,9 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
-  - SeaLevelLimit
   - IgnoreCollision
   - enemy
+<<<<<<< HEAD
+=======
+  - PowerUp
+>>>>>>> d561f8267849aa77b5801e106c393ba75492aa40
   layers:
   - Default
   - TransparentFX
