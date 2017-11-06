@@ -9,8 +9,9 @@ public class player : MonoBehaviour {
     public float bulletSpeed;
     public float fireRate;
     public float hp = 5.0f;
+    public float powerUpDuration = 3.0f;
     private float fireRateCheck;
-    public float boostCooldown = 0f;
+    private float boostCooldown;
   
     public GameObject bullet;
     public Transform bulletEmitter;
@@ -88,6 +89,38 @@ public class player : MonoBehaviour {
                 Debug.Log("boost activated");
                 boostCooldown = Time.time + 5f;
             }
+        }
+    }
+
+    public void becomeXL()
+    {
+        this.transform.localScale = new Vector3(2.0f,2.0f,2.0f);
+        StartCoroutine(PowerUpUptime(1));
+    }
+
+    public void increaseSpeed()
+    {
+        playerSpeed *= 2;
+        StartCoroutine(PowerUpUptime(2));
+    }
+
+    IEnumerator PowerUpUptime(int powerUpType)  //1 = becomeXL; 2 = increaseSpeed;
+    {
+        yield return new WaitForSeconds(powerUpDuration);
+
+        switch (powerUpType)
+        {
+            case 1:
+                Debug.Log("Size back to normal");   //debug
+                this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                break;
+            case 2:
+                Debug.Log("Speed down to normal");  //debug
+                playerSpeed /= 2;
+                break;
+            default:
+                Debug.Log("PowerUp Error");
+                break;
         }
     }
 }
