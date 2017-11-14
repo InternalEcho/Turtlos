@@ -20,13 +20,13 @@ public class bullet : MonoBehaviour {
         {
             Destroy(gameObject);
             Debug.Log("enemy hit");
-            collision.gameObject.GetComponent<enemyBehavior>().hp -= 1;
+            //collision.gameObject.GetComponent<enemyBehavior>().hp -= 1;
         }
         else if (collision.gameObject.name == "Player Holder")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Debug.Log("player hit");
-            collision.gameObject.GetComponent<player>().hp -= 1;
+            //collision.gameObject.GetComponent<player>().hp -= 1;
         }
     }
 }

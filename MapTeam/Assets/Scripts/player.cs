@@ -7,11 +7,13 @@ public class player : MonoBehaviour {
     public float playerSpeed;
     public float boostSpeed;
     public float bulletSpeed;
-    public float fireRate;
+    //public float fireRate;
     public float hp = 5.0f;
     public float powerUpDuration = 3.0f;
+
     private float fireRateCheck;
     private float boostCooldown;
+    private bool hasStunProjectile;
   
     public GameObject bullet;
     public Transform bulletEmitter;
@@ -52,17 +54,20 @@ public class player : MonoBehaviour {
 
     void shoot()
     {
-        if (Input.GetButton("Fire1"))
+        if (hasStunProjectile)
         {
-            if (Time.time > fireRateCheck)
+            if (Input.GetButton("Fire1"))
             {
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
-      
-                fireRateCheck = Time.time + fireRate;
+                hasStunProjectile = false;
+                /*if (Time.time > fireRateCheck)
+                {
+                    go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
+
+                    fireRateCheck = Time.time + fireRate;
+                }*/
             }
-
-
         }
     }
 
@@ -102,6 +107,11 @@ public class player : MonoBehaviour {
     {
         playerSpeed *= 2;
         StartCoroutine(PowerUpUptime(2));
+    }
+
+    public void stunProjectile()    // can store many projectiles? will need a visual indicator
+    {
+        hasStunProjectile = true;
     }
 
     IEnumerator PowerUpUptime(int powerUpType)  //1 = becomeXL; 2 = increaseSpeed;
