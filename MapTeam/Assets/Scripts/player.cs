@@ -8,8 +8,8 @@ public class player : MonoBehaviour {
     public float boostSpeed;
     public float bulletSpeed;
     //public float fireRate;
-    public float hp = 5.0f;
-    public float powerUpDuration = 3.0f;
+    public float hp;
+    public float powerUpDuration;
 
     private float fireRateCheck;
     private float boostCooldown;
@@ -17,13 +17,19 @@ public class player : MonoBehaviour {
   
     public GameObject bullet;
     public Transform bulletEmitter;
-    public Rigidbody rb;
+    private Rigidbody rb;
     
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        hp = 5.0f;
+        powerUpDuration = 3.0f;
+        rb = gameObject.GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("No rigidbody on player.");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
