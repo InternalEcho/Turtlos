@@ -18,7 +18,7 @@ public class YvantManager : MonoBehaviour {
     {
         
         for (int nb = 0; nb < genericyvants.Length; ++nb ) { 
-            randpos = new Vector3(Random.Range(min, max), 0, Random.Range(min, max));
+            randpos = new Vector3(Random.Range(min, max), 20, Random.Range(min, max));
             yield return new WaitForSeconds(Random.Range(minSec,maxSec));
             GameObject newEvent = Instantiate(genericyvants[nb], randpos, Quaternion.identity) as GameObject;
         }
