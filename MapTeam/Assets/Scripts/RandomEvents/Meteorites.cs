@@ -29,16 +29,7 @@ public class Meteorites : GenericYvant {
         base.activate();
         Debug.Log("meteorite!!!");
     }
-    /*
-    public void OnTriggerEnter(Collider col)
-    {
-        if(col.gameObject.name == "Ground")
-        {
-          //  Destroy(myShedew);
-          //  Destroy(this.gameObject);
-        }
-    }
-    */
+
 	// Use this for initialization
 	void Start () {
         Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
@@ -53,9 +44,6 @@ public class Meteorites : GenericYvant {
             // Debug.Log(hit.collider.gameObject.name);
             myShedew = Instantiate(prefab, offset, Quaternion.identity) as GameObject;
         }
-
-
-
 	}
 	
 	// Update is called once per frame
