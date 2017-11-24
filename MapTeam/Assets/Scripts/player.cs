@@ -22,10 +22,10 @@ public class player : MonoBehaviour {
 	private float deltaX;
 	private float deltaY;
 
-	public float deltaY2;
+    public string playerNumber = "1";
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		numberStunProjectile = 0;
         hp = 5.0f;
         powerUpDuration = 3.0f;
@@ -54,28 +54,27 @@ public class player : MonoBehaviour {
 	void rotate()
 	{
 
-		deltaX = Input.GetAxis("RotateX"); //+ playerNum
-		deltaY = Input.GetAxis("RotateY"); //+ playerNum
-
-//		Debug.Log ("X:" + deltaX);
-//		Debug.Log ("Y:" + deltaY);
+		deltaX = Input.GetAxis("RotateX"+playerNumber);
+        deltaY = Input.GetAxis("RotateY"+playerNumber); 
 
 		Vector3 point = new Vector3 (deltaX, 0, deltaY);
 	
 		Vector3 pointToLook = transform.position + point;
-
 		Vector3 currentLook = transform.position + transform.forward;
 
 		transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
+
+        //		Debug.Log ("X:" + deltaX);
+        //		Debug.Log ("Y:" + deltaY);
     }
-		
 
 
-	void shoot()
+
+    void shoot()
     {
         if (numberStunProjectile != 0)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire"+playerNumber))
             {
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
@@ -93,13 +92,13 @@ public class player : MonoBehaviour {
     void move()
     {
         //transform.Translate(Input.GetAxisRaw("Horizontal") * playerSpeed, 0, Input.GetAxisRaw("Vertical") * playerSpeed, Space.World);
-        if(Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 && Input.GetAxisRaw("Vertical" + playerNumber) != 0)
         {
-            rb.AddForce(Input.GetAxisRaw("Horizontal") * playerSpeed * 3/4, 0, Input.GetAxisRaw("Vertical") * playerSpeed * 3/4);
+            rb.AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed * 3 / 4, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed * 3 / 4);
         }
         else
         {
-            rb.AddForce(Input.GetAxisRaw("Horizontal") * playerSpeed, 0, Input.GetAxisRaw("Vertical") * playerSpeed);
+            rb.AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed);
         }
 
     }
