@@ -9,4 +9,9 @@ public class GenericYvant : MonoBehaviour {
         Debug.Log("GenericEvent!");
     }
 
+    public virtual void spawn()
+    {
+        Debug.Log("GenericSpawn!");
+    }
+
 }
