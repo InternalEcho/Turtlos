@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class becomeXL : MonoBehaviour
-{
+public class becomeXS : MonoBehaviour {
 
     public GameObject player;
 
-    void OnTriggerEnter(Collider collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player Holder")
         {
-            player.GetComponent<player>().becomeXL();
+            player.GetComponent<player>().becomeXS();
             Destroy(this.gameObject);
         }
     }
 }
-

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class becomeXL : MonoBehaviour
+public class gainShield : MonoBehaviour
 {
 
     public GameObject player;
@@ -11,9 +11,8 @@ public class becomeXL : MonoBehaviour
     {
         if (collision.gameObject.name == "Player Holder")
         {
-            player.GetComponent<player>().becomeXL();
+            //player.GetComponent<player>().gainShield();
             Destroy(this.gameObject);
         }
     }
 }
-

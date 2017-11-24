@@ -13,15 +13,20 @@ public class player : MonoBehaviour {
 
     private float fireRateCheck;
     private float boostCooldown;
-    private bool hasStunProjectile;
+	private int numberStunProjectile;
   
     public GameObject bullet;
     public Transform bulletEmitter;
     private Rigidbody rb;
-    
+
+	private float deltaX;
+	private float deltaY;
+
+	public float deltaY2;
 
 	// Use this for initialization
 	void Start () {
+		numberStunProjectile = 0;
         hp = 5.0f;
         powerUpDuration = 3.0f;
         rb = gameObject.GetComponent<Rigidbody>();
@@ -38,35 +43,43 @@ public class player : MonoBehaviour {
             Destroy(gameObject);
         }
         move();
-        turnToMouse();
+		rotate ();
         shoot();
         boost();
         
 
         
     }
-    void turnToMouse()
-    {
-        Plane ground = new Plane(Vector3.up, transform.position);
-        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float rayLength;
-        if (ground.Raycast(cameraRay, out rayLength))
-        {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            transform.LookAt(pointToLook);
-        }
-        Debug.DrawLine(cameraRay.origin, cameraRay.GetPoint(rayLength), Color.black);
-    }
 
-    void shoot()
+	void rotate()
+	{
+
+		deltaX = Input.GetAxis("RotateX"); //+ playerNum
+		deltaY = Input.GetAxis("RotateY"); //+ playerNum
+
+//		Debug.Log ("X:" + deltaX);
+//		Debug.Log ("Y:" + deltaY);
+
+		Vector3 point = new Vector3 (deltaX, 0, deltaY);
+	
+		Vector3 pointToLook = transform.position + point;
+
+		Vector3 currentLook = transform.position + transform.forward;
+
+		transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
+    }
+		
+
+
+	void shoot()
     {
-        if (hasStunProjectile)
+        if (numberStunProjectile != 0)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
-                hasStunProjectile = false;
+                numberStunProjectile -= 1;
                 /*if (Time.time > fireRateCheck)
                 {
                     go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
@@ -103,24 +116,33 @@ public class player : MonoBehaviour {
         }
     }
 
-    public void becomeXL()
+    public void becomeXS()
     {
-        this.transform.localScale = new Vector3(2.0f,2.0f,2.0f);
+        this.transform.localScale = new Vector3(.5f,.5f,.5f);
         StartCoroutine(PowerUpUptime(1));
     }
+
+	public void becomeXL()
+	{
+		this.transform.localScale = new Vector3(2.0f,2.0f,2.0f);
+		StartCoroutine(PowerUpUptime(2));
+	}
 
     public void increaseSpeed()
     {
         playerSpeed *= 2;
-        StartCoroutine(PowerUpUptime(2));
+        StartCoroutine(PowerUpUptime(3));
     }
 
     public void stunProjectile()    // can store many projectiles? will need a visual indicator
     {
-        hasStunProjectile = true;
+        numberStunProjectile += 3;
     }
-
-    IEnumerator PowerUpUptime(int powerUpType)  //1 = becomeXL; 2 = increaseSpeed;
+	public void gainShield()
+	{
+		//GameObject shield = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
+	}
+    IEnumerator PowerUpUptime(int powerUpType)  //1 = becomeXS; 2 = increaseSpeed;
     {
         yield return new WaitForSeconds(powerUpDuration);
 
@@ -130,7 +152,11 @@ public class player : MonoBehaviour {
                 Debug.Log("Size back to normal");   //debug
                 this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 break;
-            case 2:
+			case 2:
+				Debug.Log("Size back to normal");   //debug
+				this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+				break;
+            case 3:
                 Debug.Log("Speed down to normal");  //debug
                 playerSpeed /= 2;
                 break;
