@@ -6,7 +6,7 @@ public class stunProjectile : MonoBehaviour {
 
     public GameObject player;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "Player Holder")
         {
