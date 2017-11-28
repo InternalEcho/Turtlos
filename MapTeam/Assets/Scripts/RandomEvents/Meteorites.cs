@@ -16,6 +16,9 @@ public class Meteorites : GenericYvant {
     [Header("vitesse meteorite")]
     [SerializeField]
     float speed;
+    [Header("meteorite height")]
+    [SerializeField][Range(5, 50)]
+    float meteoriteHeight;
 
     [SerializeField]
     AudioSource yee;
@@ -32,6 +35,8 @@ public class Meteorites : GenericYvant {
 
 	// Use this for initialization
 	void Start () {
+        this.transform.position = new Vector3(0, meteoriteHeight, 0);
+
         Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
         GetComponent<Rigidbody>().velocity = direction.normalized * speed;
 

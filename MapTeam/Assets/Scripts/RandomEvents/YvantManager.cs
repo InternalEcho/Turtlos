@@ -19,7 +19,7 @@ public class YvantManager : MonoBehaviour {
         {
             randEvent = Random.Range(0, genericyvants.Length);
             yield return new WaitForSeconds(Random.Range(minSec, maxSec));
-            GameObject newEvent = Instantiate(genericyvants[randEvent], new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;
+            GameObject newEvent = Instantiate(genericyvants[randEvent], new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;  // default spawn
         }
       //newEvent.GetComponent<GenericYvant>().activate();
     }

@@ -207,5 +207,6 @@ MonoBehaviour:
   x_max: 0.867
   y_max: 0.854
   speed: 25
+  meteoriteHeight: 25.2
   yee: {fileID: 82612346589021590}
   prefab: {fileID: 1381984025454250, guid: a6fff1d5edb96be458d5589ea131b195, type: 2}
