@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b9de8b1cd4f5d4c99d5026c92e7bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapBound: 50
   spawnDistance: 10
   translationSpeed: 3
   cloudLifeDuration: 10
+  cloudHeight: 20

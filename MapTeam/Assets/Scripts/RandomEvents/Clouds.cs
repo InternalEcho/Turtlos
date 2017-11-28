@@ -6,7 +6,7 @@ public class Clouds : GenericYvant
 {
     private int floatDirection;
     Vector3 spawnPos;
-    public float mapBound, spawnDistance, translationSpeed, cloudLifeDuration;
+    public float mapBound, spawnDistance, translationSpeed, cloudLifeDuration, cloudHeight;
 
     public override void activate()
     {
@@ -20,23 +20,23 @@ public class Clouds : GenericYvant
         switch (floatDirection)
         {
             case 0: // -x
-                spawnPos = new Vector3(-spawnDistance, 0, Random.Range(-spawnDistance, spawnDistance));
+                spawnPos = new Vector3(-spawnDistance, cloudHeight, Random.Range(-spawnDistance, spawnDistance));
                 break;
             case 1: // +x
-                spawnPos = new Vector3(spawnDistance, 0, Random.Range(-spawnDistance, spawnDistance));
+                spawnPos = new Vector3(spawnDistance, cloudHeight, Random.Range(-spawnDistance, spawnDistance));
                 break;
             case 2: // -z
-                spawnPos = new Vector3(Random.Range(-spawnDistance, spawnDistance), 0, -spawnDistance);
+                spawnPos = new Vector3(Random.Range(-spawnDistance, spawnDistance), cloudHeight, -spawnDistance);
                 break;
             case 3: // +z
-                spawnPos = new Vector3(Random.Range(-spawnDistance, spawnDistance), 0, spawnDistance);
+                spawnPos = new Vector3(Random.Range(-spawnDistance, spawnDistance), cloudHeight, spawnDistance);
                 break;
             default:
                 Debug.LogError("Cloud Spawn Error");
                 break;
         }
         this.transform.position = spawnPos;
-        this.transform.LookAt(new Vector3(Random.Range(-mapBound, mapBound), 0, Random.Range(-mapBound, mapBound)));
+        this.transform.LookAt(new Vector3(Random.Range(-mapBound, mapBound), cloudHeight, Random.Range(-mapBound, mapBound)));
         Invoke("DestroyCloud", cloudLifeDuration);
     }
 
@@ -44,6 +44,7 @@ public class Clouds : GenericYvant
     void Start()
     {
         spawn();
+        cloudHeight = 20;
     }
 
     // Update is called once per frame
