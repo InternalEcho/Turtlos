@@ -11,7 +11,7 @@ public class gainShield : MonoBehaviour
     {
         if (collision.gameObject.name == "Player Holder")
         {
-            //player.GetComponent<player>().gainShield();
+            player.GetComponent<player>().gainShield();
             Destroy(this.gameObject);
         }
     }

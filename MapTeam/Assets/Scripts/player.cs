@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,8 +24,11 @@ public class player : MonoBehaviour {
 
     public string playerNumber = "1";
 
+    public bool activeShield;
+
     // Use this for initialization
     void Start () {
+        activeShield = false;
 		numberStunProjectile = 0;
         hp = 5.0f;
         powerUpDuration = 3.0f;
@@ -139,7 +142,7 @@ public class player : MonoBehaviour {
     }
 	public void gainShield()
 	{
-		//GameObject shield = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
+        activeShield = true;
 	}
     IEnumerator PowerUpUptime(int powerUpType)  //1 = becomeXS; 2 = increaseSpeed;
     {
