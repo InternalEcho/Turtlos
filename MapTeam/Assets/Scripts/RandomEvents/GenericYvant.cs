@@ -9,7 +9,7 @@ public class GenericYvant : MonoBehaviour {
         Debug.Log("GenericEvent!");
     }
 
-    public virtual void spawn()
+    public virtual void spawn(float height)
     {
         Debug.Log("GenericSpawn!");
     }

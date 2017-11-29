@@ -16,9 +16,9 @@ public class Meteorites : GenericYvant {
     [Header("vitesse meteorite")]
     [SerializeField]
     float speed;
-    [Header("meteorite height")]
+    /*[Header("meteorite height")]
     [SerializeField][Range(5, 50)]
-    float meteoriteHeight;
+    float meteoriteHeight;*/
 
     [SerializeField]
     AudioSource yee;
@@ -35,20 +35,6 @@ public class Meteorites : GenericYvant {
 
 	// Use this for initialization
 	void Start () {
-        this.transform.position = new Vector3(0, meteoriteHeight, 0);
-
-        Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
-        GetComponent<Rigidbody>().velocity = direction.normalized * speed;
-
-        RaycastHit hit;//contient tt l'information sur le hit du ray
-
-        if(Physics.Raycast(this.transform.position + direction * 2, direction, out hit, 50.0f)) // if hit
-        {
-            Vector3 offset = hit.point;
-            offset.y = 30.0f; //shedew
-            // Debug.Log(hit.collider.gameObject.name);
-            myShedew = Instantiate(prefab, offset, Quaternion.identity) as GameObject;
-        }
 	}
 	
 	// Update is called once per frame
@@ -63,4 +49,22 @@ public class Meteorites : GenericYvant {
             Destroy(this.gameObject, 2);
         }
 	}
+
+    public override void spawn(float height)
+    {
+        this.transform.position = new Vector3(0, height + 10, 0);
+
+        Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
+        GetComponent<Rigidbody>().velocity = direction.normalized * speed;
+
+        RaycastHit hit;//contient tt l'information sur le hit du ray
+
+        if (Physics.Raycast(this.transform.position + direction * 2, direction, out hit, 50.0f)) // if hit
+        {
+            Vector3 offset = hit.point;
+            offset.y = 1.0f; //shedew
+            // Debug.Log(hit.collider.gameObject.name);
+            myShedew = Instantiate(prefab, offset, Quaternion.identity) as GameObject;
+        }
+    }
 }

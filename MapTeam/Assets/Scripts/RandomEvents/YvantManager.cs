@@ -6,27 +6,27 @@ public class YvantManager : MonoBehaviour {
 
     public GameObject[] genericyvants;
     private int randEvent;
-    public float minSec, maxSec;
+    public float minSec, maxSec, height;
 
     public void DebugEvent()
     {
-        StartCoroutine(SpawnMultiple());
+        //StartCoroutine(SpawnMultiple());
     }
 
     private IEnumerator SpawnMultiple()
     {
-        while (true)    //boucle infinie
+       while (true)    //boucle infinie
         {
             randEvent = Random.Range(0, genericyvants.Length);
             yield return new WaitForSeconds(Random.Range(minSec, maxSec));
-            GameObject newEvent = Instantiate(genericyvants[randEvent], new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;  // default spawn
+            GameObject newEvent = Instantiate(genericyvants[randEvent]) as GameObject;  // default spawn
+            newEvent.GetComponent<GenericYvant>().spawn(height);
         }
-      //newEvent.GetComponent<GenericYvant>().activate();
     }
 	// Use this for initialization
 	void Start () {
-		
-	}
+        StartCoroutine(SpawnMultiple());
+    }
 	
 	// Update is called once per frame
 	void Update () {

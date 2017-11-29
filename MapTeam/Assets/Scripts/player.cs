@@ -4,27 +4,34 @@ using UnityEngine;
 
 public class player : MonoBehaviour {
 
+    //Basic player parameters
     public float playerSpeed;
     public float boostSpeed;
+    public float hp;
+    public GameObject gridCell;
+    public Color playerColor;
+    public Color gridColor;
+    public Color[] playerColors;
+    public string playerNumber = "1";
+    public float decreaseSpeedDuration = 1.0f;
+
+    //Movement/Rotation parameters
+    private float deltaX;
+    private float deltaY;
+
+    //Power-up parameters
+    public float powerUpDuration;
+    public bool activeShield;
+        //Projectile Power-up
     public float bulletSpeed;
     //public float fireRate;
-    public float hp;
-    public float powerUpDuration;
-
     private float fireRateCheck;
-    private float boostCooldown;
-	private int numberStunProjectile;
-  
+    private int numberStunProjectile;
     public GameObject bullet;
     public Transform bulletEmitter;
-    private Rigidbody rb;
 
-	private float deltaX;
-	private float deltaY;
-
-    public string playerNumber = "1";
-
-    public bool activeShield;
+    //Obsolete?
+    //private float boostCooldown
 
     // Use this for initialization
     void Start () {
@@ -32,11 +39,6 @@ public class player : MonoBehaviour {
 		numberStunProjectile = 0;
         hp = 5.0f;
         powerUpDuration = 3.0f;
-        rb = gameObject.GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            Debug.LogError("No rigidbody on player.");
-        }
     }
 	
 	// Update is called once per frame
@@ -46,12 +48,8 @@ public class player : MonoBehaviour {
             Destroy(gameObject);
         }
         move();
-		rotate ();
+		rotate();
         shoot();
-        boost();
-        
-
-        
     }
 
 	void rotate()
@@ -97,26 +95,26 @@ public class player : MonoBehaviour {
         //transform.Translate(Input.GetAxisRaw("Horizontal") * playerSpeed, 0, Input.GetAxisRaw("Vertical") * playerSpeed, Space.World);
         if (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 && Input.GetAxisRaw("Vertical" + playerNumber) != 0)
         {
-            rb.AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed * 3 / 4, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed * 3 / 4);
+            gameObject.GetComponent<Rigidbody>().AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed * 3 / 4, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed * 3 / 4);
         }
         else
         {
-            rb.AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed);
+            gameObject.GetComponent<Rigidbody>().AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed);
         }
 
     }
-    void boost()
+    /*void boost()
     {
         if (Input.GetKey("space"))
         {
             if (Time.time > boostCooldown)
             {
-                rb.AddForce(transform.forward * Time.deltaTime * boostSpeed);
+                gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * Time.deltaTime * boostSpeed);
                 Debug.Log("boost activated");
                 boostCooldown = Time.time + 5f;
             }
         }
-    }
+    }*/
 
     public void becomeXS()
     {
@@ -166,6 +164,28 @@ public class player : MonoBehaviour {
                 Debug.Log("PowerUp Error");
                 break;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
+            && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
+        {
+            Debug.Log(playerNumber);
+            decreaseSpeed();
+        }
+    }
+
+    public void decreaseSpeed()
+    {
+        playerSpeed /= 2;
+        StartCoroutine(decreaseSpeedTime());
+    }
+
+    IEnumerator decreaseSpeedTime()
+    {
+        yield return new WaitForSeconds(decreaseSpeedDuration);
+        playerSpeed *= 2;
     }
 }
 
