@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridCell
+public class GridCell : MonoBehaviour
 {
     public GameObject Cell;
 
