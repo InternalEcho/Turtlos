@@ -18,6 +18,7 @@ public class player : MonoBehaviour {
     //Movement/Rotation parameters
     private float deltaX;
     private float deltaY;
+	public GameObject gun;
 
     //Power-up parameters
     public float powerUpDuration;
@@ -63,7 +64,7 @@ public class player : MonoBehaviour {
 		Vector3 pointToLook = transform.position + point;
 		Vector3 currentLook = transform.position + transform.forward;
 
-		transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
+		gun.transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
 
         //		Debug.Log ("X:" + deltaX);
         //		Debug.Log ("Y:" + deltaY);

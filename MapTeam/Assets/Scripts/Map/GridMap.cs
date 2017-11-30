@@ -45,7 +45,7 @@ public class GridMap : MonoBehaviour
     void Start()
     {
 		//Probably could be simplified...
-        findingMiddleValueX = lengthX + offsetX;
+        findingMiddleValueX = lengthX + offsetX - 1;
         middleValueX = findMiddleValue(findingMiddleValueX);
         middleValueXpair = middleValueX;
         if (pairNumber == true)
@@ -53,7 +53,7 @@ public class GridMap : MonoBehaviour
             middleValueXpair = middleValueX + 1;
         }
 
-        findingMiddleValueY = lengthY + offsetY;
+        findingMiddleValueY = lengthY + offsetY - 1;
         middleValueY = findMiddleValue(findingMiddleValueY);
         middleValueYpair = middleValueY;
         if (pairNumber == true)
@@ -89,8 +89,8 @@ public class GridMap : MonoBehaviour
         player1PositionOnGridY = (int)player1.transform.position.z;
         //Debug.Log(playerPositionOnGridX);
         //Debug.Log(playerPositionOnGridY);
-        this.internalGrid[player0PositionOnGridX, player0PositionOnGridY].Cell.GetComponent<Renderer>().material.color = player0.GetComponent<player>().playerColor;
-        this.internalGrid[player1PositionOnGridX, player1PositionOnGridY].Cell.GetComponent<Renderer>().material.color = player1.GetComponent<player>().playerColor;
+		this.internalGrid[player0PositionOnGridX+((middleValueY+middleValueYpair)/2), player0PositionOnGridY+((middleValueY+middleValueYpair)/2)].Cell.GetComponent<Renderer>().material.color = player0.GetComponent<player>().playerColor;
+		this.internalGrid[player1PositionOnGridX+((middleValueY+middleValueYpair)/2), player1PositionOnGridY+((middleValueY+middleValueYpair)/2)].Cell.GetComponent<Renderer>().material.color = player1.GetComponent<player>().playerColor;
 
 
     }
