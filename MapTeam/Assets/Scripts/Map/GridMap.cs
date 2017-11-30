@@ -20,12 +20,9 @@ public class GridMap : MonoBehaviour
 	public int offsetY;
 
 	//Determining position for center of each X and Y axis of the grid.
-    private int findingMiddleValueX;
-    private int findingMiddleValueY;
-    private int middleValueX;
-    private int middleValueXpair;
-    private int middleValueY;
-    private int middleValueYpair;
+    [HideInInspector]
+    public int findingMiddleValueX, findingMiddleValueY, middleValueX, middleValueXpair,middleValueY,middleValueYpair;
+    [HideInInspector]
     private bool pairNumber;
 
     public int findMiddleValue(int findmidvalue)
