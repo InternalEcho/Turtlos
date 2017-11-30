@@ -5,13 +5,11 @@ using UnityEngine;
 public class becomeXL : MonoBehaviour
 {
 
-    public GameObject player;
-
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player Holder")
+        if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().becomeXL();
+			collision.gameObject.GetComponent<player>().becomeXL();
             Destroy(this.gameObject);
         }
     }

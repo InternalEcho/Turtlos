@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class becomeXS : MonoBehaviour {
 
-    public GameObject player;
-
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player Holder")
+        if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().becomeXS();
+			collision.gameObject.GetComponent<player>().becomeXS();
             Destroy(this.gameObject);
         }
     }

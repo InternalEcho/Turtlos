@@ -5,13 +5,11 @@ using UnityEngine;
 public class gainShield : MonoBehaviour
 {
 
-    public GameObject player;
-
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player Holder")
+        if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().gainShield();
+			collision.gameObject.GetComponent<player>().gainShield();
             Destroy(this.gameObject);
         }
     }

@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class stunProjectile : MonoBehaviour {
 
-    public GameObject player;
-
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player Holder")
+        if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().stunProjectile();
+			collision.gameObject.GetComponent<player>().stunProjectile();
             Destroy(this.gameObject);
         }
     }

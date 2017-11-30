@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class increaseSpeed : MonoBehaviour {
 
-    public GameObject player;
-
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player Holder")
+        if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().increaseSpeed();
+			collision.gameObject.GetComponent<player>().increaseSpeed();
             Destroy(this.gameObject);
         }
     }

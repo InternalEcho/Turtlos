@@ -62,7 +62,7 @@ public class player : MonoBehaviour {
 		Vector3 point = new Vector3 (deltaX, 0, deltaY);
 	
 		Vector3 pointToLook = transform.position + point;
-		Vector3 currentLook = transform.position + transform.forward;
+		Vector3 currentLook = transform.position + transform.GetChild(0).forward;
 
 		gun.transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
 
