@@ -36,8 +36,8 @@ public class YvantManager : MonoBehaviour {
         while(true)
         {
             randBuff = Random.Range(0, buffs.Length);
-            randPosX = Random.Range((map.GetComponent<GridMap>().offsetX * -1)/2 + ((map.GetComponent<GridMap>().middleValueY + map.GetComponent<GridMap>().middleValueYpair) / 2)*-1, (map.GetComponent<GridMap>().offsetX * -1)/2 + ((map.GetComponent<GridMap>().middleValueY + map.GetComponent<GridMap>().middleValueYpair) / 2));
-            randPosY = Random.Range((map.GetComponent<GridMap>().offsetY * -1)/2 + ((map.GetComponent<GridMap>().middleValueY + map.GetComponent<GridMap>().middleValueYpair) / 2)*-1, (map.GetComponent<GridMap>().offsetY * -1)/2 + ((map.GetComponent<GridMap>().middleValueY + map.GetComponent<GridMap>().middleValueYpair) / 2));
+            randPosX = Random.Range(map.GetComponent<GridMap>().minX, map.GetComponent<GridMap>().maxX);
+            randPosY = Random.Range(map.GetComponent<GridMap>().minY, map.GetComponent<GridMap>().maxY);
             Vector3 randPos = new Vector3(randPosX, buffHeight, randPosY);
             yield return new WaitForSeconds(Random.Range(minSec_Buff, maxSec_Buff));
             GameObject newBuff = Instantiate(buffs[randBuff], randPos, Quaternion.identity) as GameObject;

@@ -210,12 +210,16 @@ MonoBehaviour:
   player1: {fileID: 1025989766}
   offsetX: 0
   offsetY: 0
-  findingMiddleValueX: 0
-  findingMiddleValueY: 0
-  middleValueX: 0
-  middleValueXpair: 0
-  middleValueY: 0
-  middleValueYpair: 0
+  mapCenterX: 0
+  mapCenterY: 0
+  valeurAbsMapCenterX: 0
+  valeurAbsMapCenterY: 0
+  valeurAbsOffsetX: 0
+  valeurAbsOffsetY: 0
+  minX: 0
+  maxX: 0
+  minY: 0
+  maxY: 0
 --- !u!1001 &73232851
 Prefab:
   m_ObjectHideFlags: 0
@@ -284,6 +288,11 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114962945359694082, guid: ee30c5640a26ecc4d992e6c7299b3e12,
+        type: 2}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1202617504}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee30c5640a26ecc4d992e6c7299b3e12, type: 2}
   m_IsPrefabParent: 0
@@ -821,7 +830,7 @@ Prefab:
     - target: {fileID: 114926270921749926, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
         type: 2}
       propertyPath: playerSpeed
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 54636701664619508, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
         type: 2}
@@ -853,6 +862,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1202617504 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1752123037621534, guid: ee30c5640a26ecc4d992e6c7299b3e12,
+    type: 2}
+  m_PrefabInternal: {fileID: 73232851}
 --- !u!1 &1727449167
 GameObject:
   m_ObjectHideFlags: 0
