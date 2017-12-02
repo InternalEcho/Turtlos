@@ -20,7 +20,6 @@ public class gridCellBehavior : MonoBehaviour
 
     public void meteor()
     {
-
         this.GetComponent<Renderer>().material.color = Color.black;
         timeCollision = Time.time;
         changed = true;

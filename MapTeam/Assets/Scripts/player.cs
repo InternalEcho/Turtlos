@@ -25,8 +25,6 @@ public class player : MonoBehaviour {
     public bool activeShield;
         //Projectile Power-up
     public float bulletSpeed;
-    //public float fireRate;
-    private float fireRateCheck;
     private int numberStunProjectile;
     public GameObject bullet;
     public Transform bulletEmitter;
@@ -81,12 +79,6 @@ public class player : MonoBehaviour {
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
                 numberStunProjectile -= 1;
-                /*if (Time.time > fireRateCheck)
-                {
-                    go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
-
-                    fireRateCheck = Time.time + fireRate;
-                }*/
             }
         }
     }
@@ -104,18 +96,6 @@ public class player : MonoBehaviour {
         }
 
     }
-    /*void boost()
-    {
-        if (Input.GetKey("space"))
-        {
-            if (Time.time > boostCooldown)
-            {
-                gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * Time.deltaTime * boostSpeed);
-                Debug.Log("boost activated");
-                boostCooldown = Time.time + 5f;
-            }
-        }
-    }*/
 
     public void becomeXS()
     {

@@ -39,7 +39,7 @@ public class Meteorites : GenericYvant {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
         if (this.transform.position.y < 0 && flag)
         {
             flag = false;
@@ -47,6 +47,7 @@ public class Meteorites : GenericYvant {
             this.gameObject.GetComponent<Renderer>().enabled = false;
             yee.Play();
             Destroy(this.gameObject, 2);
+            
         }
 	}
 
@@ -55,6 +56,7 @@ public class Meteorites : GenericYvant {
         this.transform.position = new Vector3(centerX, height + meteoriteHeight, centerY);
 
         Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
+        //Vector3 direction = new Vector3(0, -1, 0);
         GetComponent<Rigidbody>().velocity = direction.normalized * speed;
 
         RaycastHit hit;//contient tt l'information sur le hit du ray
