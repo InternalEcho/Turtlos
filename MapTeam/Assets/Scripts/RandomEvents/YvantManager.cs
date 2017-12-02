@@ -17,7 +17,7 @@ public class YvantManager : MonoBehaviour {
 
     public void DebugEvent()
     {
-        //StartCoroutine(SpawnMultiple());
+        StartCoroutine(SpawnMultiple());
     }
 
     private IEnumerator SpawnMultiple()
@@ -50,7 +50,6 @@ public class YvantManager : MonoBehaviour {
         mapLengthX = map.GetComponent<GridMap>().lengthX;
         mapLengthY = map.GetComponent<GridMap>().lengthY;
         transform.position = new Vector3(mapCenterX, 0.0f, mapCenterY);
-        StartCoroutine(SpawnMultiple());
         StartCoroutine(SpawnBuffs());
     }
 	
