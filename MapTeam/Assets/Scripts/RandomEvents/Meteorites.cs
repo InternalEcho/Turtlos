@@ -16,9 +16,9 @@ public class Meteorites : GenericYvant {
     [Header("vitesse meteorite")]
     [SerializeField]
     float speed;
-    /*[Header("meteorite height")]
+    [Header("Height of the meteorite spawn above the camera")]
     [SerializeField][Range(5, 50)]
-    float meteoriteHeight;*/
+    float meteoriteHeight;
 
     [SerializeField]
     AudioSource yee;
@@ -50,9 +50,9 @@ public class Meteorites : GenericYvant {
         }
 	}
 
-    public override void spawn(float height)
+    public override void spawn(float height, int centerX, int centerY, int mapLengthX, int mapLengthY)
     {
-        this.transform.position = new Vector3(0, height + 10, 0);
+        this.transform.position = new Vector3(centerX, height + meteoriteHeight, centerY);
 
         Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
         GetComponent<Rigidbody>().velocity = direction.normalized * speed;
