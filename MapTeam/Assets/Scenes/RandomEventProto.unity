@@ -540,10 +540,14 @@ MonoBehaviour:
   - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
   - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
   - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  min: -5
-  max: 5
   minSec: 0.2
   maxSec: 0.8
+  height: 0
+  buffs: []
+  minSec_Buff: 0
+  maxSec_Buff: 0
+  map: {fileID: 0}
+  buffHeight: 1
 --- !u!4 &519418514
 Transform:
   m_ObjectHideFlags: 0
