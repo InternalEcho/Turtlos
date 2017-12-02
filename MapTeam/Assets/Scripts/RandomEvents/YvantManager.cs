@@ -5,7 +5,7 @@ using UnityEngine;
 public class YvantManager : MonoBehaviour {
 
     public GameObject[] genericyvants;
-    private int randEvent;
+    private int randEvent, mapCenterX, mapCenterY, mapLengthX, mapLengthY;
     public float minSec, maxSec, height;
 
     public GameObject[] buffs;
@@ -27,7 +27,7 @@ public class YvantManager : MonoBehaviour {
             randEvent = Random.Range(0, genericyvants.Length);
             yield return new WaitForSeconds(Random.Range(minSec, maxSec));
             GameObject newEvent = Instantiate(genericyvants[randEvent]) as GameObject;  // default spawn
-            newEvent.GetComponent<GenericYvant>().spawn(height);
+            newEvent.GetComponent<GenericYvant>().spawn(height, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
         }
     }
 
@@ -36,8 +36,8 @@ public class YvantManager : MonoBehaviour {
         while(true)
         {
             randBuff = Random.Range(0, buffs.Length);
-            randPosX = Random.Range(map.GetComponent<GridMap>().minX, map.GetComponent<GridMap>().maxX);
-            randPosY = Random.Range(map.GetComponent<GridMap>().minY, map.GetComponent<GridMap>().maxY);
+            randPosX = Random.Range(0, mapLengthX);
+            randPosY = Random.Range(0, mapLengthY);
             Vector3 randPos = new Vector3(randPosX, buffHeight, randPosY);
             yield return new WaitForSeconds(Random.Range(minSec_Buff, maxSec_Buff));
             GameObject newBuff = Instantiate(buffs[randBuff], randPos, Quaternion.identity) as GameObject;
@@ -45,6 +45,11 @@ public class YvantManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
+        mapCenterX = map.GetComponent<GridMap>().getCenterX();
+        mapCenterY = map.GetComponent<GridMap>().getCenterY();
+        mapLengthX = map.GetComponent<GridMap>().lengthX;
+        mapLengthY = map.GetComponent<GridMap>().lengthY;
+        transform.position = new Vector3(mapCenterX, 0.0f, mapCenterY);
         StartCoroutine(SpawnMultiple());
         StartCoroutine(SpawnBuffs());
     }
