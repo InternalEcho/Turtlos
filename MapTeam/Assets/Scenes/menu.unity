@@ -495,6 +495,11 @@ Prefab:
       propertyPath: timerBox
       value: 
       objectReference: {fileID: 1768800782}
+    - target: {fileID: 114588435730952492, guid: 24db98978e466314ca278b200ee162a5,
+        type: 2}
+      propertyPath: roundsTotal
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24db98978e466314ca278b200ee162a5, type: 2}
   m_IsPrefabParent: 0
@@ -514,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d992b1676ff9c6842a3905e54018e427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 30
+  roundTime: 3
   timerText: 
   activated: 0
 --- !u!4 &893527538 stripped
