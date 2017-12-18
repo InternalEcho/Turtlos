@@ -3,47 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class countdownTimer : MonoBehaviour {
+public class CountdownTimer : MonoBehaviour {
 
-    [Header("Temps de jeu")]
-    public float StartingTime = 30.0f;
-    private float timeLeft = 30.0f;
-    public String timerText;
-    public bool isTimerActive = false;
+    [Header("Round Settings")][Range(0.0f, 300.0f)]
+    public float roundTime = 30.0f;
+    public String timerText = "";
+    public bool activated = false;
+    private float timeLeft = 0.0f;
 
-    // Stops and reset the timer
-    public void ResetTimer() {
-        timeLeft = StartingTime;
-        StopTimer();
-    } 
+    private int timeLeftToInt = 0;
 
-    // Starts the timer with the indicated time.
-    public void StartTimer(float time) {
-        StartingTime = time;
-        timeLeft = StartingTime;
-        isTimerActive = true;
+    void Start()
+    {  }
+
+    public void StopTimer()
+    {
+        timerText = "";
+        activated = false;
     }
 
-    public void StopTimer() {
-        isTimerActive = false;
+    public void StartTimer()
+    {
+        timeLeft = roundTime;
+        activated = true;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        //if not active, skip everything
-        if (!isTimerActive) return;
+    
+    void FixedUpdate()
+    {
+        if (!activated) return;
 
-        timeLeft -= Time.deltaTime; 
-        
-        if (timeLeft > 0.0f) {
+        if (timeLeft > 0.0f)
+        {
+            timeLeft -= Time.deltaTime;
             int timeLeftInt = (int)Convert.ToInt32(timeLeft);
             timerText = timeLeftInt.ToString();
         }
-        else {
+        else
+        {
             Debug.Log("Time's up");
             StopTimer();
         }
-        
-	}
-
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManagementScript : MonoBehaviour {
@@ -12,9 +13,9 @@ public class GameManagementScript : MonoBehaviour {
     };
 
     public StateType state;
+    public CountdownTimer timer;
+    public Text timerBox;
 
-    [Header("Round Settings")]
-    public float roundTime = 30.0f;
 
     public static GameManagementScript Instance { get; private set; }
 
@@ -31,36 +32,61 @@ public class GameManagementScript : MonoBehaviour {
         }
     }
 
-    void Update()
+    void Start()
     {
+        this.state = StateType.MENU;
+        timerBox.text = "";
+        timerBox.enabled = false;
+    }
+
+    void Update() // while
+    {
+        if (timerBox.enabled)
+        {
+            timerBox.text = timer.timerText;
+        }
+
         switch (state)
         {
-            case StateType.MENU:
-                resetAll();
+            case StateType.MENU :
                 break;
 
-            case StateType.GAME:
+            case StateType.GAME :
+
+                if (timer.activated == false)
+                { //une fois round fini
+                    GoToMenu(); // ENLEVER
+                }
                 break;
         }
 
     }
 
-    void resetAll() 
-    {
-        //TODO
-        //reset all attributes
-    }
 
     public void GoToMenu()
     {
         Debug.Log("Going to MAIN MENU ");
+        resetAll();
+        state = StateType.MENU;
         SceneManager.LoadScene(0); // scene 0 : main menu
     }
 
     public void GoToGame()
     {
         Debug.Log("Go to GAME SCENE ");
+        timerBox.enabled = true; // show timer
+        state = StateType.GAME;
         SceneManager.LoadScene(1); // scene 1 : game scene
+        this.timer.StartTimer();        
+    }
+    
+
+    void resetAll() 
+    {
+        timerBox.enabled = false;
+        timerBox.text = "";
+        //TODO
+        //reset all attributes
     }
 
 }
