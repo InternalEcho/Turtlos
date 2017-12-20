@@ -5,45 +5,55 @@ using UnityEngine;
 
 public class countdownTimer : MonoBehaviour {
 
-    [Header("Temps de jeu")]
-    public float StartingTime = 30.0f;
-    private float timeLeft = 30.0f;
-    public String timerText;
-    public bool isTimerActive = false;
+    [Header("Round Details")][Range(0.0f, 300.0f)]
+    public float roundTime = 30.0f;
+    public String timerText = "";
+    public bool activated = false;
+    private float timeLeft = 0.0f;
 
-    // Stops and reset the timer
-    public void ResetTimer() {
-        timeLeft = StartingTime;
-        StopTimer();
-    } 
+    private int timeLeftToInt = 0;
 
-    // Starts the timer with the indicated time.
-    public void StartTimer(float time) {
-        StartingTime = time;
-        timeLeft = StartingTime;
-        isTimerActive = true;
+    void Start()
+    {    }
+    
+    public void StopTimer()
+    {
+        timerText = "";
+        activated = false;
     }
 
-    public void StopTimer() {
-        isTimerActive = false;
+    public void StartTimer()
+    {
+       // yield return StartCoroutine(ReadySetGo());
+        timeLeft = roundTime;
+        activated = true;
+        //yield return 0;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        //if not active, skip everything
-        if (!isTimerActive) return;
 
-        timeLeft -= Time.deltaTime; 
-        
-        if (timeLeft > 0.0f) {
-            int timeLeftInt = (int)Convert.ToInt32(timeLeft);
-            timerText = timeLeftInt.ToString();
+    IEnumerator ReadySetGo()
+    {
+        timerText = "Ready";
+        yield return new WaitForSeconds(1.0f);
+        timerText = "Set";
+        yield return new WaitForSeconds(1f);
+        timerText = "Go!";
+        yield return new WaitForSeconds(0.5f);
+    }
+    
+    void FixedUpdate()
+    {
+        if (!activated) return;
+
+        if (timeLeft > 0.0f)
+        {
+            timeLeft -= Time.deltaTime;
+            timeLeftToInt = (int)Convert.ToInt32(timeLeft);
+            timerText = timeLeftToInt.ToString();
         }
-        else {
+        else
+        {
             Debug.Log("Time's up");
             StopTimer();
         }
-        
-	}
-
+    }
 }
