@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class countdownTimer : MonoBehaviour {
 
-    [Header("Round Details")][Range(0.0f, 300.0f)]
-    public float roundTime = 30.0f;
+    [Header("Round Details")]
     public String timerText = "";
     public bool activated = false;
     private float timeLeft = 0.0f;
 
-    private int timeLeftToInt = 0;
+    public int timeLeftToInt = 0;
 
     void Start()
     {    }
@@ -24,8 +23,8 @@ public class countdownTimer : MonoBehaviour {
 
     public void StartTimer()
     {
-       // yield return StartCoroutine(ReadySetGo());
-        timeLeft = roundTime;
+        StartCoroutine(ReadySetGo());
+        timeLeft = GameManagementScript.Instance.roundTime;
         activated = true;
         //yield return 0;
     }

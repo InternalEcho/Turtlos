@@ -1143,6 +1143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6644b262d088de4db71325efb700bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnFreqMeteorites: 5
+  spawnFreqBuffs: 5
   genericyvants:
   - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
   - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
@@ -1165,5 +1167,5 @@ MonoBehaviour:
   - {fileID: 1527898712233862, guid: 6791f4e56198da14882b89654e270239, type: 2}
   minSec_Buff: 3
   maxSec_Buff: 5
-  map: {fileID: 3293472}
   buffHeight: 1
+  map: {fileID: 3293472}

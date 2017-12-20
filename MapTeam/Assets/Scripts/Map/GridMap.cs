@@ -85,12 +85,12 @@ public class GridMap : MonoBehaviour
 
     //Simon Code
     void OnTriggerEnter(Collider collision)
-    {/*
+    { /*
         if (collision.gameObject.tag == "Meteorites")
         {
             collision.internalGrid[collision.transform.x, collision.transform.z].Cell.GetComponent<Renderer>().material.color = deathTile.color;
             //gameObject deathTile aka prefab of tile but black??
             collision.internalGrid[collision.transform.x, collision.transform.z]
         }*/
-    }
+    } 
 }
