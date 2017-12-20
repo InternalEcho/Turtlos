@@ -18,7 +18,7 @@ public class GameManagementScript : MonoBehaviour {
     public int roundsPlayed;
 
     [Header("Round timer")]
-    public CountdownTimer timer;
+    public countdownTimer timer;
     public Text timerBox;
 
 
@@ -57,8 +57,8 @@ public class GameManagementScript : MonoBehaviour {
 
             case StateType.GAME :
 
-                if (timer.activated == false)
-                { //une fois round fini
+                if (timer.activated == false) //une fois round fini
+                {
                     roundsPlayed++;
 
                     if (roundsPlayed == roundsTotal)
