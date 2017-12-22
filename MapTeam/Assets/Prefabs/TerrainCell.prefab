@@ -118,3 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef192646b53787043adb7bda2d24127c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteorHitColorChangeDuration: 3
+  gridColor: {fileID: 2100000, guid: 58154013679e6b64f92a8be310ba2e26, type: 2}

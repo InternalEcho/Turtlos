@@ -37,7 +37,6 @@ public class player : MonoBehaviour {
         activeShield = false;
 		numberStunProjectile = 0;
         hp = 5.0f;
-        powerUpDuration = 3.0f;
     }
 	
 	// Update is called once per frame

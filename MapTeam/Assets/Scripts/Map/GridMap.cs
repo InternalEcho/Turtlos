@@ -50,8 +50,9 @@ public class GridMap : MonoBehaviour
         GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0.0f, lengthY), Quaternion.identity) as GameObject;   // +z
         WallZ2.transform.localScale = new Vector3(lengthX + 2, 5.0f, 1.0f);
 
-        this.internalGrid[25, 25].Cell.GetComponent<gridCellBehavior>().meteor();
-        this.internalGrid[10, 25].Cell.GetComponent<gridCellBehavior>().meteor();
+        //debug meteor hit
+        //this.internalGrid[25, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
+        //this.internalGrid[10, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
     }
 
     // Update is called once per frame
