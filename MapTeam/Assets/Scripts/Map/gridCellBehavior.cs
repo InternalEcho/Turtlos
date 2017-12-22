@@ -6,33 +6,24 @@ public class gridCellBehavior : MonoBehaviour
 {
 
     private float timeCollision;
-    Color gridColor;
-    bool changed = false;
+    public float meteorHitColorChangeDuration;
+    public Material gridColor;
     // Use this for initialization
-    void Start()
-    {
-        gridColor = this.GetComponent<Renderer>().material.color;
-    }
     public void flash()
     {
         this.GetComponent<Renderer>().material.color = Color.red;
     }
 
-    public void meteor()
+    public void meteorHit()
     {
         this.GetComponent<Renderer>().material.color = Color.black;
-        timeCollision = Time.time;
-        changed = true;
-
+        StartCoroutine(meteorHitColorChange());
     }
 
-    void Update()
+    IEnumerator meteorHitColorChange()
     {
-        if (Time.time > timeCollision + 2 && changed)
-        {
-            Debug.Log("after 2 sec");
-            this.GetComponent<Renderer>().material.color = Color.yellow;
-            changed = false;
-        }
+
+        yield return new WaitForSeconds(meteorHitColorChangeDuration);
+        this.GetComponent<Renderer>().material.color = gridColor.color;
     }
 }
