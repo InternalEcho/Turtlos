@@ -4,11 +4,13 @@ using UnityEngine;
 public class YvantManager : MonoBehaviour {
 
     [Header("Global Randomizer Settings")] // all-events randomizer
-    [Tooltip("Meteorites spawn frequency (%)")][Range(0f, 100f)]    
-    public int spawnFreqMeteorites = 0; //change : maintenant 0.1%
-    [Tooltip("Buff spawn frequency (%)")][Range(0f, 100f)]    
-    public int spawnFreqBuffs = 0; 
+    [Tooltip("Meteorites spawn frequency (%)")]  
+    public float spawnFreqMeteorites; //change : maintenant 0.1%
+    [Tooltip("Buff spawn frequency (%)")]   
+    public float spawnFreqBuffs; 
     private int totalRoundFrames; // ~60 fps * roundTime
+    private float divideFactor;
+    //base 10
 
     [Header("Meteorite Randomizer Settings")]
     public GameObject[] meteorites;
@@ -57,6 +59,7 @@ public class YvantManager : MonoBehaviour {
         mapLengthX = map.GetComponent<GridMap>().lengthX;
         mapLengthY = map.GetComponent<GridMap>().lengthY;
         transform.position = new Vector3(mapCenterX, 0.0f, mapCenterY);
+        divideFactor = 100f;
     }
 	
 	// Update is called once per frame
@@ -67,21 +70,21 @@ public class YvantManager : MonoBehaviour {
 
         // Debug.Log(randMeteorites + " < " + (spawnFreqMeteorites * totalRoundFrames / 100f) + " = " + (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / 100f));
         // Debug.Log(randBuffs + " < " + (spawnFreqBuffs * totalRoundFrames / 100f) + " = " + (randBuffs <= spawnFreqBuffs * totalRoundFrames / 100f));
-        /****** comment faire concouramment?*******/
+        
         if (GameManagementScript.Instance.timer.activated == true)
         { 
-            if (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / 1000f) // ?????? 
-            {
-                StartCoroutine(SpawnBuffs());
-            }
-            if (randBuffs <= spawnFreqBuffs * totalRoundFrames / 1000f) 
+            if (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / divideFactor) 
             {
                 StartCoroutine(SpawnMeteorites());
+            }
+            if (randBuffs <= spawnFreqBuffs * totalRoundFrames / divideFactor)                 
+            {
+                StartCoroutine(SpawnBuffs());
             }
         }
 	}
 
-    /******** tests **************/
+    /************** tests **************/
 
     public void DebugMeteorites()
     {

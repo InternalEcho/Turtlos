@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3293474}
   - component: {fileID: 3293473}
   - component: {fileID: 3293477}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -978,12 +978,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6644b262d088de4db71325efb700bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFreqMeteorites: 5
-  spawnFreqBuffs: 5
-  meteorites: []
-  minSec: 0.5
-  maxSec: 1
-  height: 20
+  spawnFreqMeteorites: 0.2
+  spawnFreqBuffs: 0.3
+  meteorites:
+  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  minSec: 1
+  maxSec: 2
+  height: 40
   buffs:
   - {fileID: 1524319290481790, guid: 33467c1b2bb3fb0478f5665139f9c63a, type: 2}
   - {fileID: 1494469155618388, guid: a908993e217942f41a91105ef6ee7c6f, type: 2}
