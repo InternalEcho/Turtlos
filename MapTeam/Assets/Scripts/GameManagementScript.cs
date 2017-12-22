@@ -18,6 +18,8 @@ public class GameManagementScript : MonoBehaviour {
     public int roundsPlayed;
 
     [Header("Round timer")]
+    [Range(0.0f, 300.0f)]
+    public float roundTime = 30.0f;
     public countdownTimer timer;
     public Text timerBox;
 
@@ -57,19 +59,19 @@ public class GameManagementScript : MonoBehaviour {
 
             case StateType.GAME :
 
-                if (timer.activated == false) //une fois round fini
+                if (timer.activated == false)
                 {
                     roundsPlayed++;
-
+                
                     if (roundsPlayed == roundsTotal)
                     {
+                        Debug.Log("rounds played equals to rounds total");
                         GoToMenu(); // ENLEVER
                     }
                     else
                     {
                         GoToGame();
                     }
-
                 }
                 break;
         }
@@ -89,6 +91,8 @@ public class GameManagementScript : MonoBehaviour {
     {
         Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         timerBox.enabled = true; // show timer
+        if(timerBox.enabled)
+             Debug.Log("timerbox activated");
         state = StateType.GAME;
         SceneManager.LoadScene(1); // scene 1 : game scene
         this.timer.StartTimer();        

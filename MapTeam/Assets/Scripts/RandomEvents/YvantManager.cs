@@ -1,28 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class YvantManager : MonoBehaviour {
 
+    [Header("Global Randomizer Settings")] // all-events randomizer
+    [Tooltip("Meteorites spawn frequency (%)")][Range(0f, 100f)]    
+    public int spawnFreqMeteorites = 0;
+    [Tooltip("Buff spawn frequency (%)")][Range(0f, 100f)]    
+    public int spawnFreqBuffs = 0; 
+    private int totalRoundFrames; // ~60 fps * roundTime
+
+    [Header("Meteorite Randomizer Settings")]
     public GameObject[] genericyvants;
     private int randEvent, mapCenterX, mapCenterY, mapLengthX, mapLengthY;
     public float minSec, maxSec, height;
 
+    [Header("Buff Settings")]
     public GameObject[] buffs;
     private int randBuff;
     public float minSec_Buff, maxSec_Buff;
     private int randPosX, randPosY;
-    public GameObject map;
     public int buffHeight = 1;
+    public GameObject map;
+    
 
-    public void DebugEvent()
+    private IEnumerator SpawnMeteorites()
     {
-        StartCoroutine(SpawnMultiple());
-    }
-
-    private IEnumerator SpawnMultiple()
-    {
-       while (true)    //boucle infinie
         {
             randEvent = Random.Range(0, genericyvants.Length);
             yield return new WaitForSeconds(Random.Range(minSec, maxSec));
@@ -33,7 +36,6 @@ public class YvantManager : MonoBehaviour {
 
     private IEnumerator SpawnBuffs()
     {
-        while(true)
         {
             randBuff = Random.Range(0, buffs.Length);
             randPosX = Random.Range(0, mapLengthX);
@@ -44,17 +46,40 @@ public class YvantManager : MonoBehaviour {
         }
     }
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
+        totalRoundFrames = 60 * (int)GameManagementScript.Instance.roundTime; //~60 fps
         mapCenterX = map.GetComponent<GridMap>().getCenterX();
         mapCenterY = map.GetComponent<GridMap>().getCenterY();
         mapLengthX = map.GetComponent<GridMap>().lengthX;
         mapLengthY = map.GetComponent<GridMap>().lengthY;
         transform.position = new Vector3(mapCenterX, 0.0f, mapCenterY);
-        StartCoroutine(SpawnBuffs());
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () 
+    {
+        float randMeteorites = Random.Range(0f, (float)totalRoundFrames);
+        float randBuffs = Random.Range(0f, (float)totalRoundFrames);
+
+        // Debug.Log(randMeteorites + " < " + (spawnFreqMeteorites * totalRoundFrames / 100f) + " = " + (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / 100f));
+        // Debug.Log(randBuffs + " < " + (spawnFreqBuffs * totalRoundFrames / 100f) + " = " + (randBuffs <= spawnFreqBuffs * totalRoundFrames / 100f));
+        /****** comment faire concouramment?*******/
+        if (GameManagementScript.Instance.timer.activated == true)
+        { 
+            if (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / 100f) // ??????
+            {
+                StartCoroutine(SpawnBuffs());
+            }
+            if (randBuffs <= spawnFreqBuffs * totalRoundFrames / 100f) // vive les maths
+            {
+                StartCoroutine(SpawnMeteorites());
+            }
+        }
 	}
+
+    public void DebugEvent()
+    {
+        StartCoroutine(SpawnMeteorites());
+    }
 }
