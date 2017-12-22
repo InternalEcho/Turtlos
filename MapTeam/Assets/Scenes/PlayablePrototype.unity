@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 143327974}
   - component: {fileID: 143327973}
   - component: {fileID: 143327972}
+  - component: {fileID: 143327977}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -409,13 +410,34 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143327971}
-  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 20, y: 40, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &143327977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 143327971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba2036f16abd0349ab1eafd7cf37be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 830485595}
+  - {fileID: 1025989771}
+  offset: {x: 0, y: 50, z: 0}
+  myCamPos: {fileID: 143327976}
+  camSpeed: 0.5
+  minZoom: 100
+  maxZoom: 10
+  zoomSpeedFactor: 0.5
+  zoomLimiter: 100
 --- !u!1001 &366394328
 Prefab:
   m_ObjectHideFlags: 0
@@ -519,7 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -591,7 +613,7 @@ GameObject:
   - component: {fileID: 589953693}
   - component: {fileID: 589953692}
   m_Layer: 5
-  m_Name: GoToMenuButton
+  m_Name: Meteo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,8 +677,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 426340191}
-        m_MethodName: GoToMenu
+      - m_Target: {fileID: 1727449169}
+        m_MethodName: DebugMeteorites
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -797,6 +819,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &830485595 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4281270411462136, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 905564581}
 --- !u!1 &870325574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1051,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1025989771 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4218103380429064, guid: ee30c5640a26ecc4d992e6c7299b3e12,
+    type: 2}
+  m_PrefabInternal: {fileID: 73232851}
 --- !u!1 &1161449600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1123,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: Meteor
 --- !u!222 &1161449603
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1145,17 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnFreqMeteorites: 5
   spawnFreqBuffs: 5
-  genericyvants:
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  meteorites: []
   minSec: 0.5
   maxSec: 1
   height: 20

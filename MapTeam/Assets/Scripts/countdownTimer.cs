@@ -23,10 +23,8 @@ public class countdownTimer : MonoBehaviour {
 
     public void StartTimer()
     {
-        StartCoroutine(ReadySetGo());
         timeLeft = GameManagementScript.Instance.roundTime;
         activated = true;
-        //yield return 0;
     }
 
     IEnumerator ReadySetGo()
@@ -51,7 +49,6 @@ public class countdownTimer : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Time's up");
             StopTimer();
         }
     }

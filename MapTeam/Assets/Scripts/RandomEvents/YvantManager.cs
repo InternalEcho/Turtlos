@@ -5,13 +5,13 @@ public class YvantManager : MonoBehaviour {
 
     [Header("Global Randomizer Settings")] // all-events randomizer
     [Tooltip("Meteorites spawn frequency (%)")][Range(0f, 100f)]    
-    public int spawnFreqMeteorites = 0;
+    public int spawnFreqMeteorites = 0; //change : maintenant 0.1%
     [Tooltip("Buff spawn frequency (%)")][Range(0f, 100f)]    
     public int spawnFreqBuffs = 0; 
     private int totalRoundFrames; // ~60 fps * roundTime
 
     [Header("Meteorite Randomizer Settings")]
-    public GameObject[] genericyvants;
+    public GameObject[] meteorites;
     private int randEvent, mapCenterX, mapCenterY, mapLengthX, mapLengthY;
     public float minSec, maxSec, height;
 
@@ -27,10 +27,13 @@ public class YvantManager : MonoBehaviour {
     private IEnumerator SpawnMeteorites()
     {
         {
-            randEvent = Random.Range(0, genericyvants.Length);
-            yield return new WaitForSeconds(Random.Range(minSec, maxSec));
-            GameObject newEvent = Instantiate(genericyvants[randEvent]) as GameObject;  // default spawn
-            newEvent.GetComponent<GenericYvant>().spawn(height, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
+            //  randEvent = Random.Range(0, genericyvants.Length);
+            for (int i = 0; i < meteorites.Length; ++i)
+            {
+                GameObject newEvent = Instantiate(meteorites[i]) as GameObject;  // default spawn
+                yield return new WaitForSeconds(Random.Range(minSec, maxSec));
+                newEvent.GetComponent<GenericYvant>().spawn(height, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
+            }
         }
     }
 
@@ -67,18 +70,20 @@ public class YvantManager : MonoBehaviour {
         /****** comment faire concouramment?*******/
         if (GameManagementScript.Instance.timer.activated == true)
         { 
-            if (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / 100f) // ??????
+            if (randMeteorites <= spawnFreqMeteorites * totalRoundFrames / 1000f) // ?????? 
             {
                 StartCoroutine(SpawnBuffs());
             }
-            if (randBuffs <= spawnFreqBuffs * totalRoundFrames / 100f) // vive les maths
+            if (randBuffs <= spawnFreqBuffs * totalRoundFrames / 1000f) 
             {
                 StartCoroutine(SpawnMeteorites());
             }
         }
 	}
 
-    public void DebugEvent()
+    /******** tests **************/
+
+    public void DebugMeteorites()
     {
         StartCoroutine(SpawnMeteorites());
     }

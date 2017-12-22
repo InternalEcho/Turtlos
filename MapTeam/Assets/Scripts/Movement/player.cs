@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour {
 
-    //Basic player parameters
+    [Header("Basic player parameters")]
     public float playerSpeed;
     public float boostSpeed;
     public float hp;
@@ -15,15 +15,16 @@ public class player : MonoBehaviour {
     public string playerNumber = "1";
     public float decreaseSpeedDuration = 1.0f;
 
-    //Movement/Rotation parameters
+    [Header("Movement/Rotation parameters")]
     private float deltaX;
     private float deltaY;
 	public GameObject gun;
 
-    //Power-up parameters
+    [Header("Power-up parameters")]
     public float powerUpDuration;
     public bool activeShield;
-        //Projectile Power-up
+
+    [Header("Projectile Power-up")]
     public float bulletSpeed;
     private int numberStunProjectile;
     public GameObject bullet;
@@ -46,8 +47,8 @@ public class player : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        move();
 		rotate();
+        move();
         shoot();
     }
 
@@ -86,6 +87,7 @@ public class player : MonoBehaviour {
     void move()
     {
         //transform.Translate(Input.GetAxisRaw("Horizontal") * playerSpeed, 0, Input.GetAxisRaw("Vertical") * playerSpeed, Space.World);
+        
         if (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 && Input.GetAxisRaw("Vertical" + playerNumber) != 0)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed * 3 / 4, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed * 3 / 4);

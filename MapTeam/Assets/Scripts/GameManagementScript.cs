@@ -65,7 +65,7 @@ public class GameManagementScript : MonoBehaviour {
                 
                     if (roundsPlayed == roundsTotal)
                     {
-                        Debug.Log("rounds played equals to rounds total");
+                     //   Debug.Log("rounds played equals to rounds total");
                         GoToMenu(); // ENLEVER
                     }
                     else
@@ -81,7 +81,7 @@ public class GameManagementScript : MonoBehaviour {
 
     public void GoToMenu()
     {
-        Debug.Log("Going to MAIN MENU ");
+     //   Debug.Log("Going to MAIN MENU ");
         resetAll();
         state = StateType.MENU;
         SceneManager.LoadScene(0); // scene 0 : main menu
@@ -89,10 +89,10 @@ public class GameManagementScript : MonoBehaviour {
 
     public void GoToGame()
     {
-        Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
+    //    Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         timerBox.enabled = true; // show timer
         if(timerBox.enabled)
-             Debug.Log("timerbox activated");
+    //         Debug.Log("timerbox activated");
         state = StateType.GAME;
         SceneManager.LoadScene(1); // scene 1 : game scene
         this.timer.StartTimer();        
