@@ -541,7 +541,6 @@ MonoBehaviour:
   timerText: 
   timeLeft: 0
   activated: 0
-  over: 0
 --- !u!4 &893527538
 Transform:
   m_ObjectHideFlags: 0
@@ -574,9 +573,12 @@ MonoBehaviour:
   roundsPlayed: 0
   roundTime: 30
   timer: {fileID: 893527537}
-  timerBox: {fileID: 1768800782}
+  timerBoxMessage: 
+  enableTimerBox: 0
+  timerOver: 0
   displayMsg: {fileID: 893527540}
-  anyTextBox: {fileID: 359249140}
+  anyTextBoxMessage: 
+  enableAnyTextBox: 0
 --- !u!114 &893527540
 MonoBehaviour:
   m_ObjectHideFlags: 0

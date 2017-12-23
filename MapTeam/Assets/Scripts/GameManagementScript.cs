@@ -22,11 +22,14 @@ public class GameManagementScript : MonoBehaviour {
     [Range(0.0f, 300.0f)]
     public float roundTime = 30.0f;
     public countdownTimer timer;
-    public Text timerBox;
+    public String timerBoxMessage;
+    public bool enableTimerBox;
+    public bool timerOver; // timer flag
 
     [Header("Any Text Box")]
     public DisplayAnyMessage displayMsg;
-    public Text anyTextBox;
+    public String anyTextBoxMessage;
+    public bool enableAnyTextBox;
 
     private Button playButton;
 
@@ -61,11 +64,12 @@ public class GameManagementScript : MonoBehaviour {
 
             case StateType.GAME :
 
-                timerBox.text = timer.timerText;
-                anyTextBox.text = displayMsg.message;
+                timerBoxMessage = timer.timerText;
+                anyTextBoxMessage = displayMsg.message;
 
-                if (timer.over)
+                if (timerOver)
                 {
+                    timerOver = false;
                     roundsPlayed++;
                 
                     if (roundsPlayed == roundsTotal)
@@ -104,8 +108,8 @@ public class GameManagementScript : MonoBehaviour {
     //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         state = StateType.GAME;
         SceneManager.LoadScene(1); // scene 1 : game scene
-        timerBox.enabled = true; // show timer
-        this.anyTextBox.enabled = true; // show ready set go box
+        enableTimerBox = true; // show timer
+        enableAnyTextBox = true; // show ready set go box
         StartCoroutine(showReadySetGo());
     }
     
@@ -123,13 +127,13 @@ public class GameManagementScript : MonoBehaviour {
     void resetAll() 
     {
         Debug.Log("resetting all");
-        timerBox.enabled = false;
-        anyTextBox.enabled = false;
-        timerBox.text = "";
-        anyTextBox.text = "";
+        enableTimerBox = false;
+        enableAnyTextBox = false;
+        timerBoxMessage = "";
+        anyTextBoxMessage= "";
         roundsTotal = 3;
         roundsPlayed = 0;
-        //TODO
+
         //reset all attributes
     }
 

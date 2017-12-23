@@ -9,7 +9,6 @@ public class countdownTimer : MonoBehaviour {
     public String timerText = "";
     public float timeLeft = 0.0f;
     public bool activated = false;
-    public bool over = false;
 
     private int timeLeftToInt = 0;
         
@@ -25,14 +24,13 @@ public class countdownTimer : MonoBehaviour {
         timeLeft = GameManagementScript.Instance.roundTime;
      //   Debug.Log("ENABLE timer!");
         activated = true;
-        over = false;
     }
         
     void FixedUpdate()
     {
         if (!activated)
         {
-       //     timerText = GameManagementScript.Instance.roundTime.ToString();
+            timerText = GameManagementScript.Instance.roundTime.ToString();
             return;
         }
 
@@ -45,7 +43,7 @@ public class countdownTimer : MonoBehaviour {
         if (timeLeft <= 0f)
         {
             StopTimer();
-            over = true;
+            GameManagementScript.Instance.timerOver = true;
         }
 
     }
