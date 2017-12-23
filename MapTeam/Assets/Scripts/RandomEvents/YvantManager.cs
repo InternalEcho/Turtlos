@@ -28,29 +28,25 @@ public class YvantManager : MonoBehaviour {
 
     private IEnumerator SpawnMeteorites()
     {
-        {
             //  randEvent = Random.Range(0, genericyvants.Length);
-            for (int i = 0; i < meteorites.Length; ++i)
-            {
-                GameObject newEvent = Instantiate(meteorites[i]) as GameObject;  // default spawn
-                yield return new WaitForSeconds(Random.Range(minSec, maxSec));
-                newEvent.GetComponent<GenericYvant>().spawn(height, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
-            }
+        for (int i = 0; i < meteorites.Length; ++i)
+        {
+            GameObject newEvent = Instantiate(meteorites[i]) as GameObject;  // default spawn
+            yield return new WaitForSeconds(Random.Range(minSec, maxSec));
+            newEvent.GetComponent<GenericYvant>().spawn(height, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
         }
     }
 
     private IEnumerator SpawnBuffs()
     {
-        {
-            randBuff = Random.Range(0, buffs.Length);
-            randPosX = Random.Range(0, mapLengthX);
-            randPosY = Random.Range(0, mapLengthY);
-            Vector3 randPos = new Vector3(randPosX, buffHeight, randPosY);
-            yield return new WaitForSeconds(Random.Range(minSec_Buff, maxSec_Buff));
-            GameObject newBuff = Instantiate(buffs[randBuff], randPos, Quaternion.identity) as GameObject;
-        }
+        randBuff = Random.Range(0, buffs.Length);
+        randPosX = Random.Range(0, mapLengthX);
+        randPosY = Random.Range(0, mapLengthY);
+        Vector3 randPos = new Vector3(randPosX, buffHeight, randPosY);
+        yield return new WaitForSeconds(Random.Range(minSec_Buff, maxSec_Buff));
+        GameObject newBuff = Instantiate(buffs[randBuff], randPos, Quaternion.identity) as GameObject;
     }
-	// Use this for initialization
+    
 	void Start () 
     {
         totalRoundFrames = 60 * (int)GameManagementScript.Instance.roundTime; //~60 fps
@@ -62,7 +58,6 @@ public class YvantManager : MonoBehaviour {
         divideFactor = 100f;
     }
 	
-	// Update is called once per frame
 	void FixedUpdate () 
     {
         float randMeteorites = Random.Range(0f, (float)totalRoundFrames);

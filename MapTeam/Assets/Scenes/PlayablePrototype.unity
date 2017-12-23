@@ -133,7 +133,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 3293472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -410,13 +410,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143327971}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 24.58, y: 40, z: 20}
+  m_LocalRotation: {x: 0.3907311, y: 0, z: 0, w: 0.9205049}
+  m_LocalPosition: {x: 24.999989, y: 44.722656, z: -13.089996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 46, y: 0, z: 0}
 --- !u!114 &143327977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,13 +431,13 @@ MonoBehaviour:
   players:
   - {fileID: 830485595}
   - {fileID: 1025989771}
-  offset: {x: 0, y: 50, z: 0}
+  offset: {x: 0, y: 56.4, z: -58.1}
   myCamPos: {fileID: 143327976}
   camSpeed: 0.5
   minZoom: 100
-  maxZoom: 10
+  maxZoom: 20
   zoomSpeedFactor: 0.5
-  zoomLimiter: 100
+  zoomLimiter: 80
 --- !u!1001 &366394328
 Prefab:
   m_ObjectHideFlags: 0
