@@ -7,39 +7,34 @@ public class countdownTimer : MonoBehaviour {
 
     [Header("Round Details")]
     public String timerText = "";
+    public float timeLeft = 0.0f;
     public bool activated = false;
-    private float timeLeft = 0.0f;
+    public bool over = false;
 
-    public int timeLeftToInt = 0;
-
-    void Start()
-    {    }
-    
+    private int timeLeftToInt = 0;
+        
     public void StopTimer()
     {
         timerText = "";
+    //    Debug.Log("DISABLE timer!");
         activated = false;
     }
 
     public void StartTimer()
     {
         timeLeft = GameManagementScript.Instance.roundTime;
+     //   Debug.Log("ENABLE timer!");
         activated = true;
+        over = false;
     }
-
-    IEnumerator ReadySetGo()
-    {
-        timerText = "Ready";
-        yield return new WaitForSeconds(1.0f);
-        timerText = "Set";
-        yield return new WaitForSeconds(1f);
-        timerText = "Go!";
-        yield return new WaitForSeconds(0.5f);
-    }
-    
+        
     void FixedUpdate()
     {
-        if (!activated) return;
+        if (!activated)
+        {
+       //     timerText = GameManagementScript.Instance.roundTime.ToString();
+            return;
+        }
 
         if (timeLeft > 0.0f)
         {
@@ -47,9 +42,11 @@ public class countdownTimer : MonoBehaviour {
             timeLeftToInt = (int)Convert.ToInt32(timeLeft);
             timerText = timeLeftToInt.ToString();
         }
-        else
+        if (timeLeft <= 0f)
         {
             StopTimer();
+            over = true;
         }
+
     }
 }
