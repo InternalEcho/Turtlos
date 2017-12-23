@@ -7,6 +7,7 @@ public class player : MonoBehaviour {
     [Header("Basic player parameters")]
     public float defaultPlayerSpeed;
     public float playerSpeed;
+    public float playerDecreasedSpeed;
     //public float boostSpeed;
     public float hp;
     public GameObject gridCell;
@@ -14,7 +15,7 @@ public class player : MonoBehaviour {
     public Color gridColor;
     public Color[] playerColors;
     public string playerNumber = "1";
-    public float decreaseSpeedDuration = 1.0f;
+    public float decreaseSpeedDuration = 3.0f;
 
     [Header("Movement/Rotation parameters")]
     private float deltaX;
@@ -38,6 +39,7 @@ public class player : MonoBehaviour {
     void Start () {
         //activeShield = false;
         playerSpeed = defaultPlayerSpeed;
+        playerDecreasedSpeed = defaultPlayerSpeed / 2;
 		numberStunProjectile = 0;
         hp = 5.0f;
     }
@@ -159,14 +161,14 @@ public class player : MonoBehaviour {
 
     public void decreaseSpeed()
     {
-        defaultPlayerSpeed /= 2;
+        playerSpeed = playerDecreasedSpeed;
         StartCoroutine(decreaseSpeedTime());
     }
 
     IEnumerator decreaseSpeedTime()
     {
         yield return new WaitForSeconds(decreaseSpeedDuration);
-        defaultPlayerSpeed *= 2;
+        playerSpeed = defaultPlayerSpeed;
     }
 }
 

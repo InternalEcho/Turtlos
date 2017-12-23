@@ -278,8 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892f996264aa5f14fae494e7916541fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 100
-  defaultPlayerSpeed: 0
+  defaultPlayerSpeed: 50
+  playerSpeed: 0
+  playerDecreasedSpeed: 0
   hp: 5
   gridCell: {fileID: 0}
   playerColor: {r: 0, g: 0, b: 0, a: 0}

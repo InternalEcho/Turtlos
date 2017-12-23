@@ -307,15 +307,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892f996264aa5f14fae494e7916541fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 50
-  defaultPlayerSpeed: 0
+  defaultPlayerSpeed: 50
+  playerSpeed: 0
+  playerDecreasedSpeed: 0
   hp: 5
   gridCell: {fileID: 1514364837522340, guid: 747deb861ef12e540ba94bff5feab06d, type: 2}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   gridColor: {r: 0, g: 0, b: 0, a: 0}
   playerColors: []
   playerNumber: 1
-  decreaseSpeedDuration: 1
+  decreaseSpeedDuration: 3
   gun: {fileID: 1714962410178286}
   bulletSpeed: 1000
   numberStunProjectile: 0

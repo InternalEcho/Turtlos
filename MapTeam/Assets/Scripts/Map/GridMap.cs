@@ -61,8 +61,12 @@ public class GridMap : MonoBehaviour
         player0Position = this.internalGrid[(int)player0.transform.position.x, (int)player0.transform.position.z];
         player1Position = this.internalGrid[(int)player1.transform.position.x, (int)player1.transform.position.z];
 
-        if (this.player0Position.Cell.GetComponent<Renderer>().material.color != player0.GetComponent<player>().playerColor
-            && this.player0Position.Cell.GetComponent<Renderer>().material.color != cellColor)
+        Debug.Log("1er debug" + this.player0Position.Cell.GetComponent<Renderer>().material.color);
+        Debug.Log("2e debug" + player0.GetComponent<player>().playerColor);
+        Debug.Log("3e debug" + cellColor);
+
+        if ((this.player0Position.Cell.GetComponent<Renderer>().material.color != player0.GetComponent<player>().playerColor)
+            && (this.player0Position.Cell.GetComponent<Renderer>().material.color != cellColor))
         {
             Debug.Log("Decreasing player0 speed");
             player0.GetComponent<player>().decreaseSpeed();
