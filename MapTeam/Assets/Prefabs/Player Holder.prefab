@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 54613174051208072}
   - component: {fileID: 114962945359694082}
   - component: {fileID: 65222931796563228}
+  - component: {fileID: 114962672271067908}
   m_Layer: 0
   m_Name: Player Holder
   m_TagString: Player
@@ -252,6 +253,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114962672271067908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387204952734344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f57bb5c76b356d4a93d3d367deadb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpDuration: 10
+  activeShield: 0
+  boostSpeed: 0
 --- !u!114 &114962945359694082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 100
-  boostSpeed: 2
+  defaultPlayerSpeed: 0
   hp: 5
   gridCell: {fileID: 0}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
@@ -273,9 +288,8 @@ MonoBehaviour:
   playerNumber: 1
   decreaseSpeedDuration: 1
   gun: {fileID: 0}
-  powerUpDuration: 0
-  activeShield: 0
   bulletSpeed: 1000
+  numberStunProjectile: 0
   bullet: {fileID: 1746278629456328, guid: 8193611630999374cb7bb2f4ba375470, type: 2}
   bulletEmitter: {fileID: 4211115138321942}
 --- !u!136 &136887399323096392

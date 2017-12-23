@@ -8,7 +8,7 @@ public class stunProjectile : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-			collision.gameObject.GetComponent<player>().stunProjectile();
+			collision.gameObject.GetComponent<playerPowerUpManager>().stunProjectile();
             Destroy(this.gameObject);
         }
     }

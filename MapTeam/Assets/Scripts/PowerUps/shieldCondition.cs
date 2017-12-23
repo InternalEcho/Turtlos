@@ -7,26 +7,20 @@ public class shieldCondition : MonoBehaviour {
     public GameObject player;
     public Renderer render;
     public Collider collide;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
         shieldAppear();
-		
 	}
 
     public void shieldAppear()
     {
-        if (player.GetComponent<player>().activeShield == true)
+        if (player.GetComponent<playerPowerUpManager>().activeShield == true)
         {
             render.enabled = true;
             collide.enabled = true;
         }
-        else if(player.GetComponent<player>().activeShield == false)
+        else if(player.GetComponent<playerPowerUpManager>().activeShield == false)
             {
             render.enabled = false;
             collide.enabled = false;

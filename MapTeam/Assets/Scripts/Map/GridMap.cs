@@ -11,10 +11,9 @@ public class GridMap : MonoBehaviour
     public int lengthY = 100;
     public GameObject player0;
     public GameObject player1;
-    private int player0PositionOnGridX;
-    private int player0PositionOnGridY;
-    private int player1PositionOnGridX;
-    private int player1PositionOnGridY;
+    private GridCell player0Position;
+    private GridCell player1Position;
+    private Color cellColor;
 
 	public int offsetX;
 	public int offsetY;
@@ -50,6 +49,7 @@ public class GridMap : MonoBehaviour
         GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0.0f, lengthY), Quaternion.identity) as GameObject;   // +z
         WallZ2.transform.localScale = new Vector3(lengthX + 2, 5.0f, 1.0f);
 
+        cellColor = DefaultTerrain.GetComponent<Renderer>().material.color;
         //debug meteor hit
         //this.internalGrid[25, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
         //this.internalGrid[10, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
@@ -58,14 +58,23 @@ public class GridMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player0PositionOnGridX = (int)player0.transform.position.x;
-        player0PositionOnGridY = (int)player0.transform.position.z;
-        player1PositionOnGridX = (int)player1.transform.position.x;
-        player1PositionOnGridY = (int)player1.transform.position.z;
-        //Debug.Log(player0PositionOnGridX);
-        //Debug.Log(player0PositionOnGridY);
-		this.internalGrid[player0PositionOnGridX, player0PositionOnGridY].Cell.GetComponent<Renderer>().material.color = player0.GetComponent<player>().playerColor;
-		this.internalGrid[player1PositionOnGridX, player1PositionOnGridY].Cell.GetComponent<Renderer>().material.color = player1.GetComponent<player>().playerColor;
+        player0Position = this.internalGrid[(int)player0.transform.position.x, (int)player0.transform.position.z];
+        player1Position = this.internalGrid[(int)player1.transform.position.x, (int)player1.transform.position.z];
+
+        if (this.player0Position.Cell.GetComponent<Renderer>().material.color != player0.GetComponent<player>().playerColor
+            && this.player0Position.Cell.GetComponent<Renderer>().material.color != cellColor)
+        {
+            Debug.Log("Decreasing player0 speed");
+            player0.GetComponent<player>().decreaseSpeed();
+        }
+        this.player0Position.Cell.GetComponent<Renderer>().material.color = player0.GetComponent<player>().playerColor;
+
+        if (this.player1Position.Cell.GetComponent<Renderer>().material.color != player1.GetComponent<player>().playerColor
+            && this.player1Position.Cell.GetComponent<Renderer>().material.color != cellColor)
+        {
+            player1.GetComponent<player>().decreaseSpeed();
+        }
+        this.player1Position.Cell.GetComponent<Renderer>().material.color = player1.GetComponent<player>().playerColor;
     }
 
     private int findCenter(int value)

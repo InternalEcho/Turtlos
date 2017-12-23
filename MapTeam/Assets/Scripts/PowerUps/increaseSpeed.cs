@@ -8,7 +8,7 @@ public class increaseSpeed : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-			collision.gameObject.GetComponent<player>().increaseSpeed();
+			collision.gameObject.GetComponent<playerPowerUpManager>().increaseSpeed();
             Destroy(this.gameObject);
         }
     }

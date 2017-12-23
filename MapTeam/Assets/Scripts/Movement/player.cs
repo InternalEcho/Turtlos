@@ -5,8 +5,9 @@ using UnityEngine;
 public class player : MonoBehaviour {
 
     [Header("Basic player parameters")]
+    public float defaultPlayerSpeed;
     public float playerSpeed;
-    public float boostSpeed;
+    //public float boostSpeed;
     public float hp;
     public GameObject gridCell;
     public Color playerColor;
@@ -20,13 +21,13 @@ public class player : MonoBehaviour {
     private float deltaY;
 	public GameObject gun;
 
-    [Header("Power-up parameters")]
+    /*[Header("Power-up parameters")]
     public float powerUpDuration;
-    public bool activeShield;
+    public bool activeShield;*/
 
     [Header("Projectile Power-up")]
     public float bulletSpeed;
-    private int numberStunProjectile;
+    public int numberStunProjectile;
     public GameObject bullet;
     public Transform bulletEmitter;
 
@@ -35,7 +36,8 @@ public class player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        activeShield = false;
+        //activeShield = false;
+        playerSpeed = defaultPlayerSpeed;
 		numberStunProjectile = 0;
         hp = 5.0f;
     }
@@ -53,7 +55,6 @@ public class player : MonoBehaviour {
 
 	void rotate()
 	{
-
 		deltaX = Input.GetAxis("RotateX"+playerNumber);
         deltaY = Input.GetAxis("RotateY"+playerNumber); 
 
@@ -67,8 +68,6 @@ public class player : MonoBehaviour {
         //		Debug.Log ("X:" + deltaX);
         //		Debug.Log ("Y:" + deltaY);
     }
-
-
 
     void shoot()
     {
@@ -98,7 +97,7 @@ public class player : MonoBehaviour {
 
     }
 
-    public void becomeXS()
+    /*public void becomeXS()
     {
         this.transform.localScale = new Vector3(.5f,.5f,.5f);
         StartCoroutine(PowerUpUptime(1));
@@ -146,28 +145,28 @@ public class player : MonoBehaviour {
                 Debug.Log("PowerUp Error");
                 break;
         }
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
             && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
         {
-            Debug.Log(playerNumber);
+            // Debug.Log(playerNumber);
             decreaseSpeed();
         }
     }
 
     public void decreaseSpeed()
     {
-        playerSpeed /= 2;
+        defaultPlayerSpeed /= 2;
         StartCoroutine(decreaseSpeedTime());
     }
 
     IEnumerator decreaseSpeedTime()
     {
         yield return new WaitForSeconds(decreaseSpeedDuration);
-        playerSpeed *= 2;
+        defaultPlayerSpeed *= 2;
     }
 }
 

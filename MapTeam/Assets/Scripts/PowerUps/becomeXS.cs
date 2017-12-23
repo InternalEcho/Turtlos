@@ -8,7 +8,7 @@ public class becomeXS : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-			collision.gameObject.GetComponent<player>().becomeXS();
+			collision.gameObject.GetComponent<playerPowerUpManager>().becomeXS();
             Destroy(this.gameObject);
         }
     }
