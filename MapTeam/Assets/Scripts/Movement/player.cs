@@ -153,7 +153,7 @@ public class player : MonoBehaviour {
         if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
             && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
         {
-            Debug.Log(playerNumber);
+           // Debug.Log(playerNumber);
             decreaseSpeed();
         }
     }

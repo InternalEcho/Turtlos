@@ -6,6 +6,6 @@ public class GoToGameButton : MonoBehaviour
 {
     public void GoToGame()
     {
-        GameManagementScript.Instance.GoToGame();
+        GameManagementScript.Instance.GoToGameStart();
     }
 }

@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
@@ -9,6 +9,7 @@ public class GameManagementScript : MonoBehaviour {
     public enum StateType
     {
         MENU,
+        PREGAME, // rounds number sel
         GAME
     };
 
@@ -23,6 +24,11 @@ public class GameManagementScript : MonoBehaviour {
     public countdownTimer timer;
     public Text timerBox;
 
+    [Header("Any Text Box")]
+    public DisplayAnyMessage displayMsg;
+    public Text anyTextBox;
+
+    private Button playButton;
 
     public static GameManagementScript Instance { get; private set; }
 
@@ -47,10 +53,6 @@ public class GameManagementScript : MonoBehaviour {
 
     void Update() // while
     {
-        if (timerBox.enabled)
-        {
-            timerBox.text = timer.timerText;
-        }
 
         switch (state)
         {
@@ -59,18 +61,22 @@ public class GameManagementScript : MonoBehaviour {
 
             case StateType.GAME :
 
-                if (timer.activated == false)
+                timerBox.text = timer.timerText;
+                anyTextBox.text = displayMsg.message;
+
+                if (timer.over)
                 {
                     roundsPlayed++;
                 
                     if (roundsPlayed == roundsTotal)
                     {
-                     //   Debug.Log("rounds played equals to rounds total");
-                        GoToMenu(); // ENLEVER
+                        Debug.Log("All rounds played.");
+                        GoToMenu(); // A ENLEVER
                     }
                     else
                     {
-                        GoToGame();
+                        Debug.Log("starting new round, round " + roundsPlayed);
+                        GoToGameStart();
                     }
                 }
                 break;
@@ -81,36 +87,52 @@ public class GameManagementScript : MonoBehaviour {
 
     public void GoToMenu()
     {
-     //   Debug.Log("Going to MAIN MENU ");
+     // Debug.Log("Going to MAIN MENU ");
         resetAll();
         state = StateType.MENU;
         SceneManager.LoadScene(0); // scene 0 : main menu
     }
 
-    public void GoToGame()
+    public void GoToPreGameSettings()
     {
-    //    Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
-        timerBox.enabled = true; // show timer
-        if(timerBox.enabled)
-    //         Debug.Log("timerbox activated");
+        state = StateType.PREGAME;
+        playButton.enabled = false;
+    }
+
+    public void GoToGameStart()
+    {
+    //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         state = StateType.GAME;
         SceneManager.LoadScene(1); // scene 1 : game scene
-        this.timer.StartTimer();        
+        timerBox.enabled = true; // show timer
+        this.anyTextBox.enabled = true; // show ready set go box
+        StartCoroutine(showReadySetGo());
     }
     
     public void GoToWinnerChicken()
     {
 
     }
+    
+    public IEnumerator showReadySetGo()
+    {
+        yield return displayMsg.ReadySetGo();
+        this.timer.StartTimer();        
+    }
 
     void resetAll() 
     {
+        Debug.Log("resetting all");
         timerBox.enabled = false;
+        anyTextBox.enabled = false;
         timerBox.text = "";
+        anyTextBox.text = "";
         roundsTotal = 3;
         roundsPlayed = 0;
         //TODO
         //reset all attributes
     }
+
+   
 
 }
