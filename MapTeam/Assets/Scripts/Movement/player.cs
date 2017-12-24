@@ -5,7 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour {
 
     [Header("Basic player parameters")]
-    public float defaultPlayerSpeed;
+    public float defaultPlayerSpeed = 20.0f;
     public float playerSpeed;
     public float playerDecreasedSpeed;
     //public float boostSpeed;
@@ -149,7 +149,7 @@ public class player : MonoBehaviour {
         }
     }*/
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
             && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
@@ -157,7 +157,7 @@ public class player : MonoBehaviour {
            // Debug.Log(playerNumber);
             decreaseSpeed();
         }
-    }
+    }*/ 
 
     public void decreaseSpeed()
     {

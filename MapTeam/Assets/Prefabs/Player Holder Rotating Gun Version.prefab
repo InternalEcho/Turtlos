@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892f996264aa5f14fae494e7916541fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPlayerSpeed: 50
+  defaultPlayerSpeed: 25
   playerSpeed: 0
   playerDecreasedSpeed: 0
   hp: 5

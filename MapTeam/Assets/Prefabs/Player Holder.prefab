@@ -227,7 +227,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65222931796563228
 BoxCollider:
@@ -278,16 +278,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892f996264aa5f14fae494e7916541fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPlayerSpeed: 50
+  defaultPlayerSpeed: 25
   playerSpeed: 0
   playerDecreasedSpeed: 0
   hp: 5
-  gridCell: {fileID: 0}
+  gridCell: {fileID: 1514364837522340, guid: 747deb861ef12e540ba94bff5feab06d, type: 2}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   gridColor: {r: 0, g: 0, b: 0, a: 0}
   playerColors: []
   playerNumber: 1
-  decreaseSpeedDuration: 1
+  decreaseSpeedDuration: 3
   gun: {fileID: 0}
   bulletSpeed: 1000
   numberStunProjectile: 0

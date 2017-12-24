@@ -66,4 +66,14 @@ public class Meteorites : GenericYvant {
             myShedew = Instantiate(prefab, offset, Quaternion.identity) as GameObject;
         }
     }
+
+    /*private void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
+        && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
+    {
+       // Debug.Log(playerNumber);
+        decreaseSpeed();
+    }
+}*/
 }

@@ -262,7 +262,7 @@ Prefab:
     - target: {fileID: 114962945359694082, guid: ee30c5640a26ecc4d992e6c7299b3e12,
         type: 2}
       propertyPath: playerSpeed
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114962945359694082, guid: ee30c5640a26ecc4d992e6c7299b3e12,
         type: 2}
@@ -1042,7 +1042,7 @@ Prefab:
     - target: {fileID: 114926270921749926, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
         type: 2}
       propertyPath: playerSpeed
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54636701664619508, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
         type: 2}
@@ -1083,6 +1083,11 @@ Prefab:
         type: 2}
       propertyPath: gridColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114926270921749926, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
+        type: 2}
+      propertyPath: defaultPlayerSpeed
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bb4f1ef27d70bc44bf21abd350058a3, type: 2}
