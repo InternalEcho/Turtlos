@@ -39,6 +39,7 @@ public class GridMap : MonoBehaviour
                 this.internalGrid[i, j].Cell.transform.SetParent(this.gameObject.transform);
             }
         }
+        cellColor = DefaultTerrain.GetComponent<gridCellBehavior>().gridColor.color;
         //Instantiate Invisible Walls
         GameObject WallX1 = Instantiate(invisibleWall, new Vector3(-1, 0.0f, centerY - 1), Quaternion.identity) as GameObject;    // -x
         WallX1.transform.localScale = new Vector3(1.0f, 5.0f, lengthY + 2);
@@ -49,7 +50,6 @@ public class GridMap : MonoBehaviour
         GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0.0f, lengthY), Quaternion.identity) as GameObject;   // +z
         WallZ2.transform.localScale = new Vector3(lengthX + 2, 5.0f, 1.0f);
 
-        cellColor = DefaultTerrain.GetComponent<Renderer>().material.color;
         //debug meteor hit
         //this.internalGrid[25, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
         //this.internalGrid[10, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
@@ -60,11 +60,9 @@ public class GridMap : MonoBehaviour
     {
         player0Position = this.internalGrid[(int)player0.transform.position.x, (int)player0.transform.position.z];
         player1Position = this.internalGrid[(int)player1.transform.position.x, (int)player1.transform.position.z];
-
         Debug.Log("1er debug" + this.player0Position.Cell.GetComponent<Renderer>().material.color);
         Debug.Log("2e debug" + player0.GetComponent<player>().playerColor);
         Debug.Log("3e debug" + cellColor);
-
         if ((this.player0Position.Cell.GetComponent<Renderer>().material.color != player0.GetComponent<player>().playerColor)
             && (this.player0Position.Cell.GetComponent<Renderer>().material.color != cellColor))
         {
