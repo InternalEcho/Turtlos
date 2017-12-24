@@ -5,7 +5,7 @@ using UnityEngine;
 public class player : MonoBehaviour {
 
     [Header("Basic player parameters")]
-    public float defaultPlayerSpeed = 20.0f;
+    public float defaultPlayerSpeed = 0.5f;
     public float playerSpeed;
     public float playerDecreasedSpeed;
     //public float boostSpeed;
@@ -86,17 +86,10 @@ public class player : MonoBehaviour {
 
     void move()
     {
-        //transform.Translate(Input.GetAxisRaw("Horizontal") * playerSpeed, 0, Input.GetAxisRaw("Vertical") * playerSpeed, Space.World);
-        
-        if (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 && Input.GetAxisRaw("Vertical" + playerNumber) != 0)
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed * 3 / 4, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed * 3 / 4);
-        }
-        else
-        {
-            gameObject.GetComponent<Rigidbody>().AddForce(Input.GetAxisRaw("Horizontal" + playerNumber) * playerSpeed, 0, Input.GetAxisRaw("Vertical" + playerNumber) * playerSpeed);
-        }
-
+        float x = Input.GetAxisRaw("Horizontal" + playerNumber);
+        float z = Input.GetAxisRaw("Vertical" + playerNumber);
+        Vector3 direction = new Vector3(x, 0f, z);
+        this.transform.Translate(direction * playerSpeed, Space.World);
     }
 
     /*public void becomeXS()

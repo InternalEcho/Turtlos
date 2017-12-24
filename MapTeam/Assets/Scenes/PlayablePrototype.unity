@@ -202,13 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1a9c260239f4c47b7b8cad23af81f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultTerrain: {fileID: 1514364837522340, guid: 747deb861ef12e540ba94bff5feab06d,
-    type: 2}
+  defaultTerrain: {fileID: 0}
   invisibleWall: {fileID: 0}
-  lengthX: 50
-  lengthY: 50
   player0: {fileID: 830485590}
   player1: {fileID: 1025989766}
+  lengthX: 50
+  lengthY: 50
   offsetX: 0
   offsetY: 0
 --- !u!1001 &73232851
@@ -318,6 +317,11 @@ Prefab:
         type: 2}
       propertyPath: gridColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114962945359694082, guid: ee30c5640a26ecc4d992e6c7299b3e12,
+        type: 2}
+      propertyPath: defaultPlayerSpeed
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee30c5640a26ecc4d992e6c7299b3e12, type: 2}
@@ -1087,7 +1091,7 @@ Prefab:
     - target: {fileID: 114926270921749926, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
         type: 2}
       propertyPath: defaultPlayerSpeed
-      value: 25
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bb4f1ef27d70bc44bf21abd350058a3, type: 2}
