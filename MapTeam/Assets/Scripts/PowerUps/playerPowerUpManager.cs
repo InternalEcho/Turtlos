@@ -5,48 +5,65 @@ using UnityEngine;
 public class playerPowerUpManager : MonoBehaviour
 {
     [Header("Power-up parameters")]
-    public float powerUpDuration = 10.0f;
-    public bool activeShield;
+    public float powerUpDuration = 5.0f;
     public float boostSpeed;
+    public bool activeShield;
+
+    private bool activePowerUp;
+
+    int numberOfPickups = 0;
 
     enum powerUpType { becomeXS, becomeXL, speedBoost, shield };
 
     void Start()
     {
         activeShield = false;
+        activePowerUp = false;
         boostSpeed = this.GetComponent<player>().defaultPlayerSpeed * 2;    //boostSpeed is twice the default speed
     }
 
     public void becomeXS()
     {
+        activePowerUp = true;
+        Debug.Log("I AM SMALL" + numberOfPickups++);
         this.transform.localScale = new Vector3(.5f, .5f, .5f);
         StartCoroutine(PowerUpUptime(powerUpType.becomeXS));
     }
 
     public void becomeXL()
     {
+        activePowerUp = true;
+        Debug.Log("I AM FAT" + numberOfPickups++);
         this.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
         StartCoroutine(PowerUpUptime(powerUpType.becomeXL));
     }
 
     public void increaseSpeed()
     {
+        activePowerUp = true;
+        Debug.Log("I AM FAST" + numberOfPickups++);
         this.GetComponent<player>().playerSpeed = boostSpeed;
         StartCoroutine(PowerUpUptime(powerUpType.speedBoost));
     }
 
     public void stunProjectile()    // can store many projectiles? will need a visual indicator
     {
+        activePowerUp = true;
+        Debug.Log("I AM ARMED" + numberOfPickups++);
         this.GetComponent<player>().numberStunProjectile = 3;
     }
 
     public void gainShield()
     {
+        activePowerUp = true;
+        Debug.Log("I AM SHIELDED" + numberOfPickups++);
         activeShield = true;
     }
 
     IEnumerator PowerUpUptime(powerUpType type)
     {
+        Debug.Log("POWER UP UP" + numberOfPickups);
+
         yield return new WaitForSeconds(powerUpDuration);
 
         switch (type)
@@ -67,5 +84,18 @@ public class playerPowerUpManager : MonoBehaviour
                 Debug.Log("PowerUp Error");
                 break;
         }
+
+        activePowerUp = false;
     }
+
+    public bool getPowerUpStatus()
+    {
+        return activePowerUp;
+    }
+
+    //TESTING
+    /*private void Update()
+    {
+        activePowerUp = false;
+    }*/
 }

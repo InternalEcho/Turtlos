@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour {
     public float expiryTime;
+    public float stunDuration;
 	// Use this for initialization
 	void Start () {
         Destroy(gameObject, expiryTime);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "enemy")
+        if(collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
-            Debug.Log("enemy hit");
-            //collision.gameObject.GetComponent<enemyBehavior>().hp -= 1;
+            collision.gameObject.GetComponent<player>().playerSpeed = 0;
+            StartCoroutine(stunRecovery(collision.gameObject));
+            Destroy(this.gameObject, 0.1f);
         }
-        else if (collision.gameObject.name == "Player Holder")
-        {
-            //Destroy(gameObject);
-            Debug.Log("player hit");
-            //collision.gameObject.GetComponent<player>().hp -= 1;
-        }
+    }
+
+    private IEnumerator stunRecovery(GameObject victim)
+    {
+        yield return new WaitForSeconds(stunDuration);
+        victim.GetComponent<player>().playerSpeed = victim.GetComponent<player>().defaultPlayerSpeed;
     }
 }

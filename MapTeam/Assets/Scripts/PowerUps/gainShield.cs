@@ -8,8 +8,11 @@ public class gainShield : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-			collision.gameObject.GetComponent<playerPowerUpManager>().gainShield();
-            Destroy(this.gameObject);
+            if (!collision.gameObject.GetComponent<playerPowerUpManager>().getPowerUpStatus())
+            {
+                collision.gameObject.GetComponent<playerPowerUpManager>().gainShield();
+                Destroy(this.gameObject);
+            }
         }
     }
 }

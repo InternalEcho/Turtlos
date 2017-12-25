@@ -26,7 +26,12 @@ public class MultipleTargetsTracking : MonoBehaviour {
 
 	void LateUpdate ()
     {
-        if (players.Count == 0)
+        foreach (var player in players)
+        {
+            if (player == null)
+                players.Remove(player);
+        }
+            if (players.Count == 0)
             return;
         moveCam();
         zoomCam();

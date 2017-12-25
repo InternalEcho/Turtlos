@@ -43,8 +43,11 @@ public class GridMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(var player in players)
+        foreach (var player in players)
         {
+            if (player == null) // remove dead players from the list of players
+                players.Remove(player);
+
             playerPosition = this.internalGrid[(int)player.transform.position.x, (int)player.transform.position.z];
             if (this.playerPosition.Cell.GetComponent<Renderer>().material.color == Color.black)    // Player loses Hp when walking on charred tiles?
                 player.GetComponent<player>().loseHp();

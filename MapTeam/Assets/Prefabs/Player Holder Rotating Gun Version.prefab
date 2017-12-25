@@ -294,8 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpDuration: 10
-  activeShield: 0
   boostSpeed: 0
+  activeShield: 0
 --- !u!114 &114926270921749926
 MonoBehaviour:
   m_ObjectHideFlags: 1

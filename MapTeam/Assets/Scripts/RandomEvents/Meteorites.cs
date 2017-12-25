@@ -17,6 +17,7 @@ public class Meteorites : GenericYvant {
     [SerializeField]
     float speed;
 
+    private int meteoriteTimeoutLimit = 5;  // destroy the meteorite and the associated shedew if it lives past this amount of seconds
     private Vector3 impactPosition;
     private Vector3 offset = new Vector3(0, 1, 0);
 
@@ -24,7 +25,6 @@ public class Meteorites : GenericYvant {
     AudioSource yee;
 
     private GameObject myShedew;
-    private bool flag = true;
     public GameObject prefab;
 
     public override void activate()
@@ -39,14 +39,14 @@ public class Meteorites : GenericYvant {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, impactPosition, step);
 
-        if (this.transform.position.y < 0)// && flag)
+        //No Longer needed with the Timeout? (see at the end)
+        /*if (this.transform.position.y < -5)
         {
-            flag = false;
             Destroy(myShedew);
             this.gameObject.GetComponent<Renderer>().enabled = false;
             yee.Play();
             Destroy(this.gameObject, 2);
-        }
+        }*/
 	}
 
     public override void spawn(float meteoriteHeight, int centerX, int centerY, int mapLengthX, int mapLengthY)
@@ -55,6 +55,8 @@ public class Meteorites : GenericYvant {
         impactPosition = new Vector3(Random.Range(0, mapLengthX), 0, Random.Range(0, mapLengthY));
 
         myShedew = Instantiate(prefab, impactPosition + offset, Quaternion.identity) as GameObject;
+
+        StartCoroutine(meteoriteTimeout());
         /*
         Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
         //Vector3 direction = new Vector3(0, -1, 0);    //debug
@@ -76,20 +78,26 @@ public class Meteorites : GenericYvant {
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("PLAYER HIT");
             collision.gameObject.GetComponent<player>().loseHp();
-            flag = false;
+            this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
             yee.Play();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 3);
         }
         else if (collision.gameObject.tag == "Terrain")
         {
             collision.gameObject.GetComponent<gridCellBehavior>().meteorHit();
-            flag = false;
+            this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
             yee.Play();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 3);
         }
+    }
+
+    IEnumerator meteoriteTimeout()
+    {
+        yield return new WaitForSeconds(meteoriteTimeoutLimit);
+        Destroy(myShedew);
+        Destroy(this.gameObject);
     }
 }

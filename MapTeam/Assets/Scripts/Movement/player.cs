@@ -48,10 +48,11 @@ public class player : MonoBehaviour {
 
 	void rotate()
 	{
-		deltaX = Input.GetAxis("RotateX"+playerNumber);
+        deltaX = Input.GetAxis("RotateX"+playerNumber);
         deltaY = Input.GetAxis("RotateY"+playerNumber); 
 
 		Vector3 point = new Vector3 (deltaX, 0, deltaY);
+        Debug.Log(point);
 	
 		Vector3 pointToLook = transform.position + point;
 		Vector3 currentLook = transform.position + transform.GetChild(0).forward;

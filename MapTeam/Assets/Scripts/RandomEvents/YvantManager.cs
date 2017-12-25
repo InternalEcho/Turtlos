@@ -17,7 +17,7 @@ public class YvantManager : MonoBehaviour {
 
     [Header("Meteorite Settings")]
     public GameObject meteorite;
-    public int mapCenterX, mapCenterY, mapLengthX, mapLengthY;  //WAS PRIVATE
+    public int mapCenterX, mapCenterY, mapLengthX, mapLengthY;  //public for debug, else should be private
     public float meteoriteHeight;
 
     [Header("Cloud Settings")]
@@ -124,9 +124,13 @@ public class YvantManager : MonoBehaviour {
                 StartCoroutine(SpawnBuffs());
             }
         }*/
-        float randMeteorites = Random.Range(0f, 1.0f);
-        float randClouds = Random.Range(0f, 1.0f);
-        float randBuffs = Random.Range(0f, 1.0f);
+
+        //SAFE MODE FOR TESTING
+        //float randMeteorites = Random.Range(1.0f, 1.0f);
+
+        float randMeteorites = Random.Range(0.0f, 1.0f);
+        float randClouds = Random.Range(0.0f, 1.0f);
+        float randBuffs = Random.Range(0.0f, 1.0f);
 
         if (GameManagementScript.Instance.timer.activated == true)
         {
