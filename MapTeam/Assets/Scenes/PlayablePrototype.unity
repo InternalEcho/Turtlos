@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1a9c260239f4c47b7b8cad23af81f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTerrain: {fileID: 0}
+  defaultTerrain: {fileID: 1514364837522340, guid: 747deb861ef12e540ba94bff5feab06d,
+    type: 2}
   invisibleWall: {fileID: 0}
   player0: {fileID: 830485590}
   player1: {fileID: 1025989766}
@@ -864,18 +865,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1248104042854936, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
     type: 2}
   m_PrefabInternal: {fileID: 905564581}
---- !u!65 &830485594
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 830485590}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &830485595 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4281270411462136, guid: 9bb4f1ef27d70bc44bf21abd350058a3,
@@ -1101,18 +1090,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1387204952734344, guid: ee30c5640a26ecc4d992e6c7299b3e12,
     type: 2}
   m_PrefabInternal: {fileID: 73232851}
---- !u!65 &1025989770
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1025989766}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1025989771 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4218103380429064, guid: ee30c5640a26ecc4d992e6c7299b3e12,
@@ -1163,17 +1140,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6644b262d088de4db71325efb700bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFreqMeteorites: 0.2
-  spawnFreqBuffs: 0.3
-  meteorites:
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  - {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
   minSec: 1
   maxSec: 2
-  height: 40
+  spawnFreqMeteorites: 0.1
+  spawnFreqClouds: 0.01
+  spawnFreqBuffs: 0.01
+  meteorite: {fileID: 1446002838493014, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
+  mapCenterX: 0
+  mapCenterY: 0
+  mapLengthX: 0
+  mapLengthY: 0
+  meteoriteHeight: 50
+  cloud: {fileID: 1318099139370936, guid: 71f570771e69c624fa8a8607afd05afd, type: 2}
+  cloudHeight: 20
   buffs:
   - {fileID: 1524319290481790, guid: 33467c1b2bb3fb0478f5665139f9c63a, type: 2}
   - {fileID: 1494469155618388, guid: a908993e217942f41a91105ef6ee7c6f, type: 2}

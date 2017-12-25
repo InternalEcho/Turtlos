@@ -8,8 +8,7 @@ public class player : MonoBehaviour {
     public float defaultPlayerSpeed = 0.5f;
     public float playerSpeed;
     public float playerDecreasedSpeed;
-    //public float boostSpeed;
-    public float hp;
+    public float hp = 1.0f; // public for debug purposes but put private later
     public GameObject gridCell;
     public Color playerColor;
     public Color gridColor;
@@ -22,18 +21,11 @@ public class player : MonoBehaviour {
     private float deltaY;
 	public GameObject gun;
 
-    /*[Header("Power-up parameters")]
-    public float powerUpDuration;
-    public bool activeShield;*/
-
     [Header("Projectile Power-up")]
     public float bulletSpeed;
     public int numberStunProjectile;
     public GameObject bullet;
     public Transform bulletEmitter;
-
-    //Obsolete?
-    //private float boostCooldown
 
     // Use this for initialization
     void Start () {
@@ -41,7 +33,6 @@ public class player : MonoBehaviour {
         playerSpeed = defaultPlayerSpeed;
         playerDecreasedSpeed = defaultPlayerSpeed / 2;
 		numberStunProjectile = 0;
-        hp = 5.0f;
     }
 	
 	// Update is called once per frame
@@ -66,9 +57,6 @@ public class player : MonoBehaviour {
 		Vector3 currentLook = transform.position + transform.GetChild(0).forward;
 
 		gun.transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
-
-        //		Debug.Log ("X:" + deltaX);
-        //		Debug.Log ("Y:" + deltaY);
     }
 
     void shoot()
@@ -92,66 +80,6 @@ public class player : MonoBehaviour {
         this.transform.Translate(direction * playerSpeed, Space.World);
     }
 
-    /*public void becomeXS()
-    {
-        this.transform.localScale = new Vector3(.5f,.5f,.5f);
-        StartCoroutine(PowerUpUptime(1));
-    }
-
-	public void becomeXL()
-	{
-		this.transform.localScale = new Vector3(2.0f,2.0f,2.0f);
-		StartCoroutine(PowerUpUptime(2));
-	}
-
-    public void increaseSpeed()
-    {
-        playerSpeed *= 2;
-        StartCoroutine(PowerUpUptime(3));
-    }
-
-    public void stunProjectile()    // can store many projectiles? will need a visual indicator
-    {
-        numberStunProjectile += 3;
-    }
-	public void gainShield()
-	{
-        activeShield = true;
-	}
-    IEnumerator PowerUpUptime(int powerUpType)  //1 = becomeXS; 2 = increaseSpeed;
-    {
-        yield return new WaitForSeconds(powerUpDuration);
-
-        switch (powerUpType)
-        {
-            case 1:
-                Debug.Log("Size back to normal");   //debug
-                this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                break;
-			case 2:
-				Debug.Log("Size back to normal");   //debug
-				this.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-				break;
-            case 3:
-                Debug.Log("Speed down to normal");  //debug
-                playerSpeed /= 2;
-                break;
-            default:
-                Debug.Log("PowerUp Error");
-                break;
-        }
-    }*/
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
-            && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
-        {
-           // Debug.Log(playerNumber);
-            decreaseSpeed();
-        }
-    }*/ 
-
     public void decreaseSpeed()
     {
         playerSpeed = playerDecreasedSpeed;
@@ -162,6 +90,18 @@ public class player : MonoBehaviour {
     {
         yield return new WaitForSeconds(decreaseSpeedDuration);
         playerSpeed = defaultPlayerSpeed;
+    }
+
+    public void loseHp()
+    {
+        if (!this.GetComponent<playerPowerUpManager>().activeShield)    // if shield isn't up
+        {
+            hp--;
+        }
+        else
+        {
+            this.GetComponent<playerPowerUpManager>().activeShield = false; // else take down shield
+        }
     }
 }
 

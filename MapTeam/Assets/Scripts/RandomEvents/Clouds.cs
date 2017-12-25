@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clouds : GenericYvant
 {
     private int floatDirection;
-    public float spawnOffset, translationSpeed, cloudLifeDuration; //, cloudHeight;
+    public float spawnOffset, translationSpeed, cloudLifeDuration;
 
     public override void activate()
     {
@@ -38,11 +38,6 @@ public class Clouds : GenericYvant
         this.transform.position = spawnPos;
         this.transform.LookAt(new Vector3(Random.Range(0, mapLengthX), height, Random.Range(0, mapLengthZ)));
         Invoke("DestroyCloud", cloudLifeDuration);
-    }
-
-    // Use this for initialization
-    void Start()
-    {
     }
 
     // Update is called once per frame

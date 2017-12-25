@@ -46,11 +46,11 @@ public class GridMap : MonoBehaviour
         foreach(var player in players)
         {
             playerPosition = this.internalGrid[(int)player.transform.position.x, (int)player.transform.position.z];
-
+            if (this.playerPosition.Cell.GetComponent<Renderer>().material.color == Color.black)    // Player loses Hp when walking on charred tiles?
+                player.GetComponent<player>().loseHp();
             if ((this.playerPosition.Cell.GetComponent<Renderer>().material.color != player.GetComponent<player>().playerColor)
             && (this.playerPosition.Cell.GetComponent<Renderer>().material.color != defaultTerrainColor))
             {
-                Debug.Log("Decreasing player speed");
                 player.GetComponent<player>().decreaseSpeed();
             }
             this.playerPosition.Cell.GetComponent<Renderer>().material.color = player.GetComponent<player>().playerColor;

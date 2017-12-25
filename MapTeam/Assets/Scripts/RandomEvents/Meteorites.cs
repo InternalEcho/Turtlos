@@ -16,9 +16,9 @@ public class Meteorites : GenericYvant {
     [Header("vitesse meteorite")]
     [SerializeField]
     float speed;
-    [Header("Height of the meteorite spawn above the camera")]
-    [SerializeField][Range(5, 50)]
-    float meteoriteHeight;
+
+    private Vector3 impactPosition;
+    private Vector3 offset = new Vector3(0, 1, 0);
 
     [SerializeField]
     AudioSource yee;
@@ -36,24 +36,28 @@ public class Meteorites : GenericYvant {
 	
 	// Update is called once per frame
 	void Update () {
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, impactPosition, step);
 
-        if (this.transform.position.y < 0 && flag)
+        if (this.transform.position.y < 0)// && flag)
         {
             flag = false;
             Destroy(myShedew);
             this.gameObject.GetComponent<Renderer>().enabled = false;
             yee.Play();
             Destroy(this.gameObject, 2);
-            
         }
 	}
 
-    public override void spawn(float height, int centerX, int centerY, int mapLengthX, int mapLengthY)
+    public override void spawn(float meteoriteHeight, int centerX, int centerY, int mapLengthX, int mapLengthY)
     {
-        this.transform.position = new Vector3(centerX, height + meteoriteHeight, centerY);
+        this.transform.position = new Vector3(centerX, meteoriteHeight, centerY);
+        impactPosition = new Vector3(Random.Range(0, mapLengthX), 0, Random.Range(0, mapLengthY));
 
+        myShedew = Instantiate(prefab, impactPosition + offset, Quaternion.identity) as GameObject;
+        /*
         Vector3 direction = new Vector3(Random.Range(x_min, x_max), -1, Random.Range(y_min, y_max)); // vecteur direction + celle du ray
-        //Vector3 direction = new Vector3(0, -1, 0);
+        //Vector3 direction = new Vector3(0, -1, 0);    //debug
         GetComponent<Rigidbody>().velocity = direction.normalized * speed;
 
         RaycastHit hit;//contient tt l'information sur le hit du ray
@@ -65,15 +69,27 @@ public class Meteorites : GenericYvant {
             // Debug.Log(hit.collider.gameObject.name);
             myShedew = Instantiate(prefab, offset, Quaternion.identity) as GameObject;
         }
+        */
     }
 
-    /*private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.GetComponent<Renderer>().material.color != playerColor
-        && collision.gameObject.GetComponent<Renderer>().material.color != gridColor)
+    void OnTriggerEnter(Collider collision)
     {
-       // Debug.Log(playerNumber);
-        decreaseSpeed();
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("PLAYER HIT");
+            collision.gameObject.GetComponent<player>().loseHp();
+            flag = false;
+            Destroy(myShedew);
+            yee.Play();
+            Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.tag == "Terrain")
+        {
+            collision.gameObject.GetComponent<gridCellBehavior>().meteorHit();
+            flag = false;
+            Destroy(myShedew);
+            yee.Play();
+            Destroy(this.gameObject);
+        }
     }
-}*/
 }

@@ -22,7 +22,6 @@ public class gridCellBehavior : MonoBehaviour
 
     IEnumerator meteorHitColorChange()
     {
-
         yield return new WaitForSeconds(meteorHitColorChangeDuration);
         this.GetComponent<Renderer>().material.color = gridColor.color;
     }
