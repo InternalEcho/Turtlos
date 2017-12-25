@@ -10,7 +10,8 @@ public class GameManagementScript : MonoBehaviour {
     {
         MENU,
         PREGAME, // rounds number sel
-        GAME
+        GAME,
+        POSTGAME
     };
 
     [Header("Game State")]
@@ -75,7 +76,6 @@ public class GameManagementScript : MonoBehaviour {
                     if (roundsPlayed == roundsTotal)
                     {
                         Debug.Log("All rounds played.");
-                        GoToMenu(); // A ENLEVER
                     }
                     else
                     {
@@ -115,7 +115,10 @@ public class GameManagementScript : MonoBehaviour {
     
     public void GoToWinnerChicken()
     {
-
+        state = StateType.POSTGAME;
+        resetAll();
+        
+        Debug.Log("round over");
     }
     
     public IEnumerator showReadySetGo()
