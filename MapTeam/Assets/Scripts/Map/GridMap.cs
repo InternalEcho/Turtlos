@@ -48,7 +48,11 @@ public class GridMap : MonoBehaviour
             if (player == null) // remove dead players from the list of players
                 players.Remove(player);
             if (players.Count == 1)
-                GameObject.Find("GameHandler").GetComponent<GameManagementScript>().GoToWinnerChicken();
+            {
+                StartCoroutine(endRound());
+               
+            }
+               
 
             playerPosition = this.internalGrid[(int)player.transform.position.x, (int)player.transform.position.z]; // finds current player gridcell
             if (this.playerPosition.Cell.GetComponent<Renderer>().material.color == Color.black)    // Player loses Hp when walking on charred tiles?
@@ -106,6 +110,12 @@ public class GridMap : MonoBehaviour
     public int getCenterY()
     {
         return centerY;
+    }
+
+    IEnumerator endRound()
+    {
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("GameHandler").GetComponent<GameManagementScript>().GoToWinnerChicken();
     }
 
     //Simon Code

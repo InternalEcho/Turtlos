@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     // Use this for initialization
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
+    public GameObject postGameMenu;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +22,12 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void displayPostGameMenu()
+    {
+        Time.timeScale = 0f;
+        postGameMenu.SetActive(true);
+    }
+
     public void Resume()
     {
         pauseMenu.SetActive(false);
@@ -28,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -39,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        postGameMenu.SetActive(false);
         GameManagementScript.Instance.GoToGameStart();
     }
 
@@ -46,6 +54,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        postGameMenu.SetActive(false);
         GameManagementScript.Instance.GoToMenu();
     }
 }

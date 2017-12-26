@@ -7,7 +7,7 @@ public class countdownTimer : MonoBehaviour {
 
     [Header("Round Details")]
     public String timerText = "";
-    public float timeLeft = 0.0f;
+    public float timeLeft;
     public bool activated = false;
 
     private int timeLeftToInt = 0;
@@ -19,11 +19,12 @@ public class countdownTimer : MonoBehaviour {
         activated = false;
     }
 
-    public void StartTimer()
+    public void StartTimer(float roundTime)
     {
         timeLeft = GameManagementScript.Instance.roundTime;
      //   Debug.Log("ENABLE timer!");
         activated = true;
+        StartCoroutine(StartCountdown(roundTime));
     }
         
     void FixedUpdate()
@@ -36,7 +37,7 @@ public class countdownTimer : MonoBehaviour {
 
         if (timeLeft > 0.0f)
         {
-            timeLeft -= Time.deltaTime;
+            Debug.Log("time left: " + timeLeft);
             timeLeftToInt = (int)Convert.ToInt32(timeLeft);
             timerText = timeLeftToInt.ToString();
         }
@@ -46,5 +47,15 @@ public class countdownTimer : MonoBehaviour {
             GameManagementScript.Instance.timerOver = true;
         }
 
+    }
+
+    public IEnumerator StartCountdown(float roundTime)
+    {
+        timeLeft = roundTime;
+        while (timeLeft > 0)
+        {
+            yield return new WaitForSeconds(100.0f);
+            timeLeft--;
+        }
     }
 }

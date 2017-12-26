@@ -111,14 +111,14 @@ public class GameManagementScript : MonoBehaviour {
     {
         state = StateType.POSTGAME;
         resetAll();
-        
+        GameObject.Find("GameCanvas").GetComponent<PauseMenu>().displayPostGameMenu();
         Debug.Log("round over");
     }
     
     public IEnumerator showReadySetGo()
     {
         yield return displayMsg.ReadySetGo();
-        this.timer.StartTimer();        
+        this.timer.StartTimer(roundTime);        
     }
 
     //reset all attributes
