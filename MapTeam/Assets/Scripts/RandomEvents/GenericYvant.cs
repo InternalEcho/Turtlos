@@ -9,7 +9,7 @@ public class GenericYvant : MonoBehaviour {
         Debug.Log("GenericEvent!");
     }
 
-    public virtual void spawn(float height, int centerX, int centerY, int mapLengthX, int mapLengthY)
+    public virtual void spawn(float height, GameObject map)
     {
         Debug.Log("GenericSpawn!");
     }

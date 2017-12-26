@@ -36,13 +36,13 @@ public class YvantManager : MonoBehaviour {
     private void SpawnMeteorites()
     {
         GameObject newEvent = Instantiate(meteorite) as GameObject;  // default spawn
-        newEvent.GetComponent<GenericYvant>().spawn(meteoriteHeight, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
+        newEvent.GetComponent<GenericYvant>().spawn(meteoriteHeight, map);
     }
 
     private void SpawnClouds()
     {
         GameObject newEvent = Instantiate(cloud) as GameObject;  // default spawn
-        newEvent.GetComponent<GenericYvant>().spawn(cloudHeight, mapCenterX, mapCenterY, mapLengthX, mapLengthY);
+        newEvent.GetComponent<GenericYvant>().spawn(cloudHeight, map);
     }
 
     private void SpawnBuffs()
@@ -81,14 +81,10 @@ public class YvantManager : MonoBehaviour {
     void Start () 
     {
         totalRoundFrames = 60 * (int)GameManagementScript.Instance.roundTime; //~60 fps
-        /*mapCenterX = map.GetComponent<GridMap>().getCenterX();
+        mapCenterX = map.GetComponent<GridMap>().getCenterX();
         mapCenterY = map.GetComponent<GridMap>().getCenterY();
         mapLengthX = map.GetComponent<GridMap>().lengthX;
-        mapLengthY = map.GetComponent<GridMap>().lengthY;*/
-        mapCenterX = 25;
-        mapCenterY = 25;
-        mapLengthX = 50;
-        mapLengthY = 50;
+        mapLengthY = map.GetComponent<GridMap>().lengthY;
         transform.position = new Vector3(mapCenterX, 0.0f, mapCenterY);
         divideFactor = 100f;
     }

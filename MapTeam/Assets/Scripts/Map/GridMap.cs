@@ -31,6 +31,9 @@ public class GridMap : MonoBehaviour
         players.Add(player0);
         players.Add(player1);
 
+        centerX = findCenter(lengthX);
+        centerY = findCenter(lengthY);
+
         defaultTerrainColor = defaultTerrain.GetComponent<gridCellBehavior>().gridColor.color;
         generateGridMap(lengthX, lengthY);
        //generateInvisibleWalls(lengthX, lengthY);
@@ -74,7 +77,7 @@ public class GridMap : MonoBehaviour
         {
             for (int j = 0; j < lengthY; j++)
             {
-                internalGrid[i, j] = new GridCell();
+                internalGrid[i, j] = gameObject.AddComponent<GridCell>();
                 this.internalGrid[i, j].Cell = Instantiate(defaultTerrain, new Vector3(i, 0f, j), Quaternion.identity) as GameObject;
                 this.internalGrid[i, j].Cell.transform.SetParent(this.gameObject.transform);
             }
@@ -83,9 +86,6 @@ public class GridMap : MonoBehaviour
 
     void generateInvisibleWalls(int lengthX, int lengthY)
     {
-        centerX = findCenter(lengthX);
-        centerY = findCenter(lengthY);
-
         GameObject WallX1 = Instantiate(invisibleWall, new Vector3(-1, 0.0f, centerY - 1), Quaternion.identity) as GameObject;    // -x
         WallX1.transform.localScale = new Vector3(1.0f, 5.0f, lengthY + 2);
         GameObject WallX2 = Instantiate(invisibleWall, new Vector3(lengthX, 0.0f, centerY - 1), Quaternion.identity) as GameObject;    // +x
@@ -107,9 +107,15 @@ public class GridMap : MonoBehaviour
     {
         return centerX;
     }
+
     public int getCenterY()
     {
         return centerY;
+    }
+
+    public GridCell getCell(int positionX, int positionY)
+    {
+        return internalGrid[positionX, positionY];
     }
 
     IEnumerator endRound()

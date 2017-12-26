@@ -13,8 +13,11 @@ public class Clouds : GenericYvant
         Debug.Log("Cloud9!!!");
     }
 
-    public override void spawn(float height, int centerX, int centerY, int mapLengthX, int mapLengthZ)
+    public override void spawn(float height, GameObject map)
     {
+        int mapLengthX = map.GetComponent<GridMap>().lengthX;
+        int mapLengthZ = map.GetComponent<GridMap>().lengthY;
+
         Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
         floatDirection = Random.Range(0, 4);
         switch (floatDirection)
