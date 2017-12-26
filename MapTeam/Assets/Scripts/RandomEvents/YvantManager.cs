@@ -4,9 +4,10 @@ using UnityEngine;
 public class YvantManager : MonoBehaviour {
 
     [Header("Global Randomizer Settings")] // all-events randomizer
-    public float minSec, maxSec;
+    public float minSec;
+    public float maxSec;
     [Tooltip("Meteorites spawn frequency (%)")]  
-    public float spawnFreqMeteorites; //change : maintenant 0.1%
+    public float spawnFreqMeteorites; 
     [Tooltip("Meteorites spawn frequency (%)")]
     public float spawnFreqClouds;
     [Tooltip("Buff spawn frequency (%)")]   

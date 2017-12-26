@@ -571,7 +571,7 @@ MonoBehaviour:
   state: 0
   roundsTotal: 3
   roundsPlayed: 0
-  roundTime: 30
+  roundTime: 5
   timer: {fileID: 893527537}
   timerBoxMessage: 
   enableTimerBox: 0
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 1236642525}
   - component: {fileID: 1236642526}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 1836395474}
   - component: {fileID: 1836395473}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: CanvasPersistant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

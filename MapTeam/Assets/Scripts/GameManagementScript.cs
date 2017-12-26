@@ -9,7 +9,7 @@ public class GameManagementScript : MonoBehaviour {
     public enum StateType
     {
         MENU,
-        PREGAME, // rounds number sel
+        PREGAME, // select number of rounds
         GAME,
         POSTGAME
     };
@@ -21,7 +21,7 @@ public class GameManagementScript : MonoBehaviour {
 
     [Header("Round timer")]
     [Range(0.0f, 300.0f)]
-    public float roundTime = 30.0f;
+    public float roundTime = 30.0f; 
     public countdownTimer timer;
     public String timerBoxMessage;
     public bool enableTimerBox;
@@ -32,7 +32,9 @@ public class GameManagementScript : MonoBehaviour {
     public String anyTextBoxMessage;
     public bool enableAnyTextBox;
 
-    private Button playButton;
+    [Header("Menu GUI")]
+    public GameObject panelMain;
+    public GameObject panelPregame;
 
     public static GameManagementScript Instance { get; private set; }
 
@@ -51,16 +53,20 @@ public class GameManagementScript : MonoBehaviour {
 
     void Start()
     {
-        resetAll();
         this.state = StateType.MENU;
+        GoToMenu();
     }
 
-    void Update() // while
+    void Update()
     {
 
         switch (state)
         {
             case StateType.MENU :
+                break;
+
+            case StateType.PREGAME:
+
                 break;
 
             case StateType.GAME :
@@ -84,6 +90,9 @@ public class GameManagementScript : MonoBehaviour {
                     }
                 }
                 break;
+
+            default :
+                break;
         }
 
     }
@@ -94,13 +103,17 @@ public class GameManagementScript : MonoBehaviour {
      // Debug.Log("Going to MAIN MENU ");
         resetAll();
         state = StateType.MENU;
+        panelMain.SetActive(true);
+        panelPregame.SetActive(false);
         SceneManager.LoadScene(0); // scene 0 : main menu
     }
 
-    public void GoToPreGameSettings()
+    public void GoToPreGame()
     {
+        Debug.Log("GoingToPregame");
         state = StateType.PREGAME;
-        playButton.enabled = false;
+        panelMain.SetActive(false);
+        panelPregame.SetActive(true);
     }
 
     public void GoToGameStart()
@@ -127,6 +140,7 @@ public class GameManagementScript : MonoBehaviour {
         this.timer.StartTimer();        
     }
 
+    //reset all attributes
     void resetAll() 
     {
         Debug.Log("resetting all");
@@ -134,10 +148,9 @@ public class GameManagementScript : MonoBehaviour {
         enableAnyTextBox = false;
         timerBoxMessage = "";
         anyTextBoxMessage= "";
-        roundsTotal = 3;
+        roundsTotal = 1;
         roundsPlayed = 0;
 
-        //reset all attributes
     }
 
    
