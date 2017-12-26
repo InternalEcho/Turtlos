@@ -9,7 +9,6 @@ public class GameManagementScript : MonoBehaviour {
     public enum StateType
     {
         MENU,
-        PREGAME, // select number of rounds
         GAME,
         POSTGAME
     };
@@ -31,11 +30,7 @@ public class GameManagementScript : MonoBehaviour {
     public DisplayAnyMessage displayMsg;
     public String anyTextBoxMessage;
     public bool enableAnyTextBox;
-
-    [Header("Menu GUI")]
-    public GameObject panelMain;
-    public GameObject panelPregame;
-
+    
     public static GameManagementScript Instance { get; private set; }
 
     private void Awake()
@@ -64,11 +59,7 @@ public class GameManagementScript : MonoBehaviour {
         {
             case StateType.MENU :
                 break;
-
-            case StateType.PREGAME:
-
-                break;
-
+                
             case StateType.GAME :
 
                 timerBoxMessage = timer.timerText;
@@ -103,17 +94,7 @@ public class GameManagementScript : MonoBehaviour {
      // Debug.Log("Going to MAIN MENU ");
         resetAll();
         state = StateType.MENU;
-        panelMain.SetActive(true);
-        panelPregame.SetActive(false);
         SceneManager.LoadScene(0); // scene 0 : main menu
-    }
-
-    public void GoToPreGame()
-    {
-        Debug.Log("GoingToPregame");
-        state = StateType.PREGAME;
-        panelMain.SetActive(false);
-        panelPregame.SetActive(true);
     }
 
     public void GoToGameStart()
@@ -152,7 +133,5 @@ public class GameManagementScript : MonoBehaviour {
         roundsPlayed = 0;
 
     }
-
-   
-
+    
 }

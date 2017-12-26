@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PowerUp
   - Terrain
+  - PanelMain
+  - PanelPregame
   layers:
   - Default
   - TransparentFX
