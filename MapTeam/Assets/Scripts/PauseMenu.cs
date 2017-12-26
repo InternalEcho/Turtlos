@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour
+{
 
     // Use this for initialization
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -17,7 +19,7 @@ public class PauseMenu : MonoBehaviour {
             else
                 Pause();
         }
-	}
+    }
 
     public void Resume()
     {
@@ -33,8 +35,17 @@ public class PauseMenu : MonoBehaviour {
         GameIsPaused = true;
     }
 
-    void MainMenu()
+    public void Restart()
     {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        GameManagementScript.Instance.GoToGameStart();
+    }
 
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        GameManagementScript.Instance.GoToMenu();
     }
 }
