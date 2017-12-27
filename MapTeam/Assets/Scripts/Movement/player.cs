@@ -1,6 +1,7 @@
 ﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class player : MonoBehaviour {
     public float playerSpeed;
     public float playerDecreasedSpeed;
     public float hp = 1.0f; // public for debug purposes but put private later
+    public float totalHp;
     public GameObject gridCell;
     public Color playerColor;
     public Color gridColor;
@@ -18,6 +20,7 @@ public class player : MonoBehaviour {
     private bool canTakeDamage = true;
     public GameObject childrenPlayerObject;
     public int damageImmunityDuration = 2;
+    public Image healthBar;
 
     [Header("Movement/Rotation parameters")]
     private float deltaX;
@@ -103,6 +106,7 @@ public class player : MonoBehaviour {
             if (!this.GetComponent<playerPowerUpManager>().activeShield)    // if shield isn't up
             {
                 hp--;
+                healthBar.fillAmount = hp / totalHp;
                 StartCoroutine(damageImmunityPeriod(true));
             }
             else
