@@ -9,11 +9,11 @@ public class player : MonoBehaviour {
     public float defaultPlayerSpeed = 0.5f;
     public float playerSpeed;
     public float playerDecreasedSpeed;
-    public float hp = 1.0f; // public for debug purposes but put private later
+    public float hp; // public for debug purposes but put private later
     public float totalHp;
     public GameObject gridCell;
     public Color playerColor;
-    public Color gridColor;
+    public Color healthBarColor;
     public Color[] playerColors;
     public string playerNumber = "1";
     public float decreaseSpeedDuration = 3.0f;
@@ -39,6 +39,7 @@ public class player : MonoBehaviour {
         playerSpeed = defaultPlayerSpeed;
         playerDecreasedSpeed = defaultPlayerSpeed / 2;
 		numberStunProjectile = 0;
+        hp = totalHp;
     }
 	
 	// Update is called once per frame
@@ -112,6 +113,7 @@ public class player : MonoBehaviour {
             else
             {
                 this.GetComponent<playerPowerUpManager>().activeShield = false; // else take down shield
+                healthBar.GetComponent<Image>().color = healthBarColor;
                 StartCoroutine(damageImmunityPeriod(false));
             }
         }

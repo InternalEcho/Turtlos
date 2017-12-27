@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerPowerUpManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class playerPowerUpManager : MonoBehaviour
     public float powerUpDuration = 5.0f;
     public float boostSpeed;
     public bool activeShield;
+    public Image healthBar;
 
     private bool activePowerUp;
 
@@ -55,6 +57,7 @@ public class playerPowerUpManager : MonoBehaviour
 
     public void gainShield()
     {
+        healthBar.GetComponent<Image>().color = Color.gray;
         activePowerUp = true;
         Debug.Log("I AM SHIELDED" + numberOfPickups++);
         activeShield = true;
