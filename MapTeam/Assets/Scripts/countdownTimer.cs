@@ -14,8 +14,9 @@ public class countdownTimer : MonoBehaviour {
     {
         timerText = "";
         activated = false;
+        StopAllCoroutines();
     }
-
+    
     public void StartTimer()
     {
         timeLeft = GameManagementScript.Instance.roundTime;

@@ -94,17 +94,18 @@ public class GameManagementScript : MonoBehaviour {
      // Debug.Log("Going to MAIN MENU ");
         resetAll();
         state = StateType.MENU;
-        SceneManager.LoadScene(0); // scene 0 : main menu
+        SceneManager.LoadScene(0); 
     }
 
     public void GoToGameStart()
     {
-        Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
+      //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         state = StateType.GAME;
-        SceneManager.LoadScene(1); // scene 1 : game scene
-        enableTimerBox = true; // show timer
-        enableAnyTextBox = true; // show ready set go box
+        enableTimerBox = true; 
+        enableAnyTextBox = true;
+        StopAllCoroutines(); 
         StartCoroutine(showReadySetGo());
+        SceneManager.LoadScene(1);
     }
     
     public void GoToWinnerChicken()
@@ -112,7 +113,7 @@ public class GameManagementScript : MonoBehaviour {
         state = StateType.POSTGAME;
         resetAll();
         GameObject.Find("GameCanvas").GetComponent<PauseMenu>().displayPostGameMenu();
-        Debug.Log("round over");
+    //    Debug.Log("round over");
     }
     
     public IEnumerator showReadySetGo()
@@ -124,7 +125,7 @@ public class GameManagementScript : MonoBehaviour {
     //reset all attributes
     void resetAll() 
     {
-        Debug.Log("resetting all");
+        Debug.Log("Full reset");
         enableTimerBox = false;
         enableAnyTextBox = false;
         timerBoxMessage = "";

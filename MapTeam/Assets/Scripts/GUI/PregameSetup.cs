@@ -8,7 +8,6 @@ public class PregameSetup : MonoBehaviour {
     {
         if (set)
         {
-            Debug.Log("change to 1 round");
             GameManagementScript.Instance.roundsTotal = 1;
         }
     }
@@ -17,7 +16,6 @@ public class PregameSetup : MonoBehaviour {
     {
         if (set)
         {
-            Debug.Log("change to 3 rounds");
             GameManagementScript.Instance.roundsTotal = 3;
         }
     }
@@ -26,7 +24,6 @@ public class PregameSetup : MonoBehaviour {
     {
         if (set)
         {
-            Debug.Log("change to 5 rounds");
             GameManagementScript.Instance.roundsTotal = 5; 
         }
     }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,18 +6,15 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
     public GameObject postGameMenu;
-    public GameObject inGameUI;
+    //public GameObject inGameUI;
 
     public countdownTimer cdTimer;
-    
-    private Coroutine countdownCoroutine;
 
     private void Start()
     {
         cdTimer = GameManagementScript.Instance.timer;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -57,10 +51,8 @@ public class PauseMenu : MonoBehaviour
         postGameMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        cdTimer.StopTimer();
         GameManagementScript.Instance.GoToGameStart();
-
-        StopCoroutine(countdownCoroutine);
-        StartCoroutine(cdTimer.StartCountdown());
     }
 
     public void MainMenu()
@@ -70,15 +62,4 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         GameManagementScript.Instance.GoToMenu();
     }
-   /*
-    public IEnumerator StartCountdown()
-    {
-        timeLeft = roundDuration;
-        while (timeLeft > 0)
-        {
-            yield return new WaitForSeconds(1.0f);
-            timeLeft--;
-        }
-        displayPostGameMenu();
-    } */
 }

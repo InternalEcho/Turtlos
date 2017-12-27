@@ -16,6 +16,8 @@ public class DisplayAnyMessage : MonoBehaviour {
 	
 	public IEnumerator ReadySetGo()
     {
+        message = "";
+        yield return new WaitForFixedUpdate();
         message = "Ready";
         yield return new WaitForSeconds(1f);
         message = "Set";

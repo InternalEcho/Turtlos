@@ -6,7 +6,8 @@ public class TimerDisplay : MonoBehaviour {
     
     public Text timerBox;
     
-	void Update ()
+
+    void Update ()
     {
         timerBox.text = GameManagementScript.Instance.timerBoxMessage;
         timerBox.enabled = GameManagementScript.Instance.enableTimerBox;
