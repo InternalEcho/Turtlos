@@ -15,6 +15,9 @@ public class player : MonoBehaviour {
     public Color[] playerColors;
     public string playerNumber = "1";
     public float decreaseSpeedDuration = 3.0f;
+    private bool canTakeDamage = true;
+    public GameObject childrenPlayerObject;
+    public int damageImmunityDuration = 2;
 
     [Header("Movement/Rotation parameters")]
     private float deltaX;
@@ -95,14 +98,39 @@ public class player : MonoBehaviour {
 
     public void loseHp()
     {
-        if (!this.GetComponent<playerPowerUpManager>().activeShield)    // if shield isn't up
+        if (canTakeDamage)
         {
-            hp--;
+            if (!this.GetComponent<playerPowerUpManager>().activeShield)    // if shield isn't up
+            {
+                hp--;
+                StartCoroutine(damageImmunityPeriod(true));
+            }
+            else
+            {
+                this.GetComponent<playerPowerUpManager>().activeShield = false; // else take down shield
+                StartCoroutine(damageImmunityPeriod(false));
+            }
+        }
+    }
+
+    IEnumerator damageImmunityPeriod(bool hasTakenActualDamage)
+    {
+        canTakeDamage = false;
+        if (hasTakenActualDamage)
+        {
+            for (int i = 0; i < (damageImmunityDuration / 0.2); i++)
+            {
+                childrenPlayerObject.gameObject.GetComponent<Renderer>().enabled = false;
+                yield return new WaitForSeconds(0.1f);
+                childrenPlayerObject.gameObject.GetComponent<Renderer>().enabled = true;
+                yield return new WaitForSeconds(0.1f);
+            }
         }
         else
         {
-            this.GetComponent<playerPowerUpManager>().activeShield = false; // else take down shield
+            yield return new WaitForSeconds((float)damageImmunityDuration);
         }
+        canTakeDamage = true;
     }
 }
 
