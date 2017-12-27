@@ -91,7 +91,7 @@ public class YvantManager : MonoBehaviour {
 	void FixedUpdate () 
     {
         /* LE BRANDON WAY OF THINGS
-        totalRoundFrames = (1/Time.deltaTime) * (int)GameManagementScript.Instance.roundTime; 
+        totalRoundFrames = (1 / Time.deltaTime) * (int)GameManagementScript.Instance.roundTime; 
         float randMeteorites = Random.Range(0f, (float)totalRoundFrames);
         float randBuffs = Random.Range(0f, (float)totalRoundFrames);
 
@@ -109,18 +109,7 @@ public class YvantManager : MonoBehaviour {
                 StartCoroutine(SpawnBuffs());
             }
         }
-
-        if (GameManagementScript.Instance.timer.activated == true)
-        { 
-            if (randMeteorites <= spawnFreqMeteorites) 
-            {
-                StartCoroutine(SpawnMeteorites());
-            }
-            if (randBuffs <= spawnFreqBuffs)                 
-            {
-                StartCoroutine(SpawnBuffs());
-            }
-        }*/
+*/
 
         //SAFE MODE FOR TESTING
         //float randMeteorites = Random.Range(1.0f, 1.0f);

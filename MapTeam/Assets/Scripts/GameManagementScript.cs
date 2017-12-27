@@ -17,6 +17,7 @@ public class GameManagementScript : MonoBehaviour {
     public StateType state;
     public int roundsTotal;
     public int roundsPlayed;
+    public bool allowPlayerMovement;
 
     [Header("Round timer")]
     [Range(0.0f, 300.0f)]
@@ -119,6 +120,7 @@ public class GameManagementScript : MonoBehaviour {
     public IEnumerator showReadySetGo()
     {
         yield return displayMsg.ReadySetGo();
+        allowPlayerMovement = true;
         this.timer.StartTimer();        
     }
 
@@ -128,6 +130,7 @@ public class GameManagementScript : MonoBehaviour {
         Debug.Log("Full reset");
         enableTimerBox = false;
         enableAnyTextBox = false;
+        allowPlayerMovement = false;
         timerBoxMessage = "";
         anyTextBoxMessage= "";
         roundsTotal = 1;

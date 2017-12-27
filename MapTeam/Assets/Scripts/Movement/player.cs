@@ -21,6 +21,8 @@ public class player : MonoBehaviour {
     public GameObject childrenPlayerObject;
     public int damageImmunityDuration = 2;
     public Image healthBar;
+    [Space]
+    public bool movementAllowed = false; // generic flag (a enlever)
 
     [Header("Movement/Rotation parameters")]
     private float deltaX;
@@ -48,9 +50,15 @@ public class player : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-		rotate();
-        move();
-        shoot();
+
+        movementAllowed = GameManagementScript.Instance.allowPlayerMovement; // a enlever et simplifier
+
+        if (movementAllowed)
+        {
+            rotate();
+            move();
+            shoot();
+        }
     }
 
 	void rotate()
