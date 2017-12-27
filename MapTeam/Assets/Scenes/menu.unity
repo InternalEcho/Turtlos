@@ -1375,7 +1375,7 @@ MonoBehaviour:
   state: 0
   roundsTotal: 3
   roundsPlayed: 0
-  roundTime: 30
+  roundTime: 5
   timer: {fileID: 893527537}
   timerBoxMessage: 
   enableTimerBox: 0

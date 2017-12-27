@@ -73,6 +73,7 @@ public class GameManagementScript : MonoBehaviour {
                     if (roundsPlayed == roundsTotal)
                     {
                         Debug.Log("All rounds played.");
+                        GoToWinnerChicken();
                     }
                     else
                     {
@@ -113,7 +114,6 @@ public class GameManagementScript : MonoBehaviour {
         state = StateType.POSTGAME;
         resetAll();
         GameObject.Find("GameCanvas").GetComponent<PauseMenu>().displayPostGameMenu();
-    //    Debug.Log("round over");
     }
     
     public IEnumerator showReadySetGo()
