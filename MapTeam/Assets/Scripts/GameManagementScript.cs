@@ -103,6 +103,7 @@ public class GameManagementScript : MonoBehaviour {
     {
       //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         state = StateType.GAME;
+        allowPlayerMovement = false; 
         enableTimerBox = true; 
         enableAnyTextBox = true;
         StopAllCoroutines(); 
