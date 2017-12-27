@@ -132,7 +132,7 @@ public class GameManagementScript : MonoBehaviour {
         anyTextBoxMessage= "";
         roundsTotal = 1;
         roundsPlayed = 0;
-
+        StopAllCoroutines();
     }
     
 }

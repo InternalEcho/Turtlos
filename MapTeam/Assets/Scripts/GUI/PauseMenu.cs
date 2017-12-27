@@ -60,6 +60,7 @@ public class PauseMenu : MonoBehaviour
         postGameMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        cdTimer.StopTimer();
         GameManagementScript.Instance.GoToMenu();
     }
 }
