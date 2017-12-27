@@ -5,22 +5,19 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-
-    // Use this for initialization
+    
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
     public GameObject postGameMenu;
     public GameObject inGameUI;
 
-    private string timerText;
-    public float roundDuration = 5f;
-    private float timeLeft;
-
+    public countdownTimer cdTimer;
+    
     private Coroutine countdownCoroutine;
 
     private void Start()
     {
-        countdownCoroutine = StartCoroutine(StartCountdown());
+        cdTimer = GameManagementScript.Instance.timer;
     }
 
     // Update is called once per frame
@@ -33,7 +30,6 @@ public class PauseMenu : MonoBehaviour
             else
                 Pause();
         }
-        GameObject.Find("GameCanvas/In game UI/Text").GetComponent<Text>().text = timeLeft.ToString();
     }
 
     public void displayPostGameMenu()
@@ -64,7 +60,7 @@ public class PauseMenu : MonoBehaviour
         GameManagementScript.Instance.GoToGameStart();
 
         StopCoroutine(countdownCoroutine);
-        StartCoroutine(StartCountdown());
+        StartCoroutine(cdTimer.StartCountdown());
     }
 
     public void MainMenu()
@@ -74,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         GameManagementScript.Instance.GoToMenu();
     }
-
+   /*
     public IEnumerator StartCountdown()
     {
         timeLeft = roundDuration;
@@ -84,5 +80,5 @@ public class PauseMenu : MonoBehaviour
             timeLeft--;
         }
         displayPostGameMenu();
-    }
+    } */
 }

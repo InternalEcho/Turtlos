@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class countdownTimer : MonoBehaviour {
 
     [Header("Round Details")]
     public String timerText = "";
-    public float timeLeft;
+    public int timeLeft;
     public bool activated = false;
-
-    private int timeLeftToInt = 0;
         
     public void StopTimer()
     {
         timerText = "";
-    //    Debug.Log("DISABLE timer!");
         activated = false;
     }
 
-    public void StartTimer(float roundTime)
+    public void StartTimer()
     {
         timeLeft = GameManagementScript.Instance.roundTime;
-     //   Debug.Log("ENABLE timer!");
         activated = true;
-        StartCoroutine(StartCountdown(roundTime));
+        StartCoroutine(StartCountdown());
     }
         
     void FixedUpdate()
@@ -34,28 +30,20 @@ public class countdownTimer : MonoBehaviour {
             timerText = GameManagementScript.Instance.roundTime.ToString();
             return;
         }
-
-        if (timeLeft > 0.0f)
+        else
         {
-            Debug.Log("time left: " + timeLeft);
-            timeLeftToInt = (int)Convert.ToInt32(timeLeft);
-            timerText = timeLeftToInt.ToString();
+            timerText = timeLeft.ToString();
         }
-        if (timeLeft <= 0f)
-        {
-            StopTimer();
-            GameManagementScript.Instance.timerOver = true;
-        }
-
     }
-
-    public IEnumerator StartCountdown(float roundTime)
+    
+    public IEnumerator StartCountdown()
     {
-        timeLeft = roundTime;
         while (timeLeft > 0)
         {
-            yield return new WaitForSeconds(100.0f);
+            yield return new WaitForSeconds(1.0f);
             timeLeft--;
         }
+        StopTimer();
+        GameManagementScript.Instance.timerOver = true;
     }
 }

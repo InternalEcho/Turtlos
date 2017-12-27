@@ -20,7 +20,7 @@ public class GameManagementScript : MonoBehaviour {
 
     [Header("Round timer")]
     [Range(0.0f, 300.0f)]
-    public float roundTime = 30.0f; 
+    public int roundTime = 30; 
     public countdownTimer timer;
     public String timerBoxMessage;
     public bool enableTimerBox;
@@ -38,7 +38,7 @@ public class GameManagementScript : MonoBehaviour {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Memo : "Makes the object target not be destroyed automatically when loading a new scene."
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -99,7 +99,7 @@ public class GameManagementScript : MonoBehaviour {
 
     public void GoToGameStart()
     {
-    //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
+        Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
         state = StateType.GAME;
         SceneManager.LoadScene(1); // scene 1 : game scene
         enableTimerBox = true; // show timer
@@ -118,7 +118,7 @@ public class GameManagementScript : MonoBehaviour {
     public IEnumerator showReadySetGo()
     {
         yield return displayMsg.ReadySetGo();
-        this.timer.StartTimer(roundTime);        
+        this.timer.StartTimer();        
     }
 
     //reset all attributes

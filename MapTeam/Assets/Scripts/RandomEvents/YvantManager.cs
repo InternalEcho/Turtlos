@@ -80,7 +80,6 @@ public class YvantManager : MonoBehaviour {
 
     void Start () 
     {
-        totalRoundFrames = 60 * (int)GameManagementScript.Instance.roundTime; //~60 fps
         mapCenterX = map.GetComponent<GridMap>().getCenterX();
         mapCenterY = map.GetComponent<GridMap>().getCenterY();
         mapLengthX = map.GetComponent<GridMap>().lengthX;
@@ -92,6 +91,7 @@ public class YvantManager : MonoBehaviour {
 	void FixedUpdate () 
     {
         /* LE BRANDON WAY OF THINGS
+        totalRoundFrames = (1/Time.deltaTime) * (int)GameManagementScript.Instance.roundTime; 
         float randMeteorites = Random.Range(0f, (float)totalRoundFrames);
         float randBuffs = Random.Range(0f, (float)totalRoundFrames);
 
