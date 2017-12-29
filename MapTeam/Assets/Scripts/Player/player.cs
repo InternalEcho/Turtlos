@@ -11,7 +11,6 @@ public class player : MonoBehaviour {
     public float playerDecreasedSpeed;
     public float hp; // public for debug purposes but put private later
     public float totalHp;
-    public GameObject gridCell;
     public Color playerColor;
     public Color healthBarColor;
     public Color[] playerColors;

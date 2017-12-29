@@ -82,18 +82,21 @@ public class GridMap : MonoBehaviour
                 this.internalGrid[i, j].Cell.transform.SetParent(this.gameObject.transform);
             }
         }
+
+        generateInvisibleWalls(lengthX, lengthY);
     }
 
     void generateInvisibleWalls(int lengthX, int lengthY)
     {
-        GameObject WallX1 = Instantiate(invisibleWall, new Vector3(-1, 0.0f, centerY - 1), Quaternion.identity) as GameObject;    // -x
-        WallX1.transform.localScale = new Vector3(1.0f, 5.0f, lengthY + 2);
-        GameObject WallX2 = Instantiate(invisibleWall, new Vector3(lengthX, 0.0f, centerY - 1), Quaternion.identity) as GameObject;    // +x
-        WallX2.transform.localScale = new Vector3(1.0f, 5.0f, lengthY + 2);
-        GameObject WallZ1 = Instantiate(invisibleWall, new Vector3(centerX, 0.0f, -1), Quaternion.identity) as GameObject;   // -z
-        WallZ1.transform.localScale = new Vector3(lengthX + 2, 5.0f, 1.0f);
-        GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0.0f, lengthY), Quaternion.identity) as GameObject;   // +z
-        WallZ2.transform.localScale = new Vector3(lengthX + 2, 5.0f, 1.0f);
+        int wallheight = 5, wallThickness = 3;
+        GameObject WallX1 = Instantiate(invisibleWall, new Vector3(-2, 0, centerY), Quaternion.identity) as GameObject;    // -x
+        WallX1.transform.localScale = new Vector3(wallThickness, wallheight, lengthY + 12);
+        GameObject WallX2 = Instantiate(invisibleWall, new Vector3(lengthX + 1, 0, centerY), Quaternion.identity) as GameObject;    // +x
+        WallX2.transform.localScale = new Vector3(wallThickness, wallheight, lengthY + 12);
+        GameObject WallZ1 = Instantiate(invisibleWall, new Vector3(centerX, 0, -2), Quaternion.identity) as GameObject;   // -z
+        WallZ1.transform.localScale = new Vector3(lengthX + 12, wallheight, wallThickness);
+        GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0, lengthY + 1), Quaternion.identity) as GameObject;   // +z
+        WallZ2.transform.localScale = new Vector3(lengthX + 12, wallheight, wallThickness);
     }
 
     private int findCenter(int value)
