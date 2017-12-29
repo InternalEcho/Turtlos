@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     public void displayPostGameMenu()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         postGameMenu.SetActive(true);
     }
 

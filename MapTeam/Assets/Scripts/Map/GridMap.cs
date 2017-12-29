@@ -53,7 +53,7 @@ public class GridMap : MonoBehaviour
             if (players.Count == 1)
             {
                 StartCoroutine(endRound());
-               
+                players.Clear();
             }
                
 
