@@ -85,6 +85,10 @@ public class player : MonoBehaviour {
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
                 numberStunProjectile -= 1;
+                if (numberStunProjectile == 0)
+                {
+                    this.gameObject.GetComponent<playerPowerUpManager>().setPowerUpStatus(false);
+                }
             }
         }
     }
@@ -144,6 +148,7 @@ public class player : MonoBehaviour {
         else
         {
             yield return new WaitForSeconds((float)damageImmunityDuration);
+            this.gameObject.GetComponent<playerPowerUpManager>().setPowerUpStatus(false);
         }
         canTakeDamage = true;
     }

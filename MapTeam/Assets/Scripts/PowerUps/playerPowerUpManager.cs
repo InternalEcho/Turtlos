@@ -7,7 +7,7 @@ public class playerPowerUpManager : MonoBehaviour
 {
     [Header("Power-up parameters")]
     public float powerUpDuration = 5.0f;
-    public float boostSpeed;
+    public float boostSpeed;    //public for debug
     public bool activeShield;
     public Image healthBar;
 
@@ -94,6 +94,11 @@ public class playerPowerUpManager : MonoBehaviour
     public bool getPowerUpStatus()
     {
         return activePowerUp;
+    }
+
+    public void setPowerUpStatus(bool status)
+    {
+        activePowerUp = status;
     }
 
     //TESTING
