@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -204,7 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultTerrain: {fileID: 1446730453969422, guid: 747deb861ef12e540ba94bff5feab06d,
     type: 2}
-  invisibleWall: {fileID: 0}
+  invisibleWall: {fileID: 1804060936579296, guid: 2fbdb4c61b773f54ca9bcc3509b88df2,
+    type: 2}
   player0: {fileID: 830485590}
   player1: {fileID: 1025989766}
   lengthX: 50
@@ -1480,6 +1481,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2955,14 +2970,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSec: 1
   maxSec: 2
-  spawnFreqMeteorites: 0.2
-  spawnFreqClouds: 0.01
+  spawnFreqMeteorites: 0.1
+  spawnFreqClouds: 0.005
   spawnFreqBuffs: 0.01
   meteorite: {fileID: 1678560608800154, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
-  mapCenterX: 0
-  mapCenterY: 0
-  mapLengthX: 0
-  mapLengthY: 0
   meteoriteHeight: 50
   cloud: {fileID: 1318099139370936, guid: 71f570771e69c624fa8a8607afd05afd, type: 2}
   cloudHeight: 20

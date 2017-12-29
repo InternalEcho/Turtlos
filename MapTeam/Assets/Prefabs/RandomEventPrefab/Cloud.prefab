@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOffset: 20
-  translationSpeed: 10
-  cloudLifeDuration: 15
+  translationSpeed: 5
+  cloudLifeDuration: 20

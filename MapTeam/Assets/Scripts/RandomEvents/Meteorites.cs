@@ -19,7 +19,7 @@ public class Meteorites : GenericYvant {
 
     private int meteoriteTimeoutLimit = 3;  // destroy the meteorite and the associated shedew if it lives past this amount of seconds
     private Vector3 impactPosition;
-    private GridCell impactCell;
+    //private GridCell impactCell;
     private Vector3 offset = new Vector3(0, 1, 0);
 
     [SerializeField]
@@ -50,22 +50,22 @@ public class Meteorites : GenericYvant {
         }*/
 	}
 
-    public override void spawn(float meteoriteHeight, GameObject map)
+    public override void spawn(float meteoriteHeight, int mapLengthX, int mapLengthY)
     {
         //ALL METEORITES SPAWN AT THE CENTER OF THE MAP VARIANT
         /*int centerX = map.GetComponent<GridMap>().getCenterX();
         int centerY = map.GetComponent<GridMap>().getCenterY();
         this.transform.position = new Vector3(centerX, meteoriteHeight, centerY);*/
 
-        int spawnX = (int)Random.Range(0, map.GetComponent<GridMap>().lengthX);
-        int spawnY = (int)Random.Range(0, map.GetComponent<GridMap>().lengthY);
+        int spawnX = (int)Random.Range(0, mapLengthX);
+        int spawnY = (int)Random.Range(0, mapLengthY);
         this.transform.position = new Vector3(spawnX, meteoriteHeight, spawnY);
-        //this.transform.rotation = Random.rotation;
+        this.transform.rotation = Random.rotation;
 
-        int impactX = (int) Random.Range(0, map.GetComponent<GridMap>().lengthX);
-        int impactY = (int)Random.Range(0, map.GetComponent<GridMap>().lengthY);
+        int impactX = (int) Random.Range(0, mapLengthX);
+        int impactY = (int)Random.Range(0, mapLengthY);
         impactPosition = new Vector3(impactX, 0, impactY);
-        impactCell = map.GetComponent<GridMap>().getCell(impactX, impactY);
+        //impactCell = map.GetComponent<GridMap>().getCell(impactX, impactY);
 
         myShedew = Instantiate(prefab, impactPosition + offset, Quaternion.identity) as GameObject;
 
@@ -99,7 +99,7 @@ public class Meteorites : GenericYvant {
         }
         else if (collision.gameObject.tag == "Terrain")
         {
-            impactCell.Cell.GetComponent<gridCellBehavior>().meteorHit();
+            collision.gameObject.GetComponent<gridCellBehavior>().meteorHit();
             this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
             yee.Play();

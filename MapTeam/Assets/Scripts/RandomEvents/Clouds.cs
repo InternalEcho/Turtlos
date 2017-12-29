@@ -13,33 +13,30 @@ public class Clouds : GenericYvant
         Debug.Log("Cloud9!!!");
     }
 
-    public override void spawn(float height, GameObject map)
+    public override void spawn(float height, int mapLengthX, int mapLengthY)
     {
-        int mapLengthX = map.GetComponent<GridMap>().lengthX;
-        int mapLengthZ = map.GetComponent<GridMap>().lengthY;
-
         Vector3 spawnPos = new Vector3(0.0f, 0.0f, 0.0f);
         floatDirection = Random.Range(0, 4);
         switch (floatDirection)
         {
             case 0: // -x
-                spawnPos = new Vector3((float) -spawnOffset, height, Random.Range(0, mapLengthZ));
+                spawnPos = new Vector3((float) -spawnOffset, height, Random.Range(0, mapLengthY));
                 break;
             case 1: // +x
-                spawnPos = new Vector3((float) mapLengthX + spawnOffset, height, Random.Range(0, mapLengthZ));
+                spawnPos = new Vector3((float) mapLengthX + spawnOffset, height, Random.Range(0, mapLengthY));
                 break;
             case 2: // -z
                 spawnPos = new Vector3(Random.Range(0, mapLengthX), height, -spawnOffset);
                 break;
             case 3: // +z
-                spawnPos = new Vector3(Random.Range(0, mapLengthX), height, (float) mapLengthZ + spawnOffset);
+                spawnPos = new Vector3(Random.Range(0, mapLengthX), height, (float) mapLengthY + spawnOffset);
                 break;
             default:
                 Debug.LogError("Cloud Spawn Error");
                 break;
         }
         this.transform.position = spawnPos;
-        this.transform.LookAt(new Vector3(Random.Range(0, mapLengthX), height, Random.Range(0, mapLengthZ)));
+        this.transform.LookAt(new Vector3(Random.Range(0, mapLengthX), height, Random.Range(0, mapLengthY)));
         Invoke("DestroyCloud", cloudLifeDuration);
     }
 
