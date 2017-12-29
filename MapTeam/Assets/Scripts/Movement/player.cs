@@ -21,6 +21,7 @@ public class player : MonoBehaviour {
     public GameObject childrenPlayerObject;
     public int damageImmunityDuration = 2;
     public Image healthBar;
+    public GameObject stunParticleHolder;
     [Space]
     public bool movementAllowed = false; // generic flag (a enlever)
 
@@ -145,6 +146,18 @@ public class player : MonoBehaviour {
             yield return new WaitForSeconds((float)damageImmunityDuration);
         }
         canTakeDamage = true;
+    }
+
+    public void playerStunned(float stunDuration)
+    {
+        StartCoroutine(stunParticleHolder.GetComponent<stunParticle>().playStunParticles(stunDuration));
+        StartCoroutine(stunRecovery(stunDuration));
+    }
+
+    private IEnumerator stunRecovery (float recoveryTime)
+    {
+        yield return new WaitForSeconds(recoveryTime);
+        playerSpeed = defaultPlayerSpeed;
     }
 }
 

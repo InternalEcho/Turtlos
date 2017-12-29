@@ -57,7 +57,7 @@ public class playerPowerUpManager : MonoBehaviour
 
     public void gainShield()
     {
-        healthBar.GetComponent<Image>().color = Color.gray;
+        healthBar.GetComponent<Image>().color = Color.cyan;
         activePowerUp = true;
         Debug.Log("I AM SHIELDED" + numberOfPickups++);
         activeShield = true;
