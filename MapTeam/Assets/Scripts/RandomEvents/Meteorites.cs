@@ -17,6 +17,7 @@ public class Meteorites : GenericYvant {
     [SerializeField]
     float speed;
 
+    [Space]
     private int meteoriteTimeoutLimit = 3;  // destroy the meteorite and the associated shedew if it lives past this amount of seconds
     private Vector3 impactPosition;
     //private GridCell impactCell;

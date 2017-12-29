@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.85294116, g: 0.85294116, b: 0.85294116, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.005
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -771,10 +771,10 @@ MonoBehaviour:
   offset: {x: 0, y: 56.4, z: -58.1}
   myCamPos: {fileID: 143327976}
   camSpeed: 0.5
-  minZoom: 100
+  minZoom: 80
   maxZoom: 20
   zoomSpeedFactor: 0.5
-  zoomLimiter: 80
+  zoomLimiter: 60
 --- !u!1 &186024000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,11 +2797,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488414, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_LocalScale.x
-      value: 200
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 488414, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_LocalScale.z
-      value: 200
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 134336, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_Name

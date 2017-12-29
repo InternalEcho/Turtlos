@@ -55,8 +55,8 @@ public class GridMap : MonoBehaviour
                 StartCoroutine(endRound());
                 players.Clear();
             }
-               
 
+            
             playerPosition = this.internalGrid[(int)player.transform.position.x, (int)player.transform.position.z]; // finds current player gridcell
             if (this.playerPosition.Cell.GetComponent<Renderer>().material.color == Color.black)    // Player loses Hp when walking on charred tiles?
                 player.GetComponent<player>().loseHp();
