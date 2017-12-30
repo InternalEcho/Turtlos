@@ -21,6 +21,7 @@ public class player : MonoBehaviour {
     public int damageImmunityDuration = 2;
     public Image healthBar, ammoBar;
     public GameObject stunParticleHolder;
+    public Animator animator;
     [Space]
     public bool movementAllowed = false; // generic flag (a enlever)
 
@@ -42,6 +43,7 @@ public class player : MonoBehaviour {
         playerDecreasedSpeed = defaultPlayerSpeed / 2;
 		numberStunProjectile = 0;
         hp = totalHp;
+        animator = this.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -58,6 +60,7 @@ public class player : MonoBehaviour {
             //rotate();
             move();
             shoot();
+            animate();
         }
     }
 
@@ -102,6 +105,12 @@ public class player : MonoBehaviour {
 
         this.transform.LookAt(this.transform.position + direction);
         this.transform.Translate(direction * playerSpeed, Space.World);
+    }
+
+    void animate()
+    {
+        bool isMoving = (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 || Input.GetAxisRaw("Vertical" + playerNumber) != 0);
+        animator.SetBool("IsMoving", isMoving);
     }
 
     public void decreaseSpeed()
