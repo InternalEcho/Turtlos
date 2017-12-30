@@ -19,7 +19,7 @@ public class player : MonoBehaviour {
     private bool canTakeDamage = true;
     public GameObject childrenPlayerObject;
     public int damageImmunityDuration = 2;
-    public Image healthBar;
+    public Image healthBar, ammoBar;
     public GameObject stunParticleHolder;
     [Space]
     public bool movementAllowed = false; // generic flag (a enlever)
@@ -84,8 +84,10 @@ public class player : MonoBehaviour {
                 GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
                 numberStunProjectile -= 1;
+                ammoBar.fillAmount -= 0.33f;
                 if (numberStunProjectile == 0)
                 {
+                    ammoBar.fillAmount = 0;
                     this.gameObject.GetComponent<playerPowerUpManager>().setPowerUpStatus(false);
                 }
             }

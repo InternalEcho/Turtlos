@@ -27,9 +27,9 @@ public class YvantManager : MonoBehaviour {
 
     [Header("Buff Settings")]
     public GameObject[] buffs;
-    private int randBuff;
-    public float minSec_Buff, maxSec_Buff;
-    private int randPosX, randPosY;
+    public float buffLifeSpan;
+    private int randBuff, randPosX, randPosY;
+    //public float minSec_Buff, maxSec_Buff;
     public int buffHeight = 1;
     public GameObject map;
 
@@ -52,6 +52,7 @@ public class YvantManager : MonoBehaviour {
         randPosY = Random.Range(0, mapLengthY);
         Vector3 randPos = new Vector3(randPosX, buffHeight, randPosY);
         GameObject newBuff = Instantiate(buffs[randBuff], randPos, Quaternion.identity) as GameObject;
+        StartCoroutine(newBuff.GetComponent<genericPowerUp>().lifeSpan(buffLifeSpan));
     }
 
     /*private IEnumerator SpawnMeteorites()

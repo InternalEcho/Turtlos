@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class bullet : MonoBehaviour {
-    public float expiryTime;
-    public float stunDuration;
-    // Use this for initialization
+    public float stunDuration, expiryTime;
+
     void Start () {
-        //Destroy(gameObject, expiryTime);
-	}
+        Destroy(gameObject, expiryTime);
+        Physics2D.IgnoreLayerCollision(10, 11, true);
+        Physics2D.IgnoreLayerCollision(11, 11, true);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class becomeXS : MonoBehaviour {
+public class becomeXS : genericPowerUp
+{
 
     void OnTriggerEnter(Collider collision)
     {

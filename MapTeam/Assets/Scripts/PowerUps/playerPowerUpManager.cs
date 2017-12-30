@@ -53,6 +53,7 @@ public class playerPowerUpManager : MonoBehaviour
         activePowerUp = true;
         Debug.Log("I AM ARMED" + numberOfPickups++);
         this.GetComponent<player>().numberStunProjectile = 3;
+        this.GetComponent<player>().ammoBar.fillAmount = 1;
     }
 
     public void gainShield()

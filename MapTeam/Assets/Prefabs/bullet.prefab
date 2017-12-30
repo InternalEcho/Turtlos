@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135215251943278454}
   - component: {fileID: 54150154811037892}
   - component: {fileID: 114825442870276242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,10 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f183ed12e33466446b6bdc0f49feceb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expiryTime: 3
   stunDuration: 5
-  stunParticle: {fileID: 198047935752038808, guid: 7fe11185fe0683743b50448fd6858cde,
-    type: 2}
+  expiryTime: 3
 --- !u!135 &135215251943278454
 SphereCollider:
   m_ObjectHideFlags: 1

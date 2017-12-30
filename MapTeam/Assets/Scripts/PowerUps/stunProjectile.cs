@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stunProjectile : MonoBehaviour {
+public class stunProjectile : genericPowerUp
+{
 
     void OnTriggerEnter(Collider collision)
     {

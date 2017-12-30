@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gainShield : MonoBehaviour
+public class gainShield : genericPowerUp
 {
     void OnTriggerEnter(Collider collision)
     {

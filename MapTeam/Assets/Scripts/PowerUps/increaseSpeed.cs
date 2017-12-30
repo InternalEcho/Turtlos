@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class increaseSpeed : MonoBehaviour {
+public class increaseSpeed : genericPowerUp
+{
 
     void OnTriggerEnter(Collider collision)
     {
