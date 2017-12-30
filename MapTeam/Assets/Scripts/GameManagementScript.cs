@@ -117,6 +117,7 @@ public class GameManagementScript : MonoBehaviour {
     public void GoToWinnerChicken()
     {
         state = StateType.POSTGAME;
+        this.timer.StopTimer();
         resetAll();
         GameObject.Find("GameCanvas").GetComponent<PauseMenu>().displayPostGameMenu();
     }
