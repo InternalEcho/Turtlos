@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ Transform:
   m_LocalScale: {x: 500, y: 1, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3293477
 MonoBehaviour:
@@ -688,8 +688,8 @@ MonoBehaviour:
   offset: {x: 0, y: 56.4, z: -58.1}
   myCamPos: {fileID: 143327976}
   camSpeed: 0.5
-  minZoom: 80
-  maxZoom: 20
+  minZoom: 65
+  maxZoom: 15
   zoomSpeedFactor: 0.5
   zoomLimiter: 60
 --- !u!1 &186024000
@@ -972,7 +972,7 @@ RectTransform:
   - {fileID: 1260447911}
   - {fileID: 72112143}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1252,7 +1252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &416346618
 Transform:
@@ -1450,7 +1450,7 @@ Transform:
   m_LocalScale: {x: 500, y: 1, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &694350274
 GameObject:
@@ -1483,7 +1483,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1524,13 +1524,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 694350274}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7058437, y: -0.042244233, z: 0.3163373, w: 0.6324009}
+  m_LocalPosition: {x: 15, y: 15, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 113.149994, y: -90, z: -60}
 --- !u!1 &717135704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,6 +1759,7 @@ MonoBehaviour:
   healthBar: {fileID: 186024002}
   ammoBar: {fileID: 336396510}
   stunParticleHolder: {fileID: 87943197}
+  animator: {fileID: 0}
   movementAllowed: 0
   gun: {fileID: 0}
   bulletSpeed: 1000
@@ -1796,7 +1797,7 @@ Transform:
   - {fileID: 1861812067}
   - {fileID: 87943198}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870349564
 GameObject:
@@ -2346,6 +2347,7 @@ MonoBehaviour:
   healthBar: {fileID: 939060513}
   ammoBar: {fileID: 1121738077}
   stunParticleHolder: {fileID: 4781051}
+  animator: {fileID: 0}
   movementAllowed: 0
   gun: {fileID: 0}
   bulletSpeed: 1000
@@ -2383,7 +2385,7 @@ Transform:
   - {fileID: 493557387}
   - {fileID: 4781052}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034034498
 GameObject:
@@ -2489,6 +2491,85 @@ Transform:
   m_Father: {fileID: 416346618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1120438450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1120438452}
+  - component: {fileID: 1120438451}
+  m_Layer: 0
+  m_Name: Directional Light (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1120438451
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120438450}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1120438452
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120438450}
+  m_LocalRotation: {x: 0.6350989, y: -0.31088445, z: 0.04831548, w: 0.7054544}
+  m_LocalPosition: {x: 45, y: 15, z: 25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 67.836006, y: -90.00001, z: -60.000004}
 --- !u!1 &1121738075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,15 +3132,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488414, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 488414, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 488414, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_LocalScale.z
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 134336, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: m_Name
@@ -3225,7 +3306,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1727449169
 MonoBehaviour:
@@ -3238,11 +3319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6644b262d088de4db71325efb700bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSec: 1
-  maxSec: 2
   spawnFreqMeteorites: 0.1
   spawnFreqClouds: 0.005
-  spawnFreqBuffs: 0.01
+  spawnFreqBuffs: 0.0025
   meteorite: {fileID: 1678560608800154, guid: 19ac5b921438bd849b201beedcc19700, type: 2}
   meteoriteHeight: 50
   cloud: {fileID: 1318099139370936, guid: 71f570771e69c624fa8a8607afd05afd, type: 2}
