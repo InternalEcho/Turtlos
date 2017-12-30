@@ -18,6 +18,7 @@ public class GameManagementScript : MonoBehaviour {
     public int roundsTotal;
     public int roundsPlayed;
     public bool allowPlayerMovement;
+    public AudioSource introMusic;
 
     [Header("Round timer")]
     [Range(0.0f, 300.0f)]
@@ -95,13 +96,15 @@ public class GameManagementScript : MonoBehaviour {
     {
      // Debug.Log("Going to MAIN MENU ");
         resetAll();
+        introMusic.Play();
         state = StateType.MENU;
         SceneManager.LoadScene(0); 
     }
 
     public void GoToGameStart()
     {
-      //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
+        //  Debug.Log("Go to GAME SCENE. Rounds played : " + roundsPlayed);
+        introMusic.Stop();
         state = StateType.GAME;
         allowPlayerMovement = false; 
         enableTimerBox = true; 
