@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteorites : GenericYvant {
 
-    [Header("direction min max")]
+    /*[Header("direction min max")]
     [SerializeField][Range(-1,0)]
     float x_min;
     [SerializeField][Range(-1,0)]
@@ -13,7 +13,7 @@ public class Meteorites : GenericYvant {
     float x_max;
     [SerializeField][Range(0, 1)]
     float y_max;
-    [Header("vitesse meteorite")]
+    [Header("vitesse meteorite")]*/
     [SerializeField]
     float speed;
 
@@ -23,8 +23,8 @@ public class Meteorites : GenericYvant {
     //private GridCell impactCell;
     private Vector3 offset = new Vector3(0, 1, 0);
 
-    [SerializeField]
-    AudioSource yee;
+    /*[SerializeField]
+    AudioSource yee;*/
 
     private GameObject myShedew;
     public GameObject prefab;
@@ -95,7 +95,7 @@ public class Meteorites : GenericYvant {
             collision.gameObject.GetComponent<player>().loseHp();
             this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
-            yee.Play();
+            this.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject, 3);
         }
         else if (collision.gameObject.tag == "Terrain")
@@ -103,7 +103,7 @@ public class Meteorites : GenericYvant {
             collision.gameObject.GetComponent<gridCellBehavior>().meteorHit();
             this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
-            yee.Play();
+            this.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject, 3);
         }
     }
