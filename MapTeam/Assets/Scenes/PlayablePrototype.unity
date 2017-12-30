@@ -1329,6 +1329,22 @@ Animator:
 Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
   m_PrefabInternal: {fileID: 467944541}
+--- !u!1 &467944544 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!65 &467944545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467944544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51099354, y: 0.28104684, z: 0.60426}
+  m_Center: {x: 0, y: 0.000000059604645, z: -0.021609902}
 --- !u!1 &493557386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1829,7 @@ MonoBehaviour:
   playerColors: []
   playerNumber: 1
   decreaseSpeedDuration: 3
-  childrenPlayerObject: {fileID: 905564582}
+  childrenPlayerObject: {fileID: 467944544}
   damageImmunityDuration: 2
   healthBar: {fileID: 186024002}
   ammoBar: {fileID: 336396510}
@@ -2181,7 +2197,7 @@ BoxCollider:
   m_GameObject: {fileID: 905564582}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
