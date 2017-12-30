@@ -43,7 +43,7 @@ public class player : MonoBehaviour {
         playerDecreasedSpeed = defaultPlayerSpeed / 2;
 		numberStunProjectile = 0;
         hp = totalHp;
-        animator = this.GetComponent<Animator>();
+        
     }
 	
 	// Update is called once per frame
@@ -110,6 +110,7 @@ public class player : MonoBehaviour {
     void animate()
     {
         bool isMoving = (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 || Input.GetAxisRaw("Vertical" + playerNumber) != 0);
+        Debug.Log("ismoving: " + isMoving);
         animator.SetBool("IsMoving", isMoving);
     }
 
