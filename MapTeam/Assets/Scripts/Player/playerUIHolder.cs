@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerUI : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+public class playerUIHolder : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        transform.rotation = Quaternion.identity;
 	}
 }

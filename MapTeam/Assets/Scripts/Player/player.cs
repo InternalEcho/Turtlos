@@ -55,13 +55,13 @@ public class player : MonoBehaviour {
 
         if (movementAllowed)
         {
-            rotate();
+            //rotate();
             move();
             shoot();
         }
     }
 
-	void rotate()
+	/*void rotate()
 	{
         deltaX = Input.GetAxis("RotateX"+playerNumber);
         deltaY = Input.GetAxis("RotateY"+playerNumber); 
@@ -73,7 +73,7 @@ public class player : MonoBehaviour {
 		Vector3 currentLook = transform.position + transform.GetChild(0).forward;
 
 		gun.transform.LookAt(Vector3.Lerp(currentLook, pointToLook, .5f));
-    }
+    }*/
 
     void shoot()
     {
@@ -99,6 +99,8 @@ public class player : MonoBehaviour {
         float x = Input.GetAxisRaw("Horizontal" + playerNumber);
         float z = Input.GetAxisRaw("Vertical" + playerNumber);
         Vector3 direction = new Vector3(x, 0f, z);
+
+        this.transform.LookAt(this.transform.position + direction);
         this.transform.Translate(direction * playerSpeed, Space.World);
     }
 
