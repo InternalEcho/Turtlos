@@ -91,11 +91,11 @@ public class GridMap : MonoBehaviour
         int wallheight = 5, wallThickness = 3;
         GameObject WallX1 = Instantiate(invisibleWall, new Vector3(-2, 0, centerY), Quaternion.identity) as GameObject;    // -x
         WallX1.transform.localScale = new Vector3(wallThickness, wallheight, lengthY + 12);
-        GameObject WallX2 = Instantiate(invisibleWall, new Vector3(lengthX + 1, 0, centerY), Quaternion.identity) as GameObject;    // +x
+        GameObject WallX2 = Instantiate(invisibleWall, new Vector3(lengthX + 1.5f, 0, centerY), Quaternion.identity) as GameObject;    // +x
         WallX2.transform.localScale = new Vector3(wallThickness, wallheight, lengthY + 12);
         GameObject WallZ1 = Instantiate(invisibleWall, new Vector3(centerX, 0, -2), Quaternion.identity) as GameObject;   // -z
         WallZ1.transform.localScale = new Vector3(lengthX + 12, wallheight, wallThickness);
-        GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0, lengthY + 1), Quaternion.identity) as GameObject;   // +z
+        GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0, lengthY + 1.5f), Quaternion.identity) as GameObject;   // +z
         WallZ2.transform.localScale = new Vector3(lengthX + 12, wallheight, wallThickness);
     }
 
