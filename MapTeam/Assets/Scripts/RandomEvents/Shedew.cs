@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shedew : MonoBehaviour {
 
     [SerializeField][Range(0.0f,0.1f)]
-    float plus = 0.001f;
+    public float plus = 0.001f;
 
 	// Use this for initialization
 	void Start () {
