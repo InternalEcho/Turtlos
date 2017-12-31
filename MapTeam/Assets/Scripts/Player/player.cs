@@ -17,7 +17,7 @@ public class player : MonoBehaviour {
     public string playerNumber = "1";
     public float decreaseSpeedDuration = 3.0f;
     private bool canTakeDamage = true;
-    public GameObject childrenPlayerObject;
+    public GameObject turtleHolder;
     public int damageImmunityDuration = 2;
     public Image healthBar, ammoBar;
     public GameObject stunParticleHolder;
@@ -110,7 +110,7 @@ public class player : MonoBehaviour {
     void animate()
     {
         bool isMoving = (Input.GetAxisRaw("Horizontal" + playerNumber) != 0 || Input.GetAxisRaw("Vertical" + playerNumber) != 0);
-        Debug.Log("ismoving: " + isMoving);
+        //Debug.Log("ismoving: " + isMoving);
         animator.SetBool("IsMoving", isMoving);
     }
 
@@ -152,9 +152,10 @@ public class player : MonoBehaviour {
         {
             for (int i = 0; i < (damageImmunityDuration / 0.2); i++)
             {
-                childrenPlayerObject.gameObject.GetComponent<Renderer>().enabled = false;
+                Debug.Log("DamageTaken");
+                turtleHolder.GetComponent<turtleRenderer>().turnOffRenderers();
                 yield return new WaitForSeconds(0.1f);
-                childrenPlayerObject.gameObject.GetComponent<Renderer>().enabled = true;
+                turtleHolder.GetComponent<turtleRenderer>().turnOnRenderers();
                 yield return new WaitForSeconds(0.1f);
             }
         }

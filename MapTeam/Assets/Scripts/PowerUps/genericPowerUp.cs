@@ -9,9 +9,9 @@ public class genericPowerUp : MonoBehaviour {
         float lifeSpanAlmostUp = powerUpLifeSpan / 10;  //Start flashing at 1/10 the lifespan of a PowerUp
         float lifeSpanFlashInterval = lifeSpanAlmostUp / 20;
         float lifeSpanNormal = lifeSpanAlmostUp * 9;
-        Debug.Log("LifeSpanAlmostUp: " + lifeSpanAlmostUp);
+        /*Debug.Log("LifeSpanAlmostUp: " + lifeSpanAlmostUp);
         Debug.Log("LifeSpanFlashInterval: " + (float) lifeSpanFlashInterval);
-        Debug.Log("LifeSpanNormal: " + lifeSpanNormal);
+        Debug.Log("LifeSpanNormal: " + lifeSpanNormal);*/
         yield return new WaitForSeconds(lifeSpanNormal);
         for (int i = 0; i < 10; i++)
         {
