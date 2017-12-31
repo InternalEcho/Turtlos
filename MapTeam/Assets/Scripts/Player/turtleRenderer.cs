@@ -8,7 +8,6 @@ public class turtleRenderer : MonoBehaviour {
 
     public void turnOnRenderers()
     {
-        Debug.Log("Renderers On 1");
         this.gameObject.GetComponent<Renderer>().enabled = true;    //turtle shell
         LeftBackFin.GetComponent<Renderer>().enabled = true;
         LeftFrontFin.GetComponent<Renderer>().enabled = true;
@@ -17,12 +16,10 @@ public class turtleRenderer : MonoBehaviour {
         tail.GetComponent<Renderer>().enabled = true;
         lowerJaw.GetComponent<Renderer>().enabled = true;
         upperJaw.GetComponent<Renderer>().enabled = true;
-        Debug.Log("Renderers On 2");
     }
 
     public void turnOffRenderers()
     {
-        Debug.Log("Renderers Off 1");
         this.gameObject.GetComponent<Renderer>().enabled = false;    //turtle shell
         LeftBackFin.GetComponent<Renderer>().enabled = false;
         LeftFrontFin.GetComponent<Renderer>().enabled = false;
@@ -31,6 +28,5 @@ public class turtleRenderer : MonoBehaviour {
         tail.GetComponent<Renderer>().enabled = false;
         lowerJaw.GetComponent<Renderer>().enabled = false;
         upperJaw.GetComponent<Renderer>().enabled = false;
-        Debug.Log("Renderers Off 2");
     }
 }

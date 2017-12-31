@@ -28,7 +28,7 @@ public class player : MonoBehaviour {
     [Header("Movement/Rotation parameters")]
     private float deltaX;
     private float deltaY;
-	public GameObject gun;
+	//public GameObject gun;
 
     [Header("Projectile Power-up")]
     public float bulletSpeed;
@@ -161,7 +161,6 @@ public class player : MonoBehaviour {
         {
             for (int i = 0; i < (damageImmunityDuration / 0.2); i++)
             {
-                Debug.Log("DamageTaken");
                 turtleHolder.GetComponent<turtleRenderer>().turnOffRenderers();
                 yield return new WaitForSeconds(0.1f);
                 turtleHolder.GetComponent<turtleRenderer>().turnOnRenderers();
