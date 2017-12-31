@@ -189,7 +189,7 @@ Transform:
   m_LocalScale: {x: 500, y: 1, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3293477
 MonoBehaviour:
@@ -1387,6 +1387,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.51099354, y: 0.28104684, z: 0.60426}
   m_Center: {x: 0, y: 0.000000059604645, z: -0.021609902}
+--- !u!1 &467944546 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!1 &467944547 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!1 &467944548 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100016, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!1 &467944549 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!1 &467944550 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!1 &467944551 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 467944541}
+--- !u!114 &467944552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467944544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ae2fe186367824bad3913047a1e043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftBackFin: {fileID: 467944551}
+  LeftFrontFin: {fileID: 467944550}
+  RightBackFin: {fileID: 467944549}
+  RightFrontFin: {fileID: 467944549}
+  tail: {fileID: 467944548}
+  lowerJaw: {fileID: 467944547}
+  upperJaw: {fileID: 467944546}
 --- !u!1 &493557386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1913,7 @@ MonoBehaviour:
   playerColors: []
   playerNumber: 1
   decreaseSpeedDuration: 3
-  turtleHolder: {fileID: 0}
+  turtleHolder: {fileID: 467944544}
   damageImmunityDuration: 2
   healthBar: {fileID: 186024002}
   ammoBar: {fileID: 336396510}
