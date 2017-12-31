@@ -145,6 +145,15 @@ public class player : MonoBehaviour {
         }
     }
 
+    public void gainHP()    // no HP gain if at full HP
+    {
+        if (hp != totalHp)
+        {
+            hp++;
+            healthBar.fillAmount = hp / totalHp;
+        }
+    }
+
     IEnumerator damageImmunityPeriod(bool hasTakenActualDamage)
     {
         canTakeDamage = false;

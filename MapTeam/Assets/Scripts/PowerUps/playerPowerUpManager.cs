@@ -64,6 +64,12 @@ public class playerPowerUpManager : MonoBehaviour
         activeShield = true;
     }
 
+    public void gainHP()
+    {
+        this.GetComponent<player>().gainHP();
+        Debug.Log("I NEED HEALING" + numberOfPickups++);
+    }
+
     IEnumerator PowerUpUptime(powerUpType type)
     {
         Debug.Log("POWER UP UP" + numberOfPickups);
