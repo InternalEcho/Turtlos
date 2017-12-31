@@ -33,7 +33,7 @@ public class player : MonoBehaviour {
     [Header("Projectile Power-up")]
     public float bulletSpeed;
     public int numberStunProjectile;
-    public GameObject bullet;
+    public GameObject[] bullet;
     public Transform bulletEmitter;
 
     // Use this for initialization
@@ -84,7 +84,8 @@ public class player : MonoBehaviour {
         {
             if (Input.GetButtonDown("Fire"+playerNumber))
             {
-                GameObject go = (GameObject)Instantiate(bullet, bulletEmitter.position, bulletEmitter.rotation);
+                GameObject randomFruitBullet = bullet[(int)System.Math.Round(Random.Range(0.0f, bullet.Length - 1), 0)];
+                GameObject go = (GameObject)Instantiate(randomFruitBullet, bulletEmitter.position, bulletEmitter.rotation);
                 go.GetComponent<Rigidbody>().AddForce(bulletEmitter.forward * bulletSpeed);
                 numberStunProjectile -= 1;
                 ammoBar.fillAmount -= 0.33f;

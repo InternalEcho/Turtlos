@@ -1707,7 +1707,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 113.149994, y: -90, z: -60}
 --- !u!1 &717135704
 GameObject:
@@ -1733,7 +1733,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 717135704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0069999695, y: -0.07000011, z: 1.2200012}
+  m_LocalPosition: {x: -0.0069999695, y: -0.07000011, z: 2.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 73232852}
@@ -1941,7 +1941,11 @@ MonoBehaviour:
   movementAllowed: 0
   bulletSpeed: 1000
   numberStunProjectile: 0
-  bullet: {fileID: 1087181775206216, guid: 8193611630999374cb7bb2f4ba375470, type: 2}
+  bullet:
+  - {fileID: 1206725189030676, guid: 1004bcfb1fbd93c4f8118a298d573afc, type: 2}
+  - {fileID: 1087181775206216, guid: 8193611630999374cb7bb2f4ba375470, type: 2}
+  - {fileID: 1896810164926444, guid: 845f33ba8feac93418f51aa3b19ce543, type: 2}
+  - {fileID: 1316452301614238, guid: 467acf9df111c2e4bbed07e1d0af5b43, type: 2}
   bulletEmitter: {fileID: 1092911758}
 --- !u!54 &830485594
 Rigidbody:
@@ -2561,7 +2565,11 @@ MonoBehaviour:
   movementAllowed: 0
   bulletSpeed: 1000
   numberStunProjectile: 0
-  bullet: {fileID: 1087181775206216, guid: 8193611630999374cb7bb2f4ba375470, type: 2}
+  bullet:
+  - {fileID: 1206725189030676, guid: 1004bcfb1fbd93c4f8118a298d573afc, type: 2}
+  - {fileID: 1087181775206216, guid: 8193611630999374cb7bb2f4ba375470, type: 2}
+  - {fileID: 1896810164926444, guid: 845f33ba8feac93418f51aa3b19ce543, type: 2}
+  - {fileID: 1316452301614238, guid: 467acf9df111c2e4bbed07e1d0af5b43, type: 2}
   bulletEmitter: {fileID: 717135705}
 --- !u!54 &1025989770
 Rigidbody:
@@ -2840,7 +2848,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1092911757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0069999695, y: -0.07000011, z: 1.220001}
+  m_LocalPosition: {x: -0.0069999695, y: -0.07000011, z: 2.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 416346618}
@@ -4222,7 +4230,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6dec42338ff77e46899189ea9e39da7, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c6dec42338ff77e46899189ea9e39da7, type: 3}
       propertyPath: m_LocalScale.x

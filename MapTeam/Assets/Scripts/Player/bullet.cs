@@ -9,6 +9,11 @@ public class bullet : MonoBehaviour {
         Destroy(gameObject, expiryTime);
     }
 
+    void Update()
+    {
+        transform.Rotate(Vector3.up, 250 * Time.deltaTime);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
