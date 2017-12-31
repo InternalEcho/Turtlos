@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagementScript : MonoBehaviour {
 
@@ -32,6 +32,7 @@ public class GameManagementScript : MonoBehaviour {
     public DisplayAnyMessage displayMsg;
     public String anyTextBoxMessage;
     public bool enableAnyTextBox;
+    public Text WinnerText;
     
     public static GameManagementScript Instance { get; private set; }
 
@@ -69,19 +70,7 @@ public class GameManagementScript : MonoBehaviour {
 
                 if (timerOver)
                 {
-                    timerOver = false;
-                    roundsPlayed++;
-                
-                    if (roundsPlayed == roundsTotal)
-                    {
-                        Debug.Log("All rounds played.");
-                        GoToWinnerChicken();
-                    }
-                    else
-                    {
-                        Debug.Log("starting new round, round " + roundsPlayed);
-                        GoToGameStart();
-                    }
+                    GoToWinnerChicken();
                 }
                 break;
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject postGameMenu;
     //public GameObject inGameUI;
-
+    public Text winnerText;
     public countdownTimer cdTimer;
 
     private void Start()
@@ -29,6 +30,8 @@ public class PauseMenu : MonoBehaviour
     public void displayPostGameMenu()
     {
         //Time.timeScale = 0f;
+        GameManagementScript.Instance.timerOver = false;
+        winnerText.text = "TIE GAME!";
         postGameMenu.SetActive(true);
     }
 

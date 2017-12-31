@@ -61,4 +61,4 @@ Material:
     m_Colors:
     - _FresnelColor: {r: 0.9632353, g: 0.9632353, b: 0.9632353, a: 0.5019608}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WaterColor: {r: 0, g: 0.70512164, b: 0.99264705, a: 1}
+    - _WaterColor: {r: 0, g: 0.8283468, b: 0.99264705, a: 1}

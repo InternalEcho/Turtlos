@@ -483,7 +483,7 @@ MeshRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 73232853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -1051,6 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1260447910}
   postGameMenu: {fileID: 72112142}
+  winnerText: {fileID: 1288554031}
   cdTimer: {fileID: 0}
 --- !u!1 &336396508
 GameObject:
@@ -1830,20 +1831,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2668,17 +2655,17 @@ MonoBehaviour:
   playerDecreasedSpeed: 0
   hp: 3
   totalHp: 3
-  playerColor: {r: 0.19999981, g: 0, b: 1, a: 0}
+  playerColor: {r: 0, g: 0.21379304, b: 1, a: 0}
   healthBarColor: {r: 0.08839748, g: 0.8014706, b: 0.2998605, a: 1}
   playerColors: []
   playerNumber: 2
   decreaseSpeedDuration: 3
-  turtleHolder: {fileID: 0}
+  turtleHolder: {fileID: 1076721916}
   damageImmunityDuration: 2
   healthBar: {fileID: 939060513}
   ammoBar: {fileID: 1121738077}
   stunParticleHolder: {fileID: 4781051}
-  animator: {fileID: 0}
+  animator: {fileID: 1076721915}
   movementAllowed: 0
   gun: {fileID: 0}
   bulletSpeed: 1000
@@ -2715,6 +2702,7 @@ Transform:
   - {fileID: 73232852}
   - {fileID: 493557387}
   - {fileID: 4781052}
+  - {fileID: 1076721917}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2792,6 +2780,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1034034498}
+--- !u!1001 &1076721914
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1025989771}
+    m_Modifications:
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.049999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d46b57c07f001ba46b0b77a6b328d0a9, type: 2}
+    - target: {fileID: 100014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+      propertyPath: m_Name
+      value: SM_Turtle01_Anim_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_IsPrefabParent: 0
+--- !u!95 &1076721915 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 719fb412f7c92514a93aa0c6257d55ca,
+    type: 3}
+  m_PrefabInternal: {fileID: 1076721914}
+--- !u!1 &1076721916 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 1076721914}
+--- !u!4 &1076721917 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400014, guid: 719fb412f7c92514a93aa0c6257d55ca, type: 3}
+  m_PrefabInternal: {fileID: 1076721914}
 --- !u!1 &1092911757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,20 +2925,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -3483,7 +3524,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11422618, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: waterColor.g
-      value: 0.70512164
+      value: 0.8283468
       objectReference: {fileID: 0}
     - target: {fileID: 11422618, guid: 58e70e22d647fbb4cbc201ebe55b9e51, type: 2}
       propertyPath: waterColor.r

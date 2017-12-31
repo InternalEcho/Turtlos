@@ -1924,20 +1924,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1826418886}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1143243845}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1236642527}
+        m_MethodName: GoToGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2121,7 +2110,7 @@ MonoBehaviour:
   roundsPlayed: 0
   allowPlayerMovement: 0
   introMusic: {fileID: 893527541}
-  roundTime: 300
+  roundTime: 5
   timer: {fileID: 893527537}
   timerBoxMessage: 
   enableTimerBox: 0
@@ -2129,6 +2118,7 @@ MonoBehaviour:
   displayMsg: {fileID: 893527540}
   anyTextBoxMessage: 
   enableAnyTextBox: 0
+  WinnerText: {fileID: 0}
 --- !u!114 &893527540
 MonoBehaviour:
   m_ObjectHideFlags: 0
