@@ -49,16 +49,17 @@ public class GridMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (players.Count == 1)
+        {
+            winnerText.text = "PLAYER " + players[0].GetComponent<player>().playerNumber.ToString() + " WINS!";
+            StartCoroutine(endRound());
+            players.Clear();
+        }
+        
         foreach (var player in players)
         {
             if (player == null) // remove dead players from the list of players
                 players.Remove(player);
-            if (players.Count == 1)
-            {
-                winnerText.text = "PLAYER " + players[0].GetComponent<player>().playerNumber.ToString() +" WINS!";
-                StartCoroutine(endRound());
-                players.Clear();
-            }
 
             int intPositionX = (int)System.Math.Round(player.transform.position.x, 0);
             int intPositionZ = (int)System.Math.Round(player.transform.position.z, 0);

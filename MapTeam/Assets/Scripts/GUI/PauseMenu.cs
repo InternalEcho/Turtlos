@@ -31,7 +31,6 @@ public class PauseMenu : MonoBehaviour
     {
         //Time.timeScale = 0f;
         GameManagementScript.Instance.timerOver = false;
-        winnerText.text = "TIE GAME!";
         postGameMenu.SetActive(true);
     }
 
