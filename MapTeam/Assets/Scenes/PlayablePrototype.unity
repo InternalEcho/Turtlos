@@ -1678,6 +1678,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -2888,6 +2902,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -3624,7 +3652,10 @@ MonoBehaviour:
   cloudHeight: 20
   buffs:
   - {fileID: 1741797673841856, guid: 6eb5b0ab514c5a044a5d2fa25d176e2a, type: 2}
+  - {fileID: 1741797673841856, guid: 6eb5b0ab514c5a044a5d2fa25d176e2a, type: 2}
   - {fileID: 1527898712233862, guid: 6791f4e56198da14882b89654e270239, type: 2}
+  - {fileID: 1527898712233862, guid: 6791f4e56198da14882b89654e270239, type: 2}
+  - {fileID: 1965447727123800, guid: 18780a722d6ec7043910d00ecf79f0ca, type: 2}
   - {fileID: 1965447727123800, guid: 18780a722d6ec7043910d00ecf79f0ca, type: 2}
   - {fileID: 1408601441047012, guid: a01b7cf8aab019e42b657f1e6592548b, type: 2}
   buffLifeSpan: 15

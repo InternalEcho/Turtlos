@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1012,8 +1012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1212, y: 187}
-  m_SizeDelta: {x: 1745.18, y: 601.33}
+  m_AnchoredPosition: {x: 600, y: 128}
+  m_SizeDelta: {x: 675, y: 842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429417616
 MonoBehaviour:
@@ -1049,15 +1049,15 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Player 2 :
 
-    T- Move Up
+    I - Move Up
 
-    F - Move Left
+    J - Move Left
 
-    G - Move Down
+    K - Move Down
 
-    H - Move Right
+    L - Move Right
 
-    J - Shoot'
+    M - Shoot (Power-up)'
 --- !u!222 &429417617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2716,7 +2716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 222}
+  m_AnchoredPosition: {x: -90, y: 222}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143243847
@@ -3311,7 +3311,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "How to play : \nStay Alive and be careful of your opponent's trail!\nAvoid
-    meteorites\nPick-up powerups to get stronger\n"
+    meteorites!\nPick-up power-ups to get stronger!\n"
 --- !u!222 &1413964197
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3647,8 +3647,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -558, y: 72.5}
-  m_SizeDelta: {x: 629, y: 842.64}
+  m_AnchoredPosition: {x: -558, y: 139}
+  m_SizeDelta: {x: 675, y: 842.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497356891
 MonoBehaviour:
@@ -3684,7 +3684,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Player 1 :
 
-    W- Move Up
+    W - Move Up
 
     A - Move Left
 
@@ -3692,7 +3692,7 @@ MonoBehaviour:
 
     D - Move Right
 
-    Space - Shoot'
+    X - Shoot (Power-up)'
 --- !u!222 &1497356892
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4050,6 +4050,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -4335,7 +4349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 345.19}
+  m_AnchoredPosition: {x: 72, y: 345.19}
   m_SizeDelta: {x: 953, y: 253.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044506610
