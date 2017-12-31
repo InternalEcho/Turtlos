@@ -93,7 +93,6 @@ public class Meteorites : GenericYvant {
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<player>().loseHp();
-            this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
             this.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject, 1);
@@ -101,7 +100,6 @@ public class Meteorites : GenericYvant {
         else if (collision.gameObject.tag == "Terrain")
         {
             collision.gameObject.GetComponent<gridCellBehavior>().meteorHit();
-            this.gameObject.GetComponent<Renderer>().enabled = false;
             Destroy(myShedew);
             this.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject, 1);
