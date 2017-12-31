@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridMap : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GridMap : MonoBehaviour
     public int lengthX, lengthY;
     public int offsetX;
     public int offsetY;
+
+    public Text winnerText;
 
     private List<GameObject> players;
     private GridCell playerPosition;
@@ -52,6 +55,7 @@ public class GridMap : MonoBehaviour
                 players.Remove(player);
             if (players.Count == 1)
             {
+                winnerText.text = "PLAYER " + players[0].GetComponent<player>().playerNumber.ToString() +" WINS!";
                 StartCoroutine(endRound());
                 players.Clear();
             }
