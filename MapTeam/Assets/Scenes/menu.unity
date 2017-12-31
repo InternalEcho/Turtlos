@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
     Montreal)\nSimon Zhang - Development and sound (Polytechnique Montreal)\nYvan
     Luu - Development  (Polytechnique Montreal)\nKaixiang Mu - Development  (Polytechnique
     Montreal)\nBrandon Chan - Development (Polytechnique Montreal)\n \nSpecial thanks
-    to\nPatrick Zhao\n\n\n"
+    to\nDavid Binh Quang Tran\nPatrick Zhao\n\n\n"
 --- !u!222 &342612875
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1049,15 +1049,13 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Player 2 :
 
-    I - Move Up
+    T- Move Up
 
-    J - Move Left
+    F - Move Left
 
-    K - Move Down
+    G - Move Down
 
-    L - Move Right
-
-    U - Shoot'
+    H - Move Right'
 --- !u!222 &429417617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3690,9 +3688,7 @@ MonoBehaviour:
 
     S - Move Down
 
-    D - Move Right
-
-    Space - Shoot'
+    D - Move Right'
 --- !u!222 &1497356892
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4050,6 +4046,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
