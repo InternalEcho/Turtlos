@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - SeaLevelLimit
-  - IgnoreCollision
+  - PowerUp
+  - Terrain
+  - PanelMain
+  - PanelPregame
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - 
   - Environment
-  - 
-  - 
-  - 
+  - Shield
+  - InvisibleWall
+  - Bullet
   - 
   - 
   - 

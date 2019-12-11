@@ -5,12 +5,18 @@ MapTeam/[Bb]uild/
 MapTeam/[Bb]uilds/
 MapTeam/Assets/AssetStoreTools*
 
+# Brad
+MapTeam/Assets/Scripts/Map/ChangeTexture*
+MapTeam/Assets/Scripts/Map/DynamicTerrainPaint*
+
 TurtlePrototype/[Ll]ibrary/
 TurtlePrototype/[Tt]emp/
 TurtlePrototype/[Oo]bj/
 TurtlePrototype/[Bb]uild/
 TurtlePrototype/[Bb]uilds/
 TurtlePrototype/Assets/AssetStoreTools*
+
+projectileTest/
 
 # Visual Studio 2015 cache directory
 /.vs/

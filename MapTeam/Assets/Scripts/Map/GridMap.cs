@@ -1,0 +1,147 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GridMap : MonoBehaviour
+{
+    public GameObject defaultTerrain;
+    public GameObject invisibleWall;
+  
+    public GameObject player0;
+    public GameObject player1;
+
+    public int lengthX, lengthY;
+    public int offsetX;
+    public int offsetY;
+
+    public Text winnerText;
+
+    private List<GameObject> players;
+    private GridCell playerPosition;
+
+    private Color defaultTerrainColor;
+    private GridCell[,] internalGrid;
+    
+    //Determining position for center of each X and Y axis of the grid.
+    private bool pairNumber;
+    private int centerX, centerY;
+
+    // Use this for initialization
+    void Start()
+    {
+        players = new List<GameObject>();
+        players.Add(player0);
+        players.Add(player1);
+
+        centerX = findCenter(lengthX);
+        centerY = findCenter(lengthY);
+
+        defaultTerrainColor = defaultTerrain.GetComponent<gridCellBehavior>().gridColor.color;
+        generateGridMap(lengthX, lengthY);
+       //generateInvisibleWalls(lengthX, lengthY);
+        
+        //debug meteor hit
+        //this.internalGrid[25, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
+        //this.internalGrid[10, 25].Cell.GetComponent<gridCellBehavior>().meteorHit();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (players.Count == 1)
+        {
+            winnerText.text = "PLAYER " + players[0].GetComponent<player>().playerNumber.ToString() + " WINS!";
+            StartCoroutine(endRound());
+            players.Clear();
+        }
+        
+        foreach (var player in players)
+        {
+            if (player == null) // remove dead players from the list of players
+                players.Remove(player);
+
+            int intPositionX = (int)System.Math.Round(player.transform.position.x, 0);
+            int intPositionZ = (int)System.Math.Round(player.transform.position.z, 0);
+
+            playerPosition = this.internalGrid[intPositionX, intPositionZ]; // finds current player gridcell
+            if (this.playerPosition.Cell.GetComponent<Renderer>().material.color == Color.black)    // Player loses Hp when walking on charred tiles?
+                player.GetComponent<player>().loseHp();
+            if ((this.playerPosition.Cell.GetComponent<Renderer>().material.color != player.GetComponent<player>().playerColor)
+            && (this.playerPosition.Cell.GetComponent<Renderer>().material.color != defaultTerrainColor))
+            {
+                player.GetComponent<player>().decreaseSpeed();
+            }
+            this.playerPosition.Cell.GetComponent<Renderer>().material.color = player.GetComponent<player>().playerColor;
+        }
+    }
+
+    void generateGridMap(int lengthX, int lengthY)
+    {
+        internalGrid = new GridCell[lengthX, lengthY];
+
+        for (int i = 0; i < lengthX; i++)
+        {
+            for (int j = 0; j < lengthY; j++)
+            {
+                internalGrid[i, j] = gameObject.AddComponent<GridCell>();
+                this.internalGrid[i, j].Cell = Instantiate(defaultTerrain, new Vector3(i, 0f, j), Quaternion.identity) as GameObject;
+                this.internalGrid[i, j].Cell.transform.SetParent(this.gameObject.transform);
+            }
+        }
+
+        generateInvisibleWalls(lengthX, lengthY);
+    }
+
+    void generateInvisibleWalls(int lengthX, int lengthY)
+    {
+        int wallheight = 5, wallThickness = 3;
+        GameObject WallX1 = Instantiate(invisibleWall, new Vector3(-2, 0, centerY), Quaternion.identity) as GameObject;    // -x
+        WallX1.transform.localScale = new Vector3(wallThickness, wallheight, lengthY + 12);
+        GameObject WallX2 = Instantiate(invisibleWall, new Vector3(lengthX + 1.5f, 0, centerY), Quaternion.identity) as GameObject;    // +x
+        WallX2.transform.localScale = new Vector3(wallThickness, wallheight, lengthY + 12);
+        GameObject WallZ1 = Instantiate(invisibleWall, new Vector3(centerX, 0, -2), Quaternion.identity) as GameObject;   // -z
+        WallZ1.transform.localScale = new Vector3(lengthX + 12, wallheight, wallThickness);
+        GameObject WallZ2 = Instantiate(invisibleWall, new Vector3(centerX, 0, lengthY + 1.5f), Quaternion.identity) as GameObject;   // +z
+        WallZ2.transform.localScale = new Vector3(lengthX + 12, wallheight, wallThickness);
+    }
+
+    private int findCenter(int value)
+    {
+        if (value % 2 == 0) // if value is even
+            return (value / 2);
+        return ((value / 2) + 1);
+    }
+
+    public int getCenterX()
+    {
+        return centerX;
+    }
+
+    public int getCenterY()
+    {
+        return centerY;
+    }
+
+    public GridCell getCell(int positionX, int positionY)
+    {
+        return internalGrid[positionX, positionY];
+    }
+
+    IEnumerator endRound()
+    {
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("GameHandler").GetComponent<GameManagementScript>().GoToWinnerChicken();
+    }
+
+    //Simon Code
+    void OnTriggerEnter(Collider collision)
+    { /*
+        if (collision.gameObject.tag == "Meteorites")
+        {
+            collision.internalGrid[collision.transform.x, collision.transform.z].Cell.GetComponent<Renderer>().material.color = deathTile.color;
+            //gameObject deathTile aka prefab of tile but black??
+            collision.internalGrid[collision.transform.x, collision.transform.z]
+        }*/
+    } 
+}

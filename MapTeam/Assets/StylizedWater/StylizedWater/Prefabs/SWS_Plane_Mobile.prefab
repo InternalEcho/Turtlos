@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &134336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 488414}
+  - component: {fileID: 11464308}
+  - component: {fileID: 3373580}
+  - component: {fileID: 2343036}
+  m_Layer: 4
+  m_Name: SWS_Plane_Mobile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &488414
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2343036
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134336}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 2
+  m_Materials:
+  - {fileID: 2100000, guid: f4248de3f6095664f97000e850cb9264, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &3373580
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134336}
+  m_Mesh: {fileID: 4300008, guid: 5fcac6ea62606f844b312837ed35e1ae, type: 3}
+--- !u!114 &11464308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc7260e5c788434f8949885bb0e0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderNames:
+  - Desktop
+  - Desktop (DX11 Tessellation)
+  - Mobile Advanced
+  - Mobile Basic
+  shaderIndex: 2
+  shader: {fileID: 4800000, guid: 1dcaa891fd50ac749a178732c0268a03, type: 3}
+  waterColor: {r: 0, g: 0.503546, b: 1, a: 1}
+  fresnelColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  rimColor: {r: 1, g: 1, b: 1, a: 1}
+  normalStrength: 1
+  waveTint: 0
+  transparency: 0.676
+  glossiness: 1
+  worldSpaceTiling: 1
+  tiling: 0.783
+  reflectionCubemap: {fileID: 0}
+  fresnel: 4
+  useIntersectionHighlight: 0
+  surfaceHighlight: 0.175
+  surfaceHighlightTiling: 0.35
+  surfaceHighlightSize: 0
+  surfaceHighlightPanning: 0
+  depth: 6.2
+  depthDarkness: 0
+  rimSize: 2
+  rimFalloff: 0.3
+  rimDistance: 0
+  rimTiling: 2
+  refractionAmount: 0
+  waveSpeed: 0.87
+  waveStrength: 0
+  customIntersection: {fileID: 0}
+  customNormal: {fileID: 0}
+  substanceNormals: {fileID: 0}
+  substanceShadermap: {fileID: 0}
+  normals: {fileID: 2800000, guid: 47848cb89e6284647931207c962c96db, type: 3}
+  shadermap: {fileID: 0}
+  tessellation: 0
+  substance: {fileID: 814258843, guid: e3d849a71cf1896458f0932f079b66a3, type: 3}
+  seed: 0
+  intersectionStyleNames:
+  - None
+  - Windwaker
+  - Foamy
+  - Foamy2
+  - Triangular
+  - Cells
+  - Perlin
+  intersectionStyle: 1
+  waveStyleNames:
+  - Perlin
+  - Plasma
+  - Circular
+  - Stream
+  - Sharp
+  - Cells
+  - Cloudy
+  waveStyle: 0
+  waveHeightmapNames:
+  - Smooth
+  - Sharp
+  - Billowed
+  - Wide
+  waveHeightmapStyle: 0
+  waveSize: 5
+  useCustomIntersection: 0
+  useCustomNormals: 0
+  material: {fileID: 2100000, guid: f4248de3f6095664f97000e850cb9264, type: 2}
+  isMobilePlatform: 0
+  isMobileAdvanced: 1
+  isMobileBasic: 0
+  shaderName: StylizedWater/Mobile Advanced
+  isWaterLayer: 0
+  hasShaderParams: 1
+  hasMaterial: 1
+  showColors: 0
+  showSurface: 0
+  showIntersection: 0
+  showHighlights: 0
+  showDepth: 0
+  showWaves: 0
+  showAdvanced: 0
+  useCompression: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f4248de3f6095664f97000e850cb9264, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300008, guid: 5fcac6ea62606f844b312837ed35e1ae, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: showAdvanced
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: showSurface
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: showColors
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 134336}
+  m_IsPrefabParent: 1
